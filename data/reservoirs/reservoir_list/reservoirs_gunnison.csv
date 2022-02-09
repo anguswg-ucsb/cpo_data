@@ -1,0 +1,102 @@
+"ID","Name/ Description","Data Type","Time Step","Sequence ID","Units","Start","End","Input Type","Input Name"
+2803590,HOT SPRINGS RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803590-1,HOT SPRINGS RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803591,MCDONOUGH RES FIRST ENLT,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803591-1,MCDONOUGH RES FIRST ENLT - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803592,MCDONOUGH RES NO 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803592-1,MCDONOUGH RES NO 2 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803593,NEEDLE CREEK RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803593-1,NEEDLE CREEK RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803594,UPPER DOME RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803594-1,UPPER DOME RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803595,VOUGA RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803595-1,VOUGA RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803617,LOWER DOME RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803617-1,LOWER DOME RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803652,BOULDER LAKE,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803652-1,BOULDER LAKE - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803674,PETERSON RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+2803674-1,PETERSON RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+28_ARG001,AGG_RES_Tomichi,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+28_ARG001-1,AGG_RES_Tomichi - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003365,FRUIT GROWERS RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003365-1,FRUIT GROWERS RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003365-2,FRUIT GROWERS RES - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003395,FRUITLAND RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003395-1,FRUITLAND RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003399,OVERLAND RES NO 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003399-1,OVERLAND RES NO 1 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003399-2,OVERLAND RES NO 1 - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003416,PAONIA RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003416-1,PAONIA RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003416-2,PAONIA RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003416-3,PAONIA RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003416-4,PAONIA RESERVOIR - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003527,Gorsuch Reservoir,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003527-1,Gorsuch Reservoir - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003527-2,Gorsuch Reservoir - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003553,CRAWFORD RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003553-1,CRAWFORD RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+4003553-2,CRAWFORD RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+40_ARG001,AGG_RES_Surface,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+40_ARG001-1,AGG_RES_Surface - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+40_ARG002,AGG_RES_Ngunn,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+40_ARG002-1,AGG_RES_Ngunn - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+40_ASG001,AGG_STOCK_Surface,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+40_ASG001-1,AGG_STOCK_Surface - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_ARG001,AGG_RES_Uncomp,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_ARG001-1,AGG_RES_Uncomp - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_ASG001,AGG_STOCK_Uncomp,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_ASG001-1,AGG_STOCK_Uncomp - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_Cerro,Cerro,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_Cerro-1,Cerro - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_Fairvw,Fairview,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+41_Fairvw-1,Fairview - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+42_ARG001,AGG_RES_Kannah,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+42_ARG001-1,AGG_RES_Kannah - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+42_ASG001,AGG_STOCK_Kannah,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+42_ASG001-1,AGG_STOCK_Kannah - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903602,Farris Creek Resevoir,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903602-1,Farris Creek Resevoir - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903660,Cunningham Gulch,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903660-1,Cunningham Gulch - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903663,Meridian Lake,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903663-1,Meridian Lake - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903663-2,Meridian Lake - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903664,Rainbow Lake Reservoir,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903664-1,Rainbow Lake Reservoir - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903666,TAYLOR PARK RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903666-1,TAYLOR PARK RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903666-2,TAYLOR PARK RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+5903666-3,TAYLOR PARK RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+59_ARG001,AGG_RES_East,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+59_ARG001-1,AGG_RES_East - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203532,BLUE MESA RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203532-1,BLUE MESA RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203532-2,BLUE MESA RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203532-3,BLUE MESA RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203545,MORROW POINT RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203545-1,MORROW POINT RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203545-2,MORROW POINT RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203548,SILVERJACK RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203548-1,SILVERJACK RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203548-2,SILVERJACK RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203578,CRYSTAL RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6203578-1,CRYSTAL RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+62_ARG001,AGG_RES_Lake,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+62_ARG001-1,AGG_RES_Lake - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+62_ARG002,AGG_RES_Main,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+62_ARG002-1,AGG_RES_Main - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+62_ASG001,AGG_STOCK_Main,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+62_ASG001-1,AGG_STOCK_Main - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675,Ridgway,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675-1,Ridgway - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675-2,Ridgway - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675-3,Ridgway - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675-4,Ridgway - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675-5,Ridgway - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+6803675-6,Ridgway - Account 6,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+68_ARG001,AGG_RES_UpperUncomp,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+68_ARG001-1,AGG_RES_UpperUncomp - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+68_ASG001,AGG_STOCK_UpperUncomp,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44
+68_ASG001-1,AGG_STOCK_UpperUncomp - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\gm2015\gm2015B.b44

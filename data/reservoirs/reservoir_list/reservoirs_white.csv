@@ -1,0 +1,15 @@
+"ID","Name/ Description","Data Type","Time Step","Sequence ID","Units","Start","End","Input Type","Input Name"
+4303633,Big Beaver Creek Reservo,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+4303633-1,Big Beaver Creek Reservo - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+4304313,Wolf Creek Reservoir,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+4304313-1,Wolf Creek Reservoir - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+4304433,Taylor Draw Reservoir,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+4304433-1,Taylor Draw Reservoir - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ARW001,Agg Res near COLO-UTAH s,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ARW001-1,Agg Res near COLO-UTAH s - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ARW002,Agg Res above Piceance C,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ARW002-1,Agg Res above Piceance C - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ASW001,Stock Pond near COLO-UTA,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ASW001-1,Stock Pond near COLO-UTA - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ASW002,Stock Pond above Piceanc,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44
+43_ASW002-1,Stock Pond above Piceanc - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\wm2015\wm2015B.b44

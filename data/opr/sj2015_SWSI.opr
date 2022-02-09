@@ -1,0 +1,526 @@
+# Revised to reflect the operations available in StateMod Version 14.02.25 - including revised bookover and plan operations
+#
+# sj2015B.opr
+#
+# FileFormatVersion 2
+#
+# Oprrig.
+# *******************************************************
+#     Card 1   Control
+#     format:  (a12, a24, 12x, 2i4, i8, f8.0, i8, 3(i8,a12), 20i8)
+#
+#     ID       cidvri:          Operational Right ID
+#     Name     nameo:           Operational Right name
+#     AdminDat iodat(1-2,k):    Effective priority date
+#     Admin #  irtem:           Priority Number (smaller is most senoir)
+#     # Str    dum:             Number of intervenging structures
+#     On/Off   ioprsw(k):       Switch 0 = off,1 = on
+#     Dest ID  ciopde:          Destination reservoir or structure ID
+#     Dest Ac  iopdes(2,k):     Destination reservoir or structure account # (enter 1 for a diversion)
+#     Sou1 ID  ciopso(1)        Supply reservoir #1 or structure ID
+#     Sou1 Ac  iopsou(2,k):     Supply reservoir #1 or structure account # (enter 1 for a diversion)
+#     Sou2 ID  ciopso(2):       Supply reservoir #2 ID
+#     Sou1 Ac  iopsou(4,k):     Supply reservoir #2 account
+#     Type     ityopr(k):       Switch
+#                        1 = Reservoir Release to an instream demand
+#                        2 = Reservoir Release to a direct diversion demand
+#                        3 = Reservoir Release to a direct diversion demand by a carrier
+#                        4 = Reservoir Release to a direct diversion demand by exchange
+#                        5-8 Not used
+#                        9 = Reservoir Release for target contents
+#                        10 = Not used
+#                        11 = Direct flow demand thru intervening structures
+#                        12 = Roperate
+#
+# *****************************************************************************
+#     Card 2   Carrier Ditch data (include only if idum > 0
+#     format:  (free)
+#
+#     Inter    itern(1,j)      intervening direct diversion structure id's
+#                              Enter # Str values
+# *****************************************************************************
+#
+#  Added special operating right for the LaPlata Compact
+#    Destination is ISF node
+#    Source is ID of Hesperus gage
+#    Acct. # is % of Gage to be used
+#    # of Structures is 12 - used to turn on or off for each month
+#    Priority is the most senior right in the system - which should be the admin # of the ISF node
+#    Card 2 has twelve values 0 for off; 1 for on for each month starting with October.
+#
+#
+# ID        Name                    NA                    Admin#   # Str  On/Off Dest Id     Dest Ac  Sou1 Id     Sou1 Ac  Sou2 Id     Sou2 Ac     Type
+# ---------eb----------------------eb----------eb--------------eb------eb------e-b----------eb------e-b----------eb------e-b----------eb------eb------e
+#
+# San Juan Chama Project Operating Rules
+#
+#
+77999990.01 Opr San Juan Chama Summary               99999.00000      2.       1 7799999            1 2904667.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999   
+                                    7704636     7704635
+77999990.02 Opr San Juan Chama Summary               99999.00000      1.       1 7799999            1 7704636.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999   
+                                    7704635
+77999990.03 Opr San Juan Chama Summary               99999.00000      0.       1 7799999            1 7704635.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999   
+#
+#  Summitt Reservoir System Operating Rules
+#
+71036190.01 Opr turkey Ck1 To Irrig                  13346.00000      0.       1 7102002            1 7100618.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71036190.02 Opr turkey Ck2 To Irrig                  30667.20168      0.       1 7102002            1 7100618.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71036190.03 Opr Summit Dit to Irrig                  30667.23175      0.       1 7102002            1 7100609.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71036190.04 Opr Summit Res to irrig                  30667.23177      0.       1 7102002            1 7103619            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+71036190.05 Opr turkey Ck1 To Summit                 13346.00000      0.       1 7103619            1 7100618.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71036190.06 Opr turkey Ck2 To Summit                 30667.20168      0.       1 7103619            1 7100618.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71036190.07 Opr Summit Dit to Summit                 30667.23175      0.       1 7103619            1 7100609.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71036190.08 Opr Summit to target                     99999.00000      0.       1 7103619            0 7103619            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+#
+#
+# Dolores Project Operations (McPhee Reservoir)
+# **** Use a Type 47 to limit total MVIC diversions to 150,400 acre-feet per year
+MVICLim.01  MVIC_Limit                                   1.00000      0.       1 NA                 1 MVICPlan          10 0                  0      47 NA           Diversion           0       1       0    9999 Monthly and Annual Limits
+150400.  150400.  150400.  150400.  150400.  150400.  150400.  150400.  150400.  150400.  150400.  150400.  150400. 
+#
+# **** Put both MVIC Water Rights into the full MVIC plan
+MVIC_WR.01  MVIC_WR_FullPlan                         13113.00000      0.       1 MVIC_WR            1 7104675.05       100 NA                 0      26 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+   48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000.  48000.
+#
+MVIC_WR.02  MVIC_WR_FullPlan                         30667.13113      0.       1 MVIC_WR            1 7104675.06       100 NA                 0      26 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+   48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000. 48000.  48000.
+#
+# **** Release to meet direct rights limited by the MVICLim plan
+MVIC_WR.03  Opr Dolores to Tunnel                    30667.13114      1.       1 3204675           1. MVIC_WR          100 NA                0.      27 NA           Diversion          -1      7.       0    9999      
+            7104675   0    Carrier      
+            MVICLim.01
+            MVIC_WR.01
+MVIC_WR.04  Opr Dolores to Grt.Cut                   30667.13114      2.       1 3200772           1. MVIC_WR          100 NA                0.      27 NA           Diversion          -1      7.       0    9999     
+            7104675   0    Carrier
+            7104674   0    Carrier  
+            MVICLim.01  
+            MVIC_WR.01
+MVIC_WR.05  Opr Dolores to Narrg                     30667.13114      3.       1 7103602           1. MVIC_WR          100 NA                0.      27 NA           Diversion          -1      7.       0    9999   21
+            7104675   0    Carrier
+            7104674   0    Carrier
+            3200699   0    Carrier
+            MVICLim.01 
+            MVIC_WR.01
+#71046750.01 Opr Dolores to Cortez  transfer wr 1     10743.00000      0.       1 3200680            1 7104675.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+#71046750.02 Opr Dolores to Cortez  transfer wr 2     11063.00000      0.       1 3200680            1 7104675.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+#71046750.03 Opr Dolores to Cortez  transfer wr 3     11839.00000      0.       1 3200680            1 7104675.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+#71046750.04 Opr Dolores to Cortez  transfer wr 4     12204.00000      0.       1 3200680            1 7104675.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+#MVIC_WR.06  Opr Dolores to MWC                       30667.13114      1.       1 3202001            1 MVIC_WR          100 0                 0.      27 NA           Diversion          -1      5.       0    9999   
+#            7104675   0    Carrier      
+#            MVIC_WR.01
+71046750.01 Opr Dolores to Cortez  transfer wr 1     10743.00000      0.       1 3200680_I          1 7104675.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71046750.02 Opr Dolores to Cortez  transfer wr 2     11063.00000      0.       1 3200680_I          1 7104675.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71046750.03 Opr Dolores to Cortez  transfer wr 3     11839.00000      0.       1 3200680_I          1 7104675.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71046750.04 Opr Dolores to Cortez  transfer wr 4     12204.00000      0.       1 3200680_I          1 7104675.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+MVIC_WR.06  Opr Dolores to MWC                       30667.13114      1.       1 3202001_I          1 MVIC_WR          100 0                 0.      27 NA           Diversion          -1      5.       0    9999   
+            7104675   0    Carrier      
+            MVIC_WR.01
+#
+71046750.21 Opr Dolores to Cortez  transfer wr 1     10743.00000      0.       1 3200680_O          1 7104675.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71046750.22 Opr Dolores to Cortez  transfer wr 2     11063.00000      0.       1 3200680_O          1 7104675.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71046750.23 Opr Dolores to Cortez  transfer wr 3     11839.00000      0.       1 3200680_O          1 7104675.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+71046750.24 Opr Dolores to Cortez  transfer wr 4     12204.00000      0.       1 3200680_O          1 7104675.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+MVIC_WR.26  Opr Dolores to MWC                       30667.13114      1.       1 3202001_O          1 MVIC_WR          100 0                 0.      27 NA           Diversion          -1      5.       0    9999   
+            7104675   0    Carrier      
+            MVIC_WR.01
+#
+# **** Put remaining water into 71_Call limited to three runoff months
+71_Call.01  Opr McPhee bookover to Call Res              1.00000      0.       1 71_Call            1 7103614            8 71_Call.01         0       6 NA           Diversion           0     1.0       0    9999   
+MVIC_WR.07  Opr MVIC_WRPlan to Call Res              30667.13115    -13.       1 71_Call            1 MVIC_WR          100 0                 0.      27 NA           Diversion          -1      5.       0    9999   
+                                     0 0 0 0 0 0 1 1 1 0 0 0
+            7104675   0    Carrier
+            MVIC_WR.01
+#
+71_Call.02  Opr Call Res to Dol Tunnel               30667.13115      1.       1 3204675            1 71_Call            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+            7104675 0    Carrier
+            MVICLim.01
+71_Call.03  Opr Call Res to Great Cut                30667.13115      1.       1 3200772            1 71_Call            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+            7104674 0    Carrier
+            MVICLim.01
+#
+71_Call.04  Opr Call Res bookover to McPhee         999999.00000    -12.       1 7103614            8 71_Call            1 0                  0       6 NA           Diversion         0.0     0.0       0    9999   
+                                     1 1 1 1 1 1 1 1 1 1 1 1
+71_Call.05  Opr Call Res Spill                      999999.00001      0.       1     NA             0 71_Call            1 0                  0      29 NA           Diversion         0.0     0.0       0    9999   
+#
+MVIC_WR.08  Spill                                    30667.13116      0.       1 7104675            0 MVIC_WR            0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+#
+#  Limit McPhee Project reservoir release to MVICLim
+#
+71036140.01 Opr McPhee to Dol Tunnel                 30667.13116      1.       1 3204675            1 7103614            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+            7104675 0    Carrier
+            MVICLim.01
+71036140.02 Opr McPhee to U Lateral                  30667.13116      1.       1 3200772            1 7103614            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+            7104674 0    Carrier
+            MVICLim.01
+71036140.03 Opr McPhee to Ute Mtn Tribe                  1.00000      1.       1 3200884            1 7103614            2 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+                                    7104675
+#71036140.04 Opr McPhee to Cortez                     30667.13116      1.       1 3200680            1 7103614            4 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+#                                    7104675
+71036140.14 Opr McPhee to Cortez                     30667.13116      1.       1 3200680_I          1 7103614            4 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+                                    7104675
+71036140.24 Opr McPhee to Cortez                     30667.13116      1.       1 3200680_O          1 7103614            4 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+                                    7104675
+#71036140.05 Opr McPhee to MWC                        30667.13116      1.       1 3202001            1 7103614            4 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+#                                    7104675
+71036140.15 Opr McPhee to MWC                        30667.13116      1.       1 3202001_I          1 7103614            4 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+                                    7104675
+71036140.25 Opr McPhee to MWC                        30667.13116      1.       1 3202001_O          1 7103614            4 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+                                    7104675
+71036140.06 Opr McPhee to Dove Creek                     1.00000      0.       1 3202006            1 7103614            3 0                  0       3 NA           Diversion         0.0     0.0       0    9999   
+71036140.07 Opr McPhee to F&W dmd                    45776.00001      0.       1 7102999            1 7103614            5 0                  0       2 NA           Diversion         0.0     0.0       0    9999   
+71036140.08 Opr McPhee to Target                     99999.00000      0.       1 7103614            1 7103614            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+71036140.09 Opr McPhee Accts to bookover             99999.00000     12.       1 7103614            9 7103614            1 71036140.15        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+71036140.10 Opr McPhee Accts to bookover             99999.00000     12.       1 7103614            9 7103614            2 71036140.15        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+71036140.11 Opr McPhee Accts to bookover             99999.00000     12.       1 7103614            9 7103614            3 71036140.15        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+71036140.12 Opr McPhee Accts to bookover             99999.00000     12.       1 7103614            9 7103614            4 71036140.15        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+71036140.13 Opr McPhee Accts to bookover             99999.00000     12.       1 7103614            9 7103614            5 71036140.15        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+71036140.14 Opr McPhee Accts to bookover             99999.00000     12.       1 7103614            9 7103614            6 71036140.15        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+71036140.15 Opr McPhee bookover to Accts            100000.00000     12.       1 7103614           -6 7103614            9 0                  0       6 NA           Diversion         0.0     0.0       0    9999   
+                                     0 0 0 0 0 0 1 0 0 0 0 0
+#
+# Limit Groundhog releases to MVICLim
+#
+71036120.01 Opr Groundhog to Tunnel                  30667.13117      1.       1 3204675            1 7103612            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+            7104675 0    Carrier
+            MVICLim.01
+71036120.02 Opr Groundhog to U Lat                   30667.13117      1.       1 3200772            1 7103612            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit  
+            7104674 0    Carrier
+            MVICLim.01
+71036120.03 Opr Groundhog to Misc. Users                 1.00000      0.       1 7199999            1 7103612            2 0                  0       1 NA           Diversion         0.0     0.0       0    9999     
+71036120.04 Opr Groundhog to Target                  99999.00000      0.       1 7103612            0 7103612            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999     
+71036020.01 Opr Narraguinnep to MVIC U Lat           30667.13118      0.       1 3200772            1 7103602            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999   
+#
+# Pine River Irrigation Project Operating Rules (Vallecito Reservoir)
+# 
+31035180.01 Opr Vallecito to Farrell                 51499.33238      0.       1 3100524            1 3103518            2 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.02 Opr Vallecito to Mcbride                 51499.33238      0.       1 3100553            1 3103518            3 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.03 Opr Vallecito to Bennet-Myers            51499.33238      0.       1 3100528            1 3103518            4 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.04 Opr Vallecito to Myers-Asher             51499.33238      0.       1 3100518            1 3103518            5 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.05 Opr Vallecito to Wommer                  51499.33238      0.       1 3100513            1 3103518            6 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.06 Opr Vallecito to Catlin                  51499.33238      0.       1 3100545            1 3103518            7 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.07 Opr Vallecito to Bear Ck & Pine Rv       51499.33238      0.       1 3100514            1 3103518            8 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.08 Opr Vallecito to Sullivan                51499.33238      0.       1 3100668            1 3103518            9 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.09 Opr Vallecito to Los Pinos               51499.33238      0.       1 3100512            1 3103518           10 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.10 Opr Vallecito to Thompson-Epperson       51499.33238      0.       1 3100511            1 3103518           11 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.11 Opr Vallecito to Schroder                51499.33238      0.       1 3100523            1 3103518           12 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.12 Opr Vallecito to Bean                    51499.33238      0.       1 3100510            1 3103518           13 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.13 Opr Vallecito to King                    51499.33238      0.       1 3100519            1 3103518           14 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.14 Opr Vallecito to Higbee                  51499.33238      0.       1 3100516            1 3103518           15 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.15 Opr Vallecito to Island                  51499.33238      0.       1 3100527            1 3103518           16 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.16 Opr Vallecito to Robert Morrison         51499.33238      0.       1 3100547            1 3103518           17 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.17 Opr Vallecito to Spring Creek            51499.33238      0.       1 3100665            1 3103518           18 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.18 Opr Vallecito to Dr. Morrison            51499.33238      0.       1 3100505            1 3103518           19 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.19 Opr Vallecito to Dr. Morrison            18536.00001      0.       1 3100505            1 3103518            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.20 Opr Vallecito to Ceanaboo                 6781.00001      0.       1 3100502            1 3103518            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.21 Opr Vallecito to Spring Creek             6781.00001      0.       1 3100509            1 3103518            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.22 Opr Vallecito to LaBoca Ditch             6781.00001      0.       1 3100507            1 3103518            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.23 Opr Vallecito to Severo Ditch            58215.00001      0.       1 3100508            1 3103518            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+31035180.24 Opr Vallecito to Target                  99999.00000      0.       1 3103518            0 3103518            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+31035180.25 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            1 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.26 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            2 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.27 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            3 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.28 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            4 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.29 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            5 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.30 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            6 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.31 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            7 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.32 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            8 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.33 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518            9 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.34 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           10 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.35 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           11 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.36 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           12 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.37 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           13 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.38 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           14 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.39 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           15 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.40 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           16 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.41 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           17 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.42 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           18 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.43 Opr Vallecito Accts to bookover          99999.00000     12.       1 3103518           21 3103518           19 31035180.44        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+31035180.44 Opr Vallecito bookover to Accts         100000.00000     12.       1 3103518          -19 3103518           21 0                  0       6 NA           Diversion         0.0     0.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+#
+# Florida Project Operating Rules (Lemon Reservoir)
+#  
+30035810.01 Opr Lemon Res to Harris Pat              26974.22967      0.       1 3001003            1 3003581            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.02 Opr Lemon Res to Pioneer                 26974.22967      0.       1 3001019            1 3003581            2 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.03 Opr Lemon Res to McC & Mur.              26974.22967      0.       1 3001009            1 3003581            3 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.04 Opr Lemon Res to Banks Tyner             26974.22967      0.       1 3001033            1 3003581            4 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.05 Opr Lemon Res to Tyner East              26974.22967      0.       1 3001243            1 3003581            5 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.06 Opr Lemon Res to Tyner West              26974.22967      0.       1 30_ADS008          1 3003581            5 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.07 Opr Lemon Res to Flo Farmers             35219.00001      0.       1 3001011            1 3003581            6 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035810.08 Opr Lemon Res to USA ISF                 51499.42186      0.       1 3003581_M          1 3003581            7 0                  0       1 NA           Diversion         0.0     0.0       0    9999  
+30035810.09 Opr Lemon Res to Target                  99999.00000      0.       1 3003581            0 3003581            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+30035810.10 Opr Lemon Accts to bookover              99999.00000     12.       1 3003581            9 3003581            1 30035810.16        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+30035810.11 Opr Lemon Accts to bookover              99999.00000     12.       1 3003581            9 3003581            2 30035810.16        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+30035810.12 Opr Lemon Accts to bookover              99999.00000     12.       1 3003581            9 3003581            3 30035810.16        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+30035810.13 Opr Lemon Accts to bookover              99999.00000     12.       1 3003581            9 3003581            4 30035810.16        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+30035810.14 Opr Lemon Accts to bookover              99999.00000     12.       1 3003581            9 3003581            5 30035810.16        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+30035810.15 Opr Lemon Accts to bookover              99999.00000     12.       1 3003581            9 3003581            6 30035810.16        0       6 NA           Diversion         0.0     1.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+30035810.16 Opr Lemon bookover to Accts             100000.00000     12.       1 3003581           -6 3003581            9 0                  0       6 NA           Diversion         0.0     0.0       0    9999   
+                                    0 0 0 0 0 0 1 0 0 0 0 0
+#  
+#  Mancos Project Operating Rules (Jackson Reservoir)
+#  
+34035890.01 Opr Jackson Inlet to Jackson             31715.00000      0.       1 3403589            1 3400535.05         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.02 Opr Jackson Inlet to Jackson             51499.44559      0.       1 3403589            1 3400535.06         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.03 Opr Jackson Inlet to Jackson             14015.00000      0.       1 3403589            1 3400535.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.04 Opr Jackson Inlet to Jackson             11093.00000      0.       1 3403589            1 3400535.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.05 Opr Jackson Inlet to Jackson             11823.00000      0.       1 3403589            1 3400535.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.06 Opr Jackson Inlet to Jackson             11489.00000      0.       1 3403589            1 3400535.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.07 Opr Jackson Inlet to Jackson              9997.00000      0.       1 3403589            1 3400535.07         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+34035890.08 Opr Jackson to Lee & Burke               36712.00001      0.       1 3400542            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.09 Opr Jackson to Webber Ditch              36712.00001      0.       1 3400576            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.10 Opr Jackson to Ratliff&Root              36712.00001      0.       1 3400554            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.11 Opr Jackson to Lee Ditch                 36712.00001      0.       1 3400543            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.12 Opr Jackson to Frank Ditch               36712.00001      0.       1 3400527            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.13 Opr Jackson to Willis Ditch              36712.00001      0.       1 3400583            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.14 Opr Jackson to Boss Ditch                36712.00001      0.       1 3400506            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.15 Opr Jackson to No. 6 Ditch               36712.00001      0.       1 3400552            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.16 Opr Jackson to Sheek Ditch               36712.00001      0.       1 3400565            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.17 Opr Jackson to Beaver Ditch              36712.00001      0.       1 3400505            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.18 Opr Jackson to Henry Bolen               36712.00001      0.       1 3400534            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.19 Opr Jackson to Crystal Creek             36712.00001      0.       1 3400514            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+34035890.20 Opr Jackson to Long Park Exch.           36712.00001      0.       1 3400544            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+34035890.21 Opr Jackson to Smouse Exch.              36712.00001      0.       1 3400567            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+34035890.22 Opr Jackson to Williams Exch.            36712.00001      0.       1 3400582            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+34035890.23 Opr Jackson to East Mancos Exch          36712.00001      0.       1 3400522            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+34035890.24 Opr Jackson to Rush Res. Exch            36712.00001      0.       1 3400560            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+34035890.25 Opr Jackson to Weber Res Inlet           36712.00001      0.       1 3400577            1 3403589            1 0                  0       4 NA           Diversion         0.0     0.0       0    9999  
+#34035890.26 Opr Jackson to Town of Mancos            36712.00001      0.       1 3400573            1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.36 Opr Jackson to Town of Mancos            36712.00001      0.       1 3400573_I          1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.37 Opr Jackson to Town of Mancos            36712.00001      0.       1 3400573_O          1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.27 Opr Jackson to Carpenter & Mitchell      36712.00001      0.       1 3400508            1 3403589            1 0                  0       3 NA           Diversion         0.0     0.0       0    9999  
+34035890.28 Opr Jackson to 34_ADS012                 36712.00001      0.       1 34_ADS012          1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.29 Opr Jackson to 34_ADS013                 36712.00001      0.       1 34_ADS013          1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.30 Opr Jackson to 34_ADS014                 36712.00001      0.       1 34_ADS014          1 3403589            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+34035890.31 Opr Jackson to Target                    99999.00000      0.       1 3403589            0 3403589            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+#
+# Operating Rules for multistructures - off in Historic calibration set, driven by historical headgate diversions
+#
+29006860.01 Opr Park MultiSys                        14715.00000      0.       1 2900686            1 2900613.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29006860.02 Opr Park MultiSys                        16176.00000      0.       1 2900686            1 2900613.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29006860.03 Opr Park MultiSys                        21698.00000      0.       1 2900686            1 2900613.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29006860.04 Opr Park MultiSys                        41016.32992      0.       1 2900686            1 2900613.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.01 Opr Turkey MultiSys                      14898.00000      0.       1 2900718            1 2900601.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.02 Opr Turkey MultiSys                      14987.00000      0.       1 2900718            1 2900601.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.03 Opr Turkey MultiSys                      16801.00000      0.       1 2900718            1 2900601.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.04 Opr Turkey MultiSys                      16801.00000      0.       1 2900718            1 2900601.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.05 Opr Turkey MultiSys                      17897.00000      0.       1 2900718            1 2900601.05         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.06 Opr Turkey MultiSys                      17897.00000      0.       1 2900718            1 2900601.06         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.07 Opr Turkey MultiSys                      18627.00000      0.       1 2900718            1 2900601.07         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.08 Opr Turkey MultiSys                      18627.00000      0.       1 2900718            1 2900601.08         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.09 Opr Turkey MultiSys                      19085.00000      0.       1 2900718            1 2900601.09         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.10 Opr Turkey MultiSys                      41016.35337      0.       1 2900718            1 2900601.10         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+29007180.11 Opr Turkey MultiSys                      41028.00000      0.       1 2900718            1 2900601.11         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+30005060.01 Opr Animas Consol. MultiSys               9953.00000      0.       1 3000506            1 3000581.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+30005060.02 Opr Animas Consol. MultiSys              14458.00000      0.       1 3000506            1 3000581.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+30005060.03 Opr Animas Consol. MultiSys              19876.00000      0.       1 3000506            1 3000581.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+30005060.04 Opr Animas Consol. MultiSys              99999.00000      0.       1 3000506            1 3000581.99         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.01 Opr Spring Creek MultiSys                20392.00000      0.       1 3100665            1 4600503.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.02 Opr Spring Creek MultiSys                20605.00000      0.       1 3100665            1 4600503.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.03 Opr Spring Creek MultiSys                22769.00000      0.       1 3100665            1 4600503.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.04 Opr Spring Creek MultiSys                23861.00000      0.       1 3100665            1 3100567.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.05 Opr Spring Creek MultiSys                44559.43616      0.       1 3100665            1 3100567.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.06 Opr Spring Creek MultiSys                46386.45655      0.       1 3100665            1 3100567.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+31006650.07 Opr Spring Creek MultiSys                47847.45571      0.       1 3100665            1 3100567.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+33005330.01 Opr Pine Ridge MultiSys                  26974.18049      0.       1 3300533            1 3001056.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+61005020.01 Opr Galloway MultiSys                    40146.00000      0.       1 6100502            1 6100602.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78005070.01 Opr Barnes-Meuser-Shaw MultiSys          28645.19539      0.       1 7800507            1 7800506.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78005070.02 Opr Barnes-Meuser-Shaw MultiSys          41016.36294      0.       1 7800507            1 7800506.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78005440.01 Opr FS Mockler MultiSys                  28645.23906      0.       1 7800544            1 7800524.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78005900.01 Opr Pagosa MultiSys                      19012.17806      0.       1 7800590            1 7800617.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78005900.02 Opr Pagosa MultiSys                      19637.00000      0.       1 7800590            1 7800525.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.01 Opr Piedra Falls MultiSys                45655.32871      0.       1 7800604            1 7800659.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.02 Opr Piedra Falls MultiSys                19012.18419      0.       1 7800604            1 7800523.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.03 Opr Piedra Falls MultiSys                19012.18420      0.       1 7800604            1 7800523.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.04 Opr Piedra Falls MultiSys                19158.00000      0.       1 7800604            1 7800523.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.05 Opr Piedra Falls MultiSys                22962.22785      0.       1 7800604            1 7800523.04         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.06 Opr Piedra Falls MultiSys                24241.00000      0.       1 7800604            1 7800523.05         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+78006040.07 Opr Piedra Falls MultiSys                16315.00000      0.       1 7800604            1 7800594.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+#
+#  Trout Lake, Lake Hope, and Cascade Operating Rules - Release to Power and Target
+#      Miramonte Lake has no demand, release to target when necessary
+#
+60005110.01 Opr Trout Lake to Ames Power             30604.15158      0.       1 6000511            1 6003527            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+60005110.02 Opr Lake Hope to Ames Power              30604.15159      0.       1 6000511            1 6003509            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+60007230.01 Opr Trout Lake to Nucla Power            38468.00001      0.       1 6000723            1 6003527            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+60035090.01 Opr Lake Hope to Target                  99999.00000      0.       1 6003509            0 6003509            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+60035270.01 Opr Trout Lake to Target                 99999.00000      0.       1 6003527            0 6003527            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+60035120.01 Opr Miramonte Lake to Target             99999.00000      0.       1 6003512            0 6003512            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+30005230.01 Opr Cascade Cnl to Cascade Res           26974.19267      0.       1 3003536            1 3000523.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+30005230.02 Opr Cascade Cnl to Pwr Cnl #1            26974.19266      0.       1 3000612            1 3000523.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+30035360.01 Opr Cascade Res to Pwr Cnl #1            26974.19268      0.       1 3000612            1 3003536            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+30035360.02 Opr Cascade Res to Target                99999.00000      0.       1 3003536            0 3003536            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+#
+#  Gurley and Naturita Canal Operating Rules
+#
+60007070.01 Opr Naturita Canal to Irrigation         12570.00000      1.       1 6000707_I          1 6000707.01         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.02 Opr Naturita Canal to Irrigation         20889.00000      1.       1 6000707_I          1 6000707.02         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.03 Opr Naturita Canal to Irrigation         23681.20889      1.       1 6000707_I          1 6000707.03         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.04 Opr Naturita Canal to Irrigation         23681.23212      1.       1 6000707_I          1 6000707.04         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.05 Opr Naturita Canal to Irrigation         23681.23215      1.       1 6000707_I          1 6000707.05         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.06 Opr Naturita Canal to Irrigation         28911.28052      1.       1 6000707_I          1 6000707.06         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.07 Opr Naturita Canal to Irrigation         30604.30604      1.       1 6000707_I          1 6000707.07         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.08 Opr Naturita Canal to Irrigation         32811.31726      1.       1 6000707_I          1 6000707.08         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.09 Opr Naturita Canal to Irrigation         52595.12570      1.       1 6000707_I          1 6000707.09         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.10 Opr Naturita Canal to Gurley             12570.00000      1.       1 6003507            1 6000707.01         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.11 Opr Naturita Canal to Gurley             20889.00000      1.       1 6003507            1 6000707.02         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.12 Opr Naturita Canal to Gurley             23681.20889      1.       1 6003507            1 6000707.03         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.13 Opr Naturita Canal to Gurley             23681.23212      1.       1 6003507            1 6000707.04         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.14 Opr Naturita Canal to Gurley             23681.23215      1.       1 6003507            1 6000707.05         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.15 Opr Naturita Canal to Gurley             28911.28052      1.       1 6003507            1 6000707.06         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.16 Opr Naturita Canal to Gurley             30604.30604      1.       1 6003507            1 6000707.07         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.17 Opr Naturita Canal to Gurley             32811.31726      1.       1 6003507            1 6000707.08         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.18 Opr Naturita Canal to Gurley             52595.12570      1.       1 6003507            1 6000707.09         1 6000707          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                    6000707    20 Carrier
+60007070.19 Opr Gurley Res to Irrigate               52595.12571      0.       1 6000707_I          1 6003507            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+60007070.20 Opr Gurley Res to Target                 99999.00000      0.       1 6003507            0 6003507            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+#
+#  Lilylands System Operating Rules
+#
+60006700.01 Opr LILYLANDS CANAL to Irrigation        13060.00000      1.       1 6000670_I          1 6000670.01         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.02 Opr LILYLANDS CANAL to Irrigation        13453.00000      1.       1 6000670_I          1 6000670.02         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.03 Opr LILYLANDS CANAL to Irrigation        13704.00000      1.       1 6000670_I          1 6000670.03         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.04 Opr LILYLANDS CANAL to Irrigation        14156.00000      1.       1 6000670_I          1 6000670.04         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.05 Opr LILYLANDS CANAL to Irrigation        18478.00000      1.       1 6000670_I          1 6000670.05         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.06 Opr LILYLANDS CANAL to Irrigation        24379.23212      1.       1 6000670_I          1 6000670.06         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.07 Opr LILYLANDS CANAL to Irrigation        30604.28053      1.       1 6000670_I          1 6000670.07         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.08 Opr LILYLANDS CANAL to Irrigation        30604.29766      1.       1 6000670_I          1 6000670.08         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.09 Opr LILYLANDS CANAL to Reservoir         13060.00000      1.       1 6003510            1 6000670.01         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.10 Opr LILYLANDS CANAL to Reservoir         13453.00000      1.       1 6003510            1 6000670.02         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.11 Opr LILYLANDS CANAL to Reservoir         13704.00000      1.       1 6003510            1 6000670.03         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.12 Opr LILYLANDS CANAL to Reservoir         14156.00000      1.       1 6003510            1 6000670.04         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.13 Opr LILYLANDS CANAL to Reservoir         18478.00000      1.       1 6003510            1 6000670.05         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.14 Opr LILYLANDS CANAL to Reservoir         24379.23212      1.       1 6003510            1 6000670.06         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.15 Opr LILYLANDS CANAL to Reservoir         30604.28053      1.       1 6003510            1 6000670.07         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.16 Opr LILYLANDS CANAL to Reservoir         30604.29766      1.       1 6003510            1 6000670.08         1 6000670          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000670    20 Carrier
+60006700.17 Opr Lilylands Res to Irrigate            30604.29767      0.       1 6000670_I          1 6003510            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+60006700.18 Opr LilylandsRes to Target               99999.00000      0.       1 6003510            0 6003510            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+#
+#  Lone Cone System Operating Rules
+#
+60006720.01 Opr Lone Cone Ditch to Irrigation        14549.00000      1.       1 6000672_I          1 6000672.01         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000672    20 Carrier
+60006720.02 Opr Lone Cone Ditch to Irrigation        14914.00000      1.       1 6000672_I          1 6000672.02         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                   6000672    20 Carrier
+60006720.03 Opr Lone Cone Ditch to Irrigation        15279.00000      1.       1 6000672_I          1 6000672.03         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.04 Opr Lone Cone Ditch to Irrigation        15645.00000      1.       1 6000672_I          1 6000672.04         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.05 Opr Lone Cone Ditch to Irrigation        16375.00000      1.       1 6000672_I          1 6000672.05         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.06 Opr Lone Cone Ditch to Irrigation        19073.00000      1.       1 6000672_I          1 6000672.06         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.07 Opr Lone Cone Ditch to Irrigation        22621.00000      1.       1 6000672_I          1 6000672.07         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.08 Opr Lone Cone Ditch to Irrigation        23681.14092      1.       1 6000672_I          1 6000672.08         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.09 Opr Lone Cone Ditch to Irrigation        30604.28053      1.       1 6000672_I          1 6000672.09         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.10 Opr Lone Cone Ditch to Irrigation        43829.41532      1.       1 6000672_I          1 6000672.10         1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.11 Opr Lone Cone Ditch to Reservoir         14549.00000      1.       1 6003511            1 6000672.01         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.12 Opr Lone Cone Ditch to Reservoir         14914.00000      1.       1 6003511            1 6000672.02         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.13 Opr Lone Cone Ditch to Reservoir         15279.00000      1.       1 6003511            1 6000672.03         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.14 Opr Lone Cone Ditch to Reservoir         15645.00000      1.       1 6003511            1 6000672.04         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.15 Opr Lone Cone Ditch to Reservoir         16375.00000      1.       1 6003511            1 6000672.05         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.16 Opr Lone Cone Ditch to Reservoir         19073.00000      1.       1 6003511            1 6000672.06         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.17 Opr Lone Cone Ditch to Reservoir         22621.00000      1.       1 6003511            1 6000672.07         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.18 Opr Lone Cone Ditch to Reservoir         23681.14092      1.       1 6003511            1 6000672.08         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.19 Opr Lone Cone Ditch to Reservoir         30604.28053      1.       1 6003511            1 6000672.09         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.20 Opr Lone Cone Ditch to Reservoir         43829.41532      1.       1 6003511            1 6000672.10         1 6000672          100      45 NA           Diversion         0.0     0.0       0    9999  
+                                  6000672    20 Carrier
+60006720.21 Opr Lone Cone Res to Irrigate            43829.41533      0.       1 6000672_I          1 6003511            1 0                  0       2 NA           Diversion         0.0     0.0       0    9999  
+60006720.22 Opr Lone Cone Res to Target              99999.00000      0.       1 6003511            0 6003511            0 0                  0       9 NA           Diversion         0.0     0.0       0    9999  
+#
+#  La Plata Compact Operations
+#
+33029990.01 Opr Laplata Compact                       0000.00001     12.       1 3302999            1 09365500          50 3302999.01         1      13 NA           Diversion         0.0     0.0       0    9999  
+     1 1 0 0 0 0 0 1 1 1 1 1
+#
+#
+# Animas La Plata Operations - note no demand, so only operations to store in Ridges Basin turned on and only for Animas water rights
+#    following operating rule "allocates" water to the project based on available flow at the Animas WR location after bypass has been met
+ALP_Pln.01  ALP_Full_Plan                            32386.00000      0.       1 ALP_Pln            1 3000509.01       100 NA                 0      26 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+   36900. 36900. 36900. 36900. 36900. 36900. 36900. 36900. 36900. 36900. 36900. 36900.  442800.
+#  following operating rule delivers "allocated" water to Ridges Basin
+ALP_Pln.02  ALP to Ridges Basin                      32386.00001      1.       1 3003623           -2 ALP_Pln          100 NA                 0      27 NA           Diversion          -1       5       0    9999 AcctPlan to Demand
+                                    3001657 0  Carrier
+                                    ALP_Pln.01
+ALP_Pln.06  Spill                                    32386.00005      0.       1 3000509            0 ALP_Pln            0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+#
+#  Operate Soil Moisture
+#
+Opr_22      Opr Soil Moisture                        90000.00000      0.       1 N/A                0 N/A                0 0                  0      22

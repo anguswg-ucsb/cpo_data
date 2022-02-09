@@ -1,0 +1,407 @@
+# Baseline Operation File
+# Updated to include structures specific to the SWSI modeling effort
+# The baseline scenario runs all operations for the whole simulation period
+# No future operations or demands are active
+#
+# *******************************************************
+#
+#     Card 1   Control
+#     format:  (a12, a24, 12x, 2i4, i8, f8.0, i8, 3(i8,a12), 20i8)
+#
+#     ID       cidvri:          Operational Right ID
+#     Name     nameo:           Operational Right name
+#     AdminDat iodat(1-2,k):    Effective priority date
+#     Admin #  irtem:           Priority Number (smaller is most senoir)
+#     # Str    dum:             Number of intervenging structures
+#     On/Off   ioprsw(k):       Switch 0 = off,1 = on
+#     Dest ID  ciopde:          Destination reservoir or structure ID
+#     Dest Ac  iopdes(2,k):     Destination reservoir or structure account # (enter 1 for a diversion)
+#     Sou1 ID  ciopso(1)        Supply reservoir #1 or structure ID
+#     Sou1 Ac  iopsou(2,k):     Supply reservoir #1 or structure account # (enter 1 for a diversion)
+#     Sou2 ID  ciopso(2):       Supply reservoir #2 ID
+#     Sou1 Ac  iopsou(4,k):     Supply reservoir #2 account
+#     Type     ityopr(k):       Switch
+#                        1 = Reservoir Release to an instream demand
+#                        2 = Reservoir Release to a direct diversion demand
+#                        3 = Reservoir Release to a direct diversion demand by a carrier
+#                        4 = Reservoir Release to a direct diversion demand by exchange
+#                        5-8 Not used
+#                        9 = Reservoir Release for target contents
+#                        10 = Not used
+#                        11 = Direct flow demand thru intervening structures
+#                        12 = Roperate
+#
+# *****************************************************************************
+#     Card 2   Carrier Ditch data (include only if idum > 0
+#     format:  (free)
+#
+#     Inter    itern(1,j)      intervening direct diversion structure id's
+#                              Enter # Str values
+#
+#
+# *****************************************************************************
+# Ditches tied to more than one reservoir generally take water in the following order:
+#
+#	1. Stillwater reservoir
+#	2. Yamcolo Irrigators Association in Yamcolo
+#	3. Stagecoach contract water in Yamcolo
+#	4. Stagecoach reservoir
+#
+# Steamboat and Mt. Warner take water in the following order:
+#
+#	1. Fish Creek Reservoir
+#	2. Stagecoach Reservoir
+#       3. Yamcolo m&i account
+# *******************************************************************************
+#
+#
+# ID        Name                    NA                    Admin#   # Str  On/Off Dest Id     Dest Ac  Sou1 Id     Sou1 Ac  Sou2 Id     Sou2 Ac     Type ReusePlan     Div Type    OprLoss    Limit   ioBeg   ioEnd Comment
+# ---------eb----------------------eb----------exxxxb----------eb------eb------e-b----------eb------e-b----------eb------e-b----------eb------eb------exb----------exb----------exb------eb------eb------eb------exb----- 
+#
+58035400.01 Opr_Stillwater_to_Acton                  33782.23163      0.       1 5800500            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.02 Opr_Stillwr_to_BigMesa                   19990.15939      0.       1 5800539            1 5803540            1 0                  0       2 NA           NA                  0       0       0    9999
+58035400.03 Opr_Stillwater_to_Bird                   33782.23893      0.       1 5800541            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.04 Opr_Stillwr_to_Buck-Mand                 33782.24989      0.       1 5800564            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.05 Opr_Stillwater_to_CoalCr                 53325.47604      0.       1 58_ADY001          1 5803540            2 0                  0       2 NA           NA                  0       0       0    9999
+58035400.06 Opr_Stillwater_to_Fix                    33782.12587      0.       1 5800643            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.07 Opr_Stillw_to_Hern-Kolbe                 51134.44104      0.       1 5800684            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.08 Opr_Stillwtr_to_Lindsey                  18898.14346      0.       1 5800738            1 5803540            3 0                  0       2 NA           NA                  0       0       0    9999
+58035400.09 Opr_Stillwtr_to_Mandall                  33782.24989      0.       1 5800763            1 5803540            4 0                  0       2 NA           NA                  0       0       0    9999
+58035400.10 Opr_Stillwtr_to_Mill-no1                 51134.44104      0.       1 5800777            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.11 Opr_Stillwater_to_Penn                   33782.19510      0.       1 5800821            1 5803540            7 0                  0       2 NA           NA                  0       0       0    9999
+58035400.12 Opr_Stillw_to_StillwtrD                  31920.19486      0.       1 5804685_D          1 5803540            6 0                  0       2 NA           NA                  0       0       0    9999
+58035400.13 Opr_Stillw_to_StillwtrD                  22071.19624      0.       1 5804686            1 5803540            5 0                  0       2 NA           NA                  0       0       0    9999
+# Force pool to drop due to winter icing concerns
+58035400.14 Opr_Stillwater_to_Target                 53325.47605      0.       1 0                  0 5803540            0 0                  0       9 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+# LCW 6/2015 - The list of structures that Yamcolo releases to was derived from water delivery coding in Hydrobase.
+#    After discussions with Kevin McBride and Andy Rossi at Upper Yampa Water Conservancy District (UYWCD), structures were assigned to pools in the reservoir
+#    Irrigation contractees can purchase water in the Yampa Irrigators Agriculture Pool, Individual Irrigators (Stagecoach Exchange) Agriculture Pool, or both.
+#    Municipal and industrial contractees can purchase water in the Yamcolo Municipal & Industrial Pool.
+#    Anyone who has contracts for water in the reservoir can also purchase water from the Raise pool.
+#    No water can be released from the conservation pool. It is dead storage.
+#
+#    In addition to the users identified from Hydrobase, UYWCD provided data in a spreadsheet about individual contract holders (correspondance with Joe Messina).
+#    "Contractee_nodes_2014.xlsx" can be found in the Reservoir folder.
+#    Rules to release to these additional structures were added.
+#
+# Release to target for calibration
+#5842400.01  Opr_Yamcolo_to_Target                    99999.99999      0.       1 0                  0 5804240            0 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Current Operationsn (listed upstream to downstream)
+58042400.02 Opr_Yamcol_to_StillwtrD                  31920.19487      0.       1 5804685_D          1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.03 Opr_Yamcol_to_StillwtrD                  31920.19487      0.       1 5804686            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.04 Opr_YamStagetoStillwtrD                  31920.19487      0.       1 5804685_D          1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.05 Opr_YamStagetoStillwtrD                  31920.19487      0.       1 5804686            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.06 Opr_Yamcol_to_StillwtrD                  31920.19487      0.       1 5804685_D          1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.07 Opr_Yamcol_to_StillwtrD                  31920.19487      0.       1 5804686            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.08 Opr_Yamcolo_to_BigMesa                   19990.15940      0.       1 5800539            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.09 Opr_Yamcolo_to_BigMesa                   19990.15940      0.       1 5800539            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.10 Opr_Yamcolo_to_Lindsey                   18898.14347      0.       1 5800738            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.11 Opr_Yamcolo_to_Lindsey                   18898.14347      0.       1 5800738            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.12 Opr_YamStageto_Buck-Mand                 33782.24990      0.       1 5800564            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.13 Opr_Yamcolo_to_Buck-Mand                 33782.24991      0.       1 5800564            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.14 Opr_Yamcolo_to_Buck-Mand                 33782.24991      0.       1 5800564            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.15 Opr_YamStageto_Mandall                   33782.24990      0.       1 5800763            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.16 Opr_Yamcolo_to_Mandall                   33782.24991      0.       1 5800763            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.17 Opr_Yamcolo_to_Mandall                   33782.24991      0.       1 5800763            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.18 Opr_YamStageto_Acton                     33782.23164      0.       1 5800500            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.19 Opr_Yamcolo_to_Acton                     33782.23165      0.       1 5800500            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.20 Opr_Yamcolo_to_Acton                     33782.23165      0.       1 5800500            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.21 Opr_Yamcolo_to_Wooley                    33782.12587      0.       1 5800945            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.22 Opr_Yamcolo_to_Wooley                    33782.12587      0.       1 5800945            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.23 Opr_Yamcolo_to_Fix                       33782.12588      0.       1 5800643            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.24 Opr_Yamcolo_to_Fix                       33782.12588      0.       1 5800643            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.25 Opr_Yamcolo_to_Mill-no1                  51134.44105      0.       1 5800777            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.26 Opr_Yamcolo_to_Mill-no1                  51134.44105      0.       1 5800777            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.27 Opr_YamStageto_Hern-Kolbe                51134.44104      0.       1 5800684            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.28 Opr_Yamcolo_to_Hern-Kolbe                51134.44105      0.       1 5800684            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.29 Opr_Yamcolo_to_Hern-Kolbe                51134.44105      0.       1 5800684            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.30 Opr_Yamcolo_to_Pennsylvania              33782.19511      0.       1 5800821            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.31 Opr_Yamcolo_to_Pennsylvania              33782.19511      0.       1 5800821            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.32 Opr_Yamcolo_to_Bird                      33782.23894      0.       1 5800541            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.33 Opr_Yamcolo_to_Bird                      33782.23894      0.       1 5800541            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.34 Opr_Yamcolo_to_CoalCr                    53325.47605      0.       1 58_ADY001          1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.35 Opr_Yamcolo_to_CoalCr                    53325.47605      0.       1 58_ADY001          1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.36 Opr_YamStage_to_Egeria                   33782.14002      0.       1 5800622            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999
+58042400.37 Opr_Yamcolo_to_Egeria                    33782.14002      0.       1 5800622            1 5804240            3 0                  0       2 NA           NA                  0       0       0    9999
+58042400.38 Opr_Yamcolo_to_Egeria                    33782.14002      0.       1 5800622            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999
+58042400.39 Opr_Yamcolo_to_Bijou                     33782.29372      0.       1 5800540            1 5804240            3 0                  0       4 NA           NA                  0       0       0    9999
+58042400.40 Opr_Yamcolo_to_Bijou                     33782.29372      0.       1 5800540            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.41 Opr_Yamcolo_to_Moody                     33782.29372      0.       1 5800782            1 5804240            3 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.42 Opr_Yamcolo_to_Moody                     33782.29372      0.       1 5800782            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.43 Opr_Yamcolo_to_Ferguson                  33782.29372      0.       1 5800634            1 5804240            3 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.44 Opr_Yamcolo_to_Ferguson                  33782.29372      0.       1 5800634            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.45 Opr_Yamcolo_to_FishCrkMuniIntake         42156.00003      0.       1 5800642            1 5804240            2 0                  0       4 NA           NA                  0       0       0    9999
+#
+# Operations to release to contractees without historical deliveries noted in Hydrobase (listed upstream to downstream)
+# These ditches were derived from the "Contractee_nodes_2014.xlsx"
+58042400.46 Opr_Yamcolo_to_Stafford                  48598.00001      0.       1 5800879            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.47 Opr_Yamcolo_to_Stafford                  48598.00001      0.       1 5800879            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.48 Opr_Yamcolo_to_Laughlin                  37688.26815      0.       1 5800731            1 5804240            4 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.49 Opr_Yamcolo_to_Laughlin                  37688.26815      0.       1 5800731            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.50 Opr_Yamcolo_to_Whipple                   33782.13651      0.       1 5800933            1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.51 Opr_Yamcolo_to_Whipple                   33782.13651      0.       1 5800933            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.52 Opr_Yamcolo_to_BearRabvHunt              52960.52375      0.       1 58_ADY003          1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.53 Opr_Yamcolo_to_BearRabvHunt              52960.52375      0.       1 58_ADY003          1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.54 Opr_Yamcolo_to_SnowBank                  41727.39669      0.       1 5800866            1 5804240            4 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.55 Opr_Yamcolo_to_SnowBank                  41727.39669      0.       1 5800866            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.56 Opr_Yamcolo_to_BearRabvStagecoach        55882.43252      0.       1 58_ADY004          1 5804240            4 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.57 Opr_Yamcolo_to_BearRabvStagecoach        55882.43252      0.       1 58_ADY004          1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.58 Opr_Yamcolo_to_RossiHighline             41727.34103      0.       1 5801074            1 5804240            4 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.59 Opr_Yamcolo_to_RossiHighline             41727.34103      0.       1 5801074            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.60 Opr_Yamcolo_to_OakDale                   41727.34103      0.       1 5800807            1 5804240            4 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.61 Opr_Yamcolo_to_OakDale                   41727.34103      0.       1 5800807            1 5804240            5 0                  0       4 NA           NA                  0       0       0    9999 
+58042400.62 Opr_Yamcolo_m&i_Steamboat2               54421.52272      0.       1 57_ADY010          1 5804240            2 0                  0       2 NA           NA                  0       0       0    9999
+58042400.63 Opr_Yamcolo_m&i_Steamboat2               54421.52272      0.       1 57_ADY010          1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999 
+58042400.64 Opr_Yamcolo_Nickell                      19997.19600      0.       1 5800798            1 5804240            2 0                  0       2 NA           NA                  0       0       0    9999
+58042400.65 Opr_Yamcolo_Nickell                      19997.19600      0.       1 5800798            1 5804240            5 0                  0       2 NA           NA                  0       0       0    9999 
+#
+# Filling reservoir accounts in the correct order using a bookover account.
+# UYWCD fills the reservoir accounts in the following order, using all of their water rights: Conservation/Deadpool (1), M&I (2),  YA_IrrAsc (3), Exchange Pool (4), and Raise (5)
+# To capture this behavoir, water rights are "stored" in a bookover account that then releases to the reservoir pools in the correct order.
+# The bookover account is only for accounting purposes, so it does not have evaporation loses and is emptied at the end of each month.
+58042400.66 Opr_Yamcol_bookover6_to_1                41329.00001      0.       1 5804240            1 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042400.67 Opr_Yamcol_bookover6_to_2                41329.00001      0.       1 5804240            2 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042400.68 Opr_Yamcol_bookover6_to_3                41329.00001      0.       1 5804240            3 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042400.69 Opr_Yamcol_bookover6_to_4                41329.00001      0.       1 5804240            4 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042400.70 Opr_Yamcol_bookover6_to_5                41329.00001      0.       1 5804240            5 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042400.71 Opr_Yamcol_bookover6_to_1                41727.39992      0.       1 5804240            1 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042400.72 Opr_Yamcol_bookover6_to_2                41727.39992      0.       1 5804240            2 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042400.73 Opr_Yamcol_bookover6_to_3                41727.39992      0.       1 5804240            3 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042400.74 Opr_Yamcol_bookover6_to_4                41727.39992      0.       1 5804240            4 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042400.75 Opr_Yamcol_bookover6_to_5                41727.39992      0.       1 5804240            5 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042400.76 Opr_Yamcol_bookover6_to_1                47481.37137      0.       1 5804240            1 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042400.77 Opr_Yamcol_bookover6_to_2                47481.37137      0.       1 5804240            2 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042400.78 Opr_Yamcol_bookover6_to_3                47481.37137      0.       1 5804240            3 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042400.79 Opr_Yamcol_bookover6_to_4                47481.37137      0.       1 5804240            4 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042400.80 Opr_Yamcol_bookover6_to_5                47481.37137      0.       1 5804240            5 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042400.81 Opr_Yamcol_bookover6_to_1                47905.00001      0.       1 5804240            1 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042400.82 Opr_Yamcol_bookover6_to_2                47905.00001      0.       1 5804240            2 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042400.83 Opr_Yamcol_bookover6_to_3                47905.00001      0.       1 5804240            3 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042400.84 Opr_Yamcol_bookover6_to_4                47905.00001      0.       1 5804240            4 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042400.85 Opr_Yamcol_bookover6_to_5                47905.00001      0.       1 5804240            5 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042400.86 Opr_Yamcol_bookover6_to_1                50769.50654      0.       1 5804240            1 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042400.87 Opr_Yamcol_bookover6_to_2                50769.50654      0.       1 5804240            2 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042400.88 Opr_Yamcol_bookover6_to_3                50769.50654      0.       1 5804240            3 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042400.89 Opr_Yamcol_bookover6_to_4                50769.50654      0.       1 5804240            4 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042400.90 Opr_Yamcol_bookover6_to_5                50769.50654      0.       1 5804240            5 5804240            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+# 
+# _______________________________________________________________________________________________________________________________________________________
+# Allen Basin Reservoir
+# Release to the following ditches
+58035000.01 Opr_Allen_to_Collins                     37688.25332      0.       1 5800591            1 5803500            1 0                  0       2 NA           NA                  0       0       0    9999
+58035000.02 Opr_Allen_to_Simon                       23537.22472      0.       1 5800863            1 5803500            1 0                  0       2 NA           NA                  0       0       0    9999
+58035000.03 Opr_Allen_to_Lat_A                       37688.34829      0.       1 5800730            1 5803500            1 0                  0       3 NA           NA                  0       0       0    9999
+58035000.04 Opr_Allen_to_Mill_Cr                     53325.52865      0.       1 5801085            1 5803500            1 0                  0       3 NA           NA                  0       0       0    9999
+# Release to target - used for model calibration
+#58035000.05 Opr_Allen_to_Target                      99999.99999      0.       1 0                  0 5803500            0 0                  0       9 NA           NA                  0       0       0    9999
+# Suppliment Allen Basin Reservoir supply via Allen Basin Supply Ditch (5800506)
+58005060.01 Opr_Allen_Supply_to_Res                  39254.37914      0.       1 5803500            1 5800506.01         1 0                  0      11 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+# LCW 6/2015 - The list of structures that Stagecoach releases to was derived from water delivery coding in Hydrobase.
+#    After discussions with Kevin McBride and Andy Rossi at Upper Yampa Water Conservancy District (UYWCD), structures were assigned to pools in the reservoir
+#
+#    In addition to the users identified from Hydrobase, UYWCD provided data in a spreadsheet about individual contract holders (correspondance with Joe Messina).
+#    "Contractee_nodes_2014.xlsx" can be found in the Reservoir folder.
+#    Rules to release to these additional structures were added.
+#
+#    Additional rules have been added to model future operations, but are turned off. The user is responsible for verifying the accuracy of any future operations.
+#
+# Opr_Stagecoach_FERC_min_flow - From conversations with the UYWCD, the FERC minimum flow requirement is as follows:
+#    1. From August - November, Stagecoach must bypass inflow up to 40 cfs. If inflow in less than 20 cfs, Stagecoach must release water from storage up to 20 cfs.
+#    2. From December - July, Stagecoach must bypass inflow up to 40 cfs.
+# To capture this behavoir, two nodes have been added to the network immediately downstream from the reservoir: 584213_F20 and 584213_F40
+# 5804213_F2 is assigned a demand of 20 cfs from August - November and a water right priority of 40814.99999, which is just senior to Stagecoach's storage right for 11614 acft.
+# Rule "58042130.02 Opr_StagC_FERC_min_flow" releases water from Stagecoach's Emergency Remainder pool (account 3) 
+# and Rule "58042130.03 Opr_StageC_FERC_min_flow" from account 4 to satisfy the 20 cfs flow requirement. This rule fires last, so that any other
+# releases from Stagecoach can satisfy the 20 cfs flow requirement. Additionally, node 5804213_F4 has a demand of 40 cfs for the entire year. It has a water right 
+# priority of 40814.99999, which is just senior to Stagecoach's storage right for 11614 acft. This prevents the reservoir from storing water up to 40 cfs. However, there
+# is no operating rule to release water to this node. The 40 cfs requirement can be met by other releases from the reservoir to downstream users.
+# No release to instream flow is included because UYWCD has indicated that was a one-time operation.
+#
+# Release to target - used for model calibration
+# 58042130.01  Opr_Stagecoach_to_Target                 99999.99999      0.       1 0                  0 5804213            0 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Current Operations
+58042130.02 Opr_StageC_FERC_min_flow                100000.00010      0.       1 5804213_F20        1 5804213            4 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to FERC requirement         
+58042130.03 Opr_StageC_FERC_min_flow                100000.00011      0.       1 5804213_F20        1 5804213            3 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to FERC requirement
+58042130.04 Opr_StageC_to_CraigPP(TriState)          45290.44866      0.       1 4400522            1 5804213            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Craig Power Plant (TriState)
+58042130.05 Opr_StageC_to_Hayden                     44606.00001      0.       1 57_AMY001          1 5804213            2 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Hayden M&I 
+#
+# Operations to release to contractees without historical deliveries noted in Hydrobase (listed upstream to downstream)
+# These ditches were derived from the "Contractee_nodes_2014.xlsx"
+# Ditches receiving water out of the Augmentation Pool (account 5) were moved to the future demand section 
+# The City of Steamboat/Mt Werner representation has changed. Only Mt. Werner is getting water from Stagecoach (via the wells)
+#   Releases to Steamboat Well A and Fish Creek moved to future demand section
+58042130.08 Opr_StageC_to_Suttle                     55882.55684      0.       1 5800897            1 5804213            6 0                  0       2 NA           NA                  0       0       0    9999
+58042130.09 Opr_StageC_to_Brumback                   33782.23528      0.       1 5800561            1 5804213            6 0                  0       4 NA           NA                  0       0       0    9999
+58042130.10 Opr_StageC_to_Lyon2                      33782.23163      0.       1 5800756            1 5804213            6 0                  0       4 NA           NA                  0       0       0    9999
+58042130.13 Opr_StageC_to_Mt.W_YA                    51494.00002      1.       1 58_StmbMW_I        1 5804213            2 0                  0       2 NA           NA                  0       0       0    9999
+                                    5805066
+58042130.14 Opr_StageC_to_SBWellG&H                  51494.00002      1.       1 58_StmbMW_I        1 5804213            2 0                  0       2 NA           NA                  0       0       0    9999
+                                    5805059_D
+58042130.15 Opr_StageC_to_Mt.W_YA                    51494.00002      1.       1 58_StmbMW_O        1 5804213            2 0                  0       2 NA           NA                  0       0       0    9999
+                                    5805066
+58042130.16 Opr_StageC_to_SBWellG&H                  51494.00002      1.       1 58_StmbMW_O        1 5804213            2 0                  0       2 NA           NA                  0       0       0    9999
+                                    5805059_D
+58042130.17 Opr_StageC_to_Excelsior                  33145.30468      0.       1 5800628            1 5804213            6 0                  0       4 NA           NA                  0       0       0    9999
+58042130.18 Opr_StageC_to_YampaRabvSte               55882.51987      0.       1 58_ADY005          1 5804213            6 0                  0       2 NA           NA                  0       0       0    9999
+#58042130.19 Opr_StageC_to_WalkerD                    53077.00001      0.       1 5700611            1 5804213            2 0                  0       2 NA           NA                  0       0       0    9999
+#
+# Filling reservoir accounts in the correct order using a bookover account.
+# UYWCD fills the reservoir accounts in the following order, using all of their water rights: TriState (1), Municipal (2), Augmentation (5), Exchange Pool (6), Raise (7), PrefRem (4), EmergRem (3)
+# To capture this behavoir, water rights are "stored" in a bookover account that then releases to the reservoir pools in the correct order.
+# The bookover account is only for accounting purposes, so it does not have evaporation loses and is emptied at the end of each month.
+# The administration month is March. Any water in the reservoir at that time is redistributed between the accounts
+#   using a bookover: send water in all accounts to Acct 8 on Mar 1, senior to filling Acct 8:
+58042130.20 Opr_StageC_bookover3_to_8                40814.99999     12.       1 5804213            8 5804213            3 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 3
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+58042130.21 Opr_StageC_bookover4_to_8                40814.99999     12.       1 5804213            8 5804213            4 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 4
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+58042130.22 Opr_StageC_bookover7_to_8                40814.99999     12.       1 5804213            8 5804213            7 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 7
+                                    0 0 0 0 0 1 0 0 0 0 0 0									
+58042130.23 Opr_StageC_bookover6_to_8                40814.99999     12.       1 5804213            8 5804213            6 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 6
+                                    0 0 0 0 0 1 0 0 0 0 0 0									
+58042130.24 Opr_StageC_bookover5_to_8                40814.99999     12.       1 5804213            8 5804213            5 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 5
+                                    0 0 0 0 0 1 0 0 0 0 0 0								
+58042130.25 Opr_StageC_bookover2_to_8                40814.99999     12.       1 5804213            8 5804213            2 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 2
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+58042130.26 Opr_StageC_bookover1_to_8                40814.99999     12.       1 5804213            8 5804213            1 0                  0       6 NA           NA                  0       0       0    9999 Bookover from Account 1
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+58042130.27 Opr_StageC_bookover8_to_1                40815.00001      0.       1 5804213            1 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042130.28 Opr_StageC_bookover8_to_2                40815.00001      0.       1 5804213            2 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042130.29 Opr_StageC_bookover8_to_5                40815.00001      0.       1 5804213            5 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042130.30 Opr_StageC_bookover8_to_6                40815.00001      0.       1 5804213            6 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 6         
+58042130.31 Opr_StageC_bookover8_to_7                40815.00001      0.       1 5804213            7 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 7         
+58042130.32 Opr_StageC_bookover8_to_4                40815.00001      0.       1 5804213            4 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042130.33 Opr_StageC_bookover8_to_3                40815.00001      0.       1 5804213            3 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042130.34 Opr_StageC_bookover8_to_1                41727.39992      0.       1 5804213            1 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042130.35 Opr_StageC_bookover8_to_2                41727.39992      0.       1 5804213            2 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042130.36 Opr_StageC_bookover8_to_5                41727.39992      0.       1 5804213            5 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042130.37 Opr_StageC_bookover8_to_6                41727.39992      0.       1 5804213            6 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 6         
+58042130.38 Opr_StageC_bookover8_to_7                41727.39992      0.       1 5804213            7 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 7         
+58042130.39 Opr_StageC_bookover8_to_4                41727.39992      0.       1 5804213            4 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042130.40 Opr_StageC_bookover8_to_3                41727.39992      0.       1 5804213            3 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+58042130.41 Opr_StageC_bookover8_to_1                53691.53387      0.       1 5804213            1 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 1         
+58042130.42 Opr_StageC_bookover8_to_2                53691.53387      0.       1 5804213            2 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 2         
+58042130.43 Opr_StageC_bookover8_to_5                53691.53387      0.       1 5804213            5 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 5         
+58042130.44 Opr_StageC_bookover8_to_6                53691.53387      0.       1 5804213            6 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 6         
+58042130.45 Opr_StageC_bookover8_to_7                53691.53387      0.       1 5804213            7 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 7         
+58042130.46 Opr_StageC_bookover8_to_4                53691.53387      0.       1 5804213            4 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 4         
+58042130.47 Opr_StageC_bookover8_to_3                53691.53387      0.       1 5804213            3 5804213            8 0                  0       6 NA           NA                  0       0       0    9999 Bookover to Account 3         
+#
+# _______________________________________________________________________________________________________________________________________________________
+# City of Steamboat and Mt. Werner Operations
+# In previous modeling efforts, the historical diversions at each supply point were maintained.
+# In this modeling effort, the total demand sits at 58_StmbMW_I (indoor) and 58_StmbMW_O (outdoor) and is met by the supply points.
+# ID        Name                    NA                    Admin#   # Str  On/Off Dest Id     Dest Ac  Sou1 Id     Sou1 Ac  Sou2 Id     Sou2 Ac     Type ReusePlan    Div Type         Loss   Limit Comments
+# ---------eb----------------------eb----------e9999b----------eb------eb------e-b----------eb------e-b----------eb------e-b----------eb------eb------exb----------exb----------exb------eb------exb----------
+# indoor demand
+58_Stmbt.01 FishCrMuniIntakeDirect                   14466.00000      0.       1 58_StmbMW_I        1 5800642.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.02 FishCrMuniIntakeDirect                   19985.18830      0.       1 58_StmbMW_I        1 5800642.02         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.03 FishCrMuniIntakeDirect                   26805.26495      0.       1 58_StmbMW_I        1 5800642.03         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.04 FishCrMuniIntakeDirect                   35320.33181      0.       1 58_StmbMW_I        1 5800642.04         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.05 FishCrMuniIntakeDirect                   35320.35215      0.       1 58_StmbMW_I        1 5800642.05         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.06 FishCrMuniIntakeDirect                   41851.00000      0.       1 58_StmbMW_I        1 5800642.06         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.07 FishCrMuniIntakeDirect                   42156.00000      0.       1 58_StmbMW_I        1 5800642.07         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+#
+58_Stmbt.08 StmbtMuniWellA                           51494.00000      0.       1 58_StmbMW_I        1 5805055.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.09 MtW_WellG                                48868.00000      0.       1 58_StmbMW_I        1 5805059_D.01       0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.10 MtW_WellH                                51134.46721      0.       1 58_StmbMW_I        1 5805059_D.02       0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.11 MtW_YampaDiv01                           42962.00000      0.       1 58_StmbMW_I        1 5805066.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.12 MtW_YampaDiv10                           14466.00000      0.       1 58_StmbMW_I        1 5805066.10         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.13 MtW_YampaDiv11                           18452.16594      0.       1 58_StmbMW_I        1 5805066.11         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+#
+58_Stmbt.14 FishCrRes                                51494.00001      1.       1 58_StmbMW_I        1 5803508            1 NA                 0      27 NA           Diversion          -1       0       0    9999 Reservoir Release to a Demand
+                                    5800642       0        Carrier
+# outdoor demand
+58_Stmbt.20 FishCrMuniIntakeDirect                   14466.00000      0.       1 58_StmbMW_O        1 5800642.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.21 FishCrMuniIntakeDirect                   19985.18830      0.       1 58_StmbMW_O        1 5800642.02         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.22 FishCrMuniIntakeDirect                   26805.26495      0.       1 58_StmbMW_O        1 5800642.03         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.23 FishCrMuniIntakeDirect                   35320.33181      0.       1 58_StmbMW_O        1 5800642.04         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.24 FishCrMuniIntakeDirect                   35320.35215      0.       1 58_StmbMW_O        1 5800642.05         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.25 FishCrMuniIntakeDirect                   41851.00000      0.       1 58_StmbMW_O        1 5800642.06         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.26 FishCrMuniIntakeDirect                   42156.00000      0.       1 58_StmbMW_O        1 5800642.07         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+#
+58_Stmbt.27 StmbtMuniWellA                           51494.00000      0.       1 58_StmbMW_O        1 5805055.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.28 MtW_WellG                                48868.00000      0.       1 58_StmbMW_O        1 5805059_D.01       0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.29 MtW_WellH                                51134.46721      0.       1 58_StmbMW_O        1 5805059_D.02       0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.30 MtW_YampaDiv01                           42962.00000      0.       1 58_StmbMW_O        1 5805066.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.31 MtW_YampaDiv10                           14466.00000      0.       1 58_StmbMW_O        1 5805066.10         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+58_Stmbt.32 MtW_YampaDiv11                           18452.16594      0.       1 58_StmbMW_O        1 5805066.11         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+#
+58_Stmbt.33 FishCrRes                                51494.00001      1.       1 58_StmbMW_O        1 5803508            1 NA                 0      27 NA           Diversion          -1       0       0    9999 Reservoir Release to a Demand
+                                    5800642       0        Carrier
+#58035080.01 Opr Fish Cr m&i MtW&SS                   42156.00001      0.       1 5800642            1 5803508            1 0                  0       2 NA           NA                  0       0       0    9999
+# Release to target - used for model calibration
+#58035080.02 Opr_Fish_Cr_to_Target                    99999.99999      0.       1 0                  0 5803508            0 0                  0       9 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+58037870.01 Opr_Steambt_to_HaydenSt                  36295.17381      0.       1 5700512            1 5803787            1 0                  0       2 NA           NA                  0       0       0    9999
+# Release to target - used for model calibration
+#58037870.02 Opr_Steambt_to_Target                    99999.99999      0.       1 0                  0 5803787            0 0                  0       9 NA           NA                  0       0       0    9999
+# Future use for Steamboat Lake - release to instream flow for both Elk River and Willow Creek
+#58037870.02 Opr Steambt to Elk River                 51134.43236     12.       0 5801355            1 5803787            3 0                  0       1                                  0       0       0    9999 Reservoir Release to Elk River Instream Flow
+#                                     1 1 1 1 1 1 0 0 0 0 0 1
+#58037870.03 Opr Steambt to Willow Creek              51134.43236     12.       0 5801461            1 5803787            3 0                  0       1                                  0       0       0    9999 Reservoir Release to Willow Creek Instream Flow
+#                                     1 1 1 1 1 1 0 0 0 0 0 1
+# _______________________________________________________________________________________________________________________________________________________
+# City of Craig operations
+#   Divert direct water rights to indoor and outdoor demand nodes
+4400581I.01 CraigIndoorDirect                        12552.00000      0.       1 4400581_I          1 4400581.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+4400581I.02 CraigIndoorDirect                        14700.00000      0.       1 4400581_I          1 4400581.02         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+4400581I.03 CraigIndoorDirect                        36295.24105      0.       1 4400581_I          1 4400581.03         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+#
+4400581O.01 CraigOutdoorDirect                       12552.00000      0.       1 4400581_O          1 4400581.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+4400581O.02 CraigOutdoorDirect                       14700.00000      0.       1 4400581_O          1 4400581.02         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+4400581O.03 CraigOutdoorDirect                       36295.24105      0.       1 4400581_O          1 4400581.03         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Demand  
+#
+# _______________________________________________________________________________________________________________________________________________________
+# Elkhead reservoir operations
+# Plan Limiting releases from Elkhead to the Fish Target to 50 cfs
+EH50Pln1.00 Limit_ElkHd_to_FishReach                 00001.00000      0.       1 NA                 1 EHrelLimP         10 0                  0      47 NA           Diversion           0       1       0    9999 
+      3074. 2975. 3074. 3074. 2777. 3074. 2975. 3074. 2975. 3074. 3074. 2975. 36199.
+44039020.01 ElkHd_TriState_CraigPP                   45290.44866      0.       1 4400522            1 4403902            2 0                  0       2 NA           NA                  0       0       0    9999
+44039020.02 Opr_ElkHd_to_Craig_City                  36295.24106      1.       1 4400581_I          1 4403902            3 NA                 0      27 NA           Diversion          -1       0       0    9999
+                                    4400581       0        Carrier
+44039020.03 Opr_ElkHd_to_Craig_City                  36295.24106      1.       1 4400581_O          1 4403902            3 NA                 0      27 NA           Diversion          -1       0       0    9999
+                                    4400581       0        Carrier
+44039020.04 Opr_ElkHdCWCB_to_FishReach               99999.99997      1.       1 44_FishRch         1 4403902            4 NA                 0      27 NA           Diversion          -1       2       0    9999 Reservoir Release to Instream Flow
+                                    44_EH50       0        Carrier
+                                    EH50Pln1.00              
+44039020.05 Opr_ElkHdFishLease_FRch                  99999.99998      1.       1 44_FishRch         1 4403902            5 NA                 0      27 NA           Diversion          -1       2       0    9999 Reservoir Release to Instream Flow
+                                    44_EH50       0        Carrier
+                                    EH50Pln1.00              
+# Release to target used in historical simulation. Before the enlargement in 2006, the reservoir was operated in an experimental fashion to disadvantage the non-native fish.  
+# 44039020.06 Opr_ElkHd_to_Target                      99999.99999      0.       1 0                  0 4403902            0 0                  0       9 NA           NA                  0       0    1974    2007
+# _______________________________________________________________________________________________________________________________________________________
+# Release to target - used in simulation, no demands on the reservoir
+58035210.01 Opr_Lester_Creek_to_Target               00001.00000      0.       1 0                  0 5803521            0 0                  0       9 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+# Release to target - used in simulation to pull down for winter icing concerns. No demands on the reservoir
+58036310.01 Opr_Catamount_to_Target                  00001.00000      0.       1 0                  0 5803631            0 0                  0       9 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+Savery.01   Opr_Savery-9900540_DS                     55304.00000     0.       1 WYD_006            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.02   Opr_Savery-9900002                        55306.00000     0.       1 WYD_007            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.03   Opr_Savery-0800235                        55307.00000     0.       1 WYD_010            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+Savery.04   Opr_Savery-5400583                        55308.00000     0.       1 5400583            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.05   Opr_Savery-54_ADY023                      55309.00000     0.       1 54_ADY023          1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.06   Opr_Savery-5400531                        55311.00000     0.       1 5400531            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.07   Opr_Savery-5400594                        55313.00000     0.       1 5400594            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.08   Opr_Savery-08AGG06                        55315.00000     0.       1 WYD_005            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.09   Opr_Savery-08AGG03                        55317.00000     0.       1 WYD_002            1 9903002            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.10   Opr_Savery-08AGG05                        55318.00000     0.       1 WYD_003            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.11   Opr_Savery-0800388_DS                     55320.00000     0.       1 WYD_004            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+Savery.12   Opr_Savery-0800105                        55321.00000     0.       1 WYD_005            1 9903002            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand 
+# Release to target - used for model calibration
+#Savery.13   Opr_Savery_to_Target                      99999.99999     0.       1 0                  0 9903002            0 0                  0       9 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+# operate multistructures - off in Historic calibration set, driven by historical headgate diversions
+58005640.01 Opr BuckinghamMandall MultiSys           35320.25749      0.       1 5800564            1 5800826.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+58005640.02 Opr BuckinghamMandall MultiSys           35320.25719      0.       1 5800564            1 5800710.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+57005440.01 Opr Highland MultiSys                    39925.30102      0.       1 5700544            1 5700612.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+57006110.01 Opr Walker MultiSys                      47116.38161      0.       1 5700611            1 5702083.01         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999  
+# _______________________________________________________________________________________________________________________________________________________
+Opr_22      Opr_Soil_Moisture                        90000.00000      0.       1 N/A                0 N/A                0 0                  0      22 NA           NA                  0       0       0    9999
+# _______________________________________________________________________________________________________________________________________________________
+#

@@ -1,0 +1,77 @@
+# wm2158B.opr; Operational right file for White River Basin 
+# Baseline Data Set (current operations applied to the full period of interest)
+# 4/22/2008 
+# Imported from M.Garrison Dataset
+# 6/19/2008 
+#  Modified to add a special handling of Meeker Diversion as AP at 4306045
+#
+# *******************************************************
+#
+#     Card 1   Control
+#     format:  (a12, a24, a12x, 4x,f12.5, i8, f8.0, i8, 3(i8,a12), 20i8)
+#
+#     ID       cidvri:          Operational Right ID
+#     Name     nameo:           Operational Right name
+#     Admin #  irtem:           Administration Number (smaller is most senoir)
+#     # Str    dum:             Number of intervening structures 
+#     On/Off   ioprsw(k):       Switch 0 = off,1 = on
+#     Dest ID  ciopde:          Destination reservoir or structure ID
+#     Dest Ac  iopdes(2,k):     Destination reservoir or structure account # (enter 1 for a diversion)
+#     Sou1 ID  ciopso(1)        Supply reservoir #1 or structure ID
+#     Sou1 Ac  iopsou(2,k):     Supply reservoir #1 or structure account # (enter 1 for a diversion)
+#     Sou2 ID  ciopso(2):       Supply reservoir #2 ID
+#     Sou1 Ac  iopsou(4,k):     Supply reservoir #2 account
+#     Type     ityopr(k):       Switch
+#                        1 = Reservoir Release to an instream demand
+#                        2 = Reservoir Release to a direct diversion demand
+#                        3 = Reservoir Release to a direct diversion demand by a carrier
+#                        4 = Reservoir Release to a direct diversion demand by exchange
+#                        5-8 Not used  NOT TRUE, BUT STILL IN DOCUMENTATION EXAMPLE.  NOW 43 TYPES.
+#                        9 = Reservoir Release for target contents
+#                        10 = Not used
+#                        11 = Direct flow demand thru intervening structures
+#                        12 = Reoperate
+#                        SEE DOCUMENTATION FOR DESCRIPTION OF ALL OPERATING RULE TYPES
+#
+# *****************************************************************************
+#     Card 2   Carrier Ditch data (include only if idum > 0
+#     format:  (free)
+#     
+#     Inter    itern(1,j)      intervening direct diversion structure id's
+#                              Enter # Str values
+#
+# ID        Name                    NA                    Admin#   # Str  On/Off Dest Id     Dest Ac  Sou1 Id     Sou1 Ac  Sou2 Id     Sou2 Ac     Type ReusePlan     Div Type    OprLoss    Limit   ioBeg   ioEnd Comment
+# ---------eb----------------------eb----------exxxxb----------eb------eb------e-b----------eb------e-b----------eb------e-b----------eb------eb------exb----------exb----------exb------eb------eb------eb------exb-----
+#
+#---------------------------------------------------
+# Big Beaver Creek Reservoir aka Lake Avery Operating Rules
+#---------------------------------------------------
+#
+43036330.01 Opr Big B Ck to target                   99999.00000      0.       1 0                  0 4303633            0 0                  0       9 NA           NA                  0       0       0    9999
+#
+#---------------------------------------------------
+# Taylor Draw Reservoir Operating Rules
+#---------------------------------------------------
+#
+43044330.01 Opr Taylor Draw to target                99999.00000      0.       1 0                  0 4304433            0 0                  0       9 NA           NA                  0       0       0    9999
+#
+#---------------------------------------------------
+# Soil Moisture Accounting Rule
+#---------------------------------------------------#
+#
+Opr_22      Opr_Soil_Moisture                        90000.00000      0.       1 N/A                0 N/A                0 0                  0      22 NA           NA                  0       0       0    9999
+#
+#---------------------------------------------------
+#  Operating Rules for Future Projects. These projects were identified in the Projects and Methods (2014)
+#  model developed by CDM Smith for the Yampa/White Basin Round Table.
+#  The future oil demand is represented at node 4303633_O, located below Lake Avery on Big Beaver Creek.
+#  (Note that oil development is anticipated to occur in the Piceance Basin and be served by pipelines)
+#  The node is 100% consumptive.
+#  The user is responsible for ensuring that the rules are operating as expected.
+#---------------------------------------------------
+#
+#4307520.01  Opr DirectFlow to oil                    99995.00000      0.       1 4303633_O          1 43_OilDem.01       1 0                  0      11 NA           Diversion         0.0     0.0       0    9999
+#4336360.01  Opr Pipe from White Riv to Lake Av       99996.00000      0.       1 433633_ENL         1 4303633_F.01       1 0                  0      11 NA           Diversion         0.0     0.0       0    9999
+#4336340.01  Opr Lake Avery release to oil            99997.00000      0.       1 4303633_O          1 433633_ENL         1 0                  0       3 NA           NA                  0       0       0    9999
+#4309000.01  Opr WolfCrRes release to oil             99999.00000      0.       1 4303633_O          1 4304313            1 0                  0       3 NA           NA                  0       0       0    9999
+#

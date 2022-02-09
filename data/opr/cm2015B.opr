@@ -1,0 +1,1127 @@
+# Baseline Simulation Operation Files
+# The baseline differs from the historical run by turning operations on to run the whole simulation period
+#
+#		OPERATING RULE TYPES
+#     ========================================
+#
+#	1   Reservoir to an Instream Flow
+#	2   Reservoir to a Direct Flow or Reservoir or Carrier
+#	3   Reservoir to a Carrier 
+#	4   Reservoir Exchange to a Direct Flow
+#	5   Reservoir Exchange to Storage
+#	6   Paper Exchange Between Reservoirs
+#	7   Reservoir to a Carrier by Exchange
+#	8   Out-of-Priority Book Over
+#	9   Release for Target contents
+#	10  General Reservoir Replacement
+#	11  Carrier to a Ditch or Reservoir
+#	12  Re-operate Water Rights
+#	13  Index flow Constraint on an Instream Flow Diversion
+#	14  Carrier with Constrained Demand
+#	15  Interruptible supply
+#	16  Direct Flow Storage
+#	17  Rio Grande Compact - Rio Grande
+#	18  Rio Grande Compact - Conejos River
+#	19  Split Channel Operations
+#	20  San Juan Reservoir RIP Operation
+#	21  Wells with Sprinkler Use
+#	22  Soil Moisture Use
+#	23  Downstream Call
+#	24  Direct Flow Exchange of a Pro-Rata Water Right
+#	25  Direct Flow Bypass of a Pro-Rata Water Right
+#	26  Reservoir or Recharge or ReUse Plan 
+#	27  Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+#	28  ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse
+#	29  ReUse Plan Spill
+#	30  Reservoir Re-Diversion
+#	31  Carrier to a Ditch or Reservoir with Reusable return Flows
+#	32  Reservoir and Plan to a Direct Flow or reservoir or Carrier Direct with or without Destination Reuse
+#	33  Reservoir and Plan to a Direct Flow or Reservoir or Carrier by Exchange with or without Destination Reuse
+#	34  Reservoir to Reservoir Transfer with Reuse 
+#	35  Import to a Diversion, Reservoir or Carrier with or without Reuse
+#	36  Seasonal (daily) On and Off Capability (e.g. Meadow Rights)	
+#	37  Augmentation Well
+#	38  Out-of-Priority Diversion (addresses the upstream storage statute)
+#	39  Alternate Point Diversion
+#	40  South Platte Compact
+#	41  Reservoir Storage with Special Limits
+#	42  Plan Reset
+#	43  In-Priority Well Depletion
+#	44  Recharge Well
+#	45  Carrier with Transit Loss (allows multiple carriers and associated loses)    
+#	46  Multiple Ownership Plans (distributes Plan contents to multiple plans)
+#       47  Annual Release Limit
+#   
+#		GUIDE TO COLUMN ENTRIES
+#     ========================================
+#	ID   	   ID number of operating rule that is used to separate operating rule output in *.xop file
+#	Name       Name of operating rule - used for descriptive purposes only
+#	Admin#     Administration number used to determine priority of operational water rights relative to other operations and direct diversion, reservoir, instream flow, and well rights (see tabulation in *.xwr file)
+#	# Str      Number of carrier structures, monthly on/off switches, or monthly volumetrics (flag telling StateMod program the number of entries on next line)
+#	On/Off     1 for ON and 0 for OFF
+#	Dest ID    Destination of operating rule whose demand is to be met by simulating the operating rule
+#	Dest Ac    Account at destination to be met by operating rule - typically 1 for a diversion structure and account number for reservoir destination
+#	Sou1 ID    ID number of primary source of water under which water right is being diverted in operating rule - typically a water right, reservoir, or Plan structure
+#	Sou1 Ac    Account of Sou1 - typically 1 for a diversion structure and account number for reservoir source
+#	Sou2 ID    ID of Plan where reusable storage water or reusable ditch credits is accounted
+#	Sou2 Ac    Percentage of Plan supplies available for operation
+#	Type       Rule type corresponding with definitions in Chapter 4 of StateMod documentation												
+#	ReusePlan  ID of Plan where reusable return flows or diversions to storage are accounted    											
+#	Div Type   'Diversion' indicates pro-rata diversion of source water right priority or exchange of reusable credits to Dest1
+#		   'Depletion' indicates pro-rata diversion of source water right priority consumptive use or augmentation of upstream diversions at Dest1
+#	OprLoss    Percentage of simulated diversion lost in carrier ditch (only applies to certain rules - see StateMod documentation, Section 4.13)
+#	Limit      Capacity limit for carrier structures different from capacity in .dds file (used to represent constricted conveyance capacity for winter deliveries to reservoirs)
+#	Comments   Description of rule type
+#
+#
+# ID        Name                    NA                    Admin#   # Str  On/Off Dest Id     Dest Ac  Sou1 Id     Sou1 Ac  Sou2 Id     Sou2 Ac     Type ReusePlan    Div Type      OprLoss   Limit Comments
+# ---------eb----------------------eb----------exxxxb----------eb------eb------e-b----------eb------e-b----------eb------e-b----------eb------eb------exb----------exb----------exb------eb------exb----------
+#
+#
+#FileFormatVersion 2
+#
+#---------------------------------------------------------------------
+#	Limit HUP and CSU Substitution operations
+#       Set HUP Limits for all user releases to 66,000 Af per year.  The HUPLimitPLN assures that even if the HUP pool refills, releases are limited.
+#       Set Colorado Springs Limit for OOP Diversions under the Blue River Decree to 2,100 af/year
+#---------------------------------------------------------------------
+#
+HUPLimit.01 Annual_HUP_Pool_Release_Limit                1.00000      0.       1 NA                 1 HUPLimitPLN        4 0                  0      47 NA           Diversion           0       1       0    9999 Annual Release Limit
+  66000.  66000.  66000.  66000.  66000.  66000.  66000.  66000.  66000.  66000.  66000.  66000.  66000. 
+CSULimit.01 Annual_HUP_Pool_Release_Limit                1.00000      0.       1 NA                 1 CSULimitPLN        4 0                  0      47 NA           Diversion           0       1       0    9999 Annual Release Limit
+  2100.  2100.  2100.  2100.  2100.  2100.  2100.  2100.  2100.  2100.  2100.  2100.  2100. 
+#
+#---------------------------------------------------
+# Colorado-Big Thompson (CBT) Project Operating Rules
+#---------------------------------------------------
+#
+# Granby
+51040550.01 Opr Granby to AdamsTun                   31258.00004      0.       1 5104634            1 5104055            1 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+51040550.02 Opr Granby Res bypass                    31258.00001      0.       1 5104055_M          1 5104055            1 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to Instream Flow
+51040550.03 Opr Granby to ShadMtnRes                 31258.00003      0.       1 5103695           -2 5104055            1 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+51040550.04 Opr Granby to target                     99999.99999      0.       1 0                  0 5104055            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target Reservoir Release to Target
+#
+# Granby Fish Release for 10825 water (Baseline Only, started in 2013)
+#
+51040550.05 Op GBRes temp5413->USFWS                 99999.93001     12.       1 7202003            1 5104055            3 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+51040550.06 Trans Granby->temp5413                   99999.95000     12.       1 5104055            3 5104055            1 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 30 0 0 0
+#
+# Shadow Mountain/Grand Lake
+51036950.01 Opr Shadow Mtn to target                 99999.99999      0.       1 0                  0 5103695            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target Reservoir Release to Target
+#
+# Willow Creek Feeder and Reservoir
+51009580.01 Opr WCrkFeeder to Granby                 31258.00000      0.       1 5104055           -2 5100958.01         1 0                  1      14 NA           NA                  0       0       0    9999 Carrier with Constrained Demand
+#
+51037100.01 Opr WillowCrk to Granby                  31258.00002      0.       1 5100958            1 5103710            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+51037100.02 Opr Willow Cr Res target                 99999.99999      0.       1 0                  0 5103710            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target Reservoir Release to Target
+#
+# Windy Gap
+51047000.01 Opr Windy Gap  to Granby                 47671.00001      0.       1 5104055           -2 5104700.01         1 0                  1      14 NA           NA                  0       0       0    9999 Carrier with Constrained Demand
+51047000.02 Opr Windy Gap  to Granby                 47671.00002      0.       1 5104055           -2 5104700.02         1 0                  1      14 NA           NA                  0       0       0    9999 Carrier with Constrained Demand
+51047000.03 Opr Windy Gap  to Granby                 47671.00003      0.       1 5104055           -2 5104700.03         1 0                  1      14 NA           NA                  0       0       0    9999 Carrier with Constrained Demand
+#
+#------------------------------  
+# Green Mountain Operating Rules
+#------------------------------                     
+#
+# Elliot Feeder Canal
+36006060.01 Opr Elliot to Green Mtn                  31258.00000      1.       1 3603543           -5 3603543.01         0 3600606            0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+                                    3600606
+36006060.02 Opr Elliot to GM Power                   31258.00000      1.       1 3600881            1 3600881.01         0 3600606            0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+                                    3600606
+#
+# CBT Project
+36035430.01 Opr GreenMtn - Granby Ex                 31258.00011      0.       1 5104055           -2 3603543            2 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+36035430.02 Opr GreenMtn-WillowCr Ex                 31258.00018      0.       1 5103710           -2 3603543            2 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+36035430.03 Opr GreenMtn-ShadowMtnEx                 31258.00025      0.       1 5103695           -2 3603543            2 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+36035430.04 Opr GM-WillowCr Feeder                   31258.00032      0.       1 51009580.01        1 3603543            2 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+#
+# Silt Project
+36035430.05 Opr GMT-Silt Project                     39041.00007      1.       1 3903505_I          1 3603543            4 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+#
+# Historic Users Pool Replacement
+#36035430.06 Opr GreenMtn to Shoshone                 99999.90000      0.       0 5300584P           1 3603543            1 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to Instream Flow
+#36035430.07 Opr GM Replacement(hist)                 48966.00000      0.       0 0                  1 3603543            1 0                  0      10 NA           NA                  0       0    1985    1996 General Reservoir Replacement General Reservoir Replacement
+#36035430.08 Opr GM=>Govt Highl(hist)                 48966.00000      1.       0 7200646_I          1 3603543            1 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#36035430.09 Opr GM=>OMID Irr (hist)                  48966.00000      1.       0 7200813            1 3603543            1 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#36035430.10 Opr GM=>OMID Pump (hist)                 48966.00000      1.       0 7200813PP          1 3603543            1 0                  0       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#  Current User Pool Operations
+36035430.11 Opr GM Replacement(futr)                 46674.00000      0.       1 0                  1 3603543            1 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+36035430.12 Opr GM=>Govt Highl(futr)                 46674.00000      1.       1 7200646_I          1 3603543            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+36035430.13 Opr GM=>OMID Irr (futr)                  46674.00000      1.       1 7200813            1 3603543            1 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+36035430.14 Opr GM=>OMID Pump (futr)                 46674.00000      1.       1 7200813PP          1 3603543            1 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+#
+# Contract Demands
+36035430.15 Opr GM-Vail(muni)-nonirr                 42420.41373      0.       1 37VAILMUN          1 3603543            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035430.16 Opr GMCont - ATKINSON                    49308.48667      0.       1 3800516            1 3603543            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035430.17 Opr GMContract - NEEDHAM                 46751.42648      0.       1 3800902            1 3603543            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035430.18 Opr GMContract - DERBY                   47481.12662      0.       1 5300555_D          1 3603543            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035430.19 Opr GMCont - COON PIPE                   46995.00007      0.       0 7201339            1 3603543            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035430.20 Opr GM-Agg Cont Users                    48966.00007      0.       1 36GMCON            1 3603543            3 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+36035430.21 Opr GreenMtn target                      99999.99999      0.       1 0                  0 3603543            1 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+36035430.22 Opr GreenMtn target                      99999.99999      0.       1 0                  0 3603543            3 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+36035430.23 Opr GreenMtn target                      99999.99999      0.       1 0                  0 3603543            4 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+36035430.24 Opr GreenMtn target                     100000.00000      0.       1 0                  0 3603543            2 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+# Release to Fish Flow 
+36035430.25 Opr_HUP_to_Fish_Flow                     99999.93008     12.       1 7202003            1 3603543            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                     1 0 0 0 0 0 0 0 0 0 1 1
+# Blue River Decree
+36035430.26 Opr_1955_B_R_Decree_Exch                 38628.00000    -16.       1 3603543           -5 3603543.04         0 NA                 0      41 NA           Diversion           0       0       0    9999 Reservoir Storage With Special Limits
+                                    0 0 0 0 0 0 1 1 1 1 0 0
+                                    3604683PL   3603570PL   3604684PL   3604512PL
+36035430.27 Opr GM=>Molina                           46674.00000      1.       1 72_UWCD            1 3603543            1 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+36035430.28 Opr GM=>Plateau                          46674.00000      1.       1 72_UWCD            1 3603543            1 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+36035430.29 Opr GM=>Ute Col Riv                      46674.00000      1.       1 72_UWCD            1 3603543            1 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+#
+#
+#-------------------------------------------        
+# Continental-Hoosier Project Operating Rules
+#-------------------------------------------        
+#
+# Continental-Hoosier Tunnel
+364683SU0.01  Opr 1929 to Hoosier Tunn               30184.29071      0.       1 3604683SU          1 3604699.01         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+364683SU0.02  Opr Mod 1948 rt to Hoosier Tun         35927.00000      0.       1 3604683SU          1 3604683.01         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+#
+# Tunnel OOP Rules
+3604683SU0.3  Opr_OOP_Cont_Hoosier                   31257.99995     12.       1 3604683SU          1 3603543.01         0 3604683.01         0      38 3604683PL    Diversion           0       0       0   9999 Out of Priority Diversion to Roberts Tunnel
+                                    0 0 0 0 0 0 1 1 1 1 0 0                                 
+3604683PL0.1  Opr_Reset_C-Hoosier_Plan               99999.99999     12.       1 NA                 0 3604683PL          0 NA                 0      42 NA           NA                  0       0                Plan Demand Reset
+                                    0 0 0 0 0 31 0 0 0 0 0 0
+#
+# Upper Blue Lakes (a.k.a Continental Hoosier Reservoir)
+36035700.01 Opr ContHoosRes to Tun                   35927.00002      0.       1 3604683SU          1 3603570            1 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035700.02 Opr ContHoosRes to Tun                   35927.00003      0.       1 3604683SU          1 3603570            2 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035700.03 Opr ContHoosRes1->tar                        1.00000     12.       1 0                  0 3603570            1 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+36035700.04 Opr ContHoosRes OOP->tar                     1.00001     12.       1 0                  0 3603570            2 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+#
+# Reservoir OOP Rules
+36035700.05 OOP_Upper_Blue_to_GM                     31257.99996     12.       1 3603570            2 3603543.01         0 3603570.01         0      38 3603570PL    Diversion           0       0       0    9999 Type 38 Out of Priority Storage                                              
+                                    0 0 0 0 0 0 1 1 1 1 0 0                                 
+3603570PL0.1Opr_Reset_U_Blue_Plan                    99999.99999     12.       1 NA                 0 3603570PL          0 NA                 0      42 NA           NA                  0       0       0    9999 Plan Demand Reset
+                                    0 0 0 0 0 31 0 0 0 0 0 0
+36035700.06 Opr_UBlue_to_Dillon_Book                     1.00002     12.       1 3604512            5 3603570            2 3603570PL          0      34 3604512PL    Diversion           0       2       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.07 Opr_UBlue_to_Dillon_Book                     1.00003     12.       1 3604512            5 3603570            2 3604683PL          0      34 3604512PL    Diversion           0       2       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.08 Opr_UBlue_to_Gr_Mtn_Book                     1.00004     12.       1 3603543           -5 3603570            2 NA                 0      27 3603570PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.09 Opr_UBlue_to_Gr_Mtn_Book                     1.00005     12.       1 3603543           -5 3603570            2 NA                 0      27 3604683PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.10 Opr_UBlue_to_Dillon_Book                     1.00006     12.       1 3604512            5 3603570            1 3603570PL          0      34 3604512PL    Diversion           0       2       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.11 Opr_UBlue_to_Dillon_Book                     1.00007     12.       1 3604512            5 3603570            1 3604683PL          0      34 3604512PL    Diversion           0       2       0    9999 Reservoir to Reservoir Transfer with Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.12 Opr_UBlue_to_Gr_Mtn_Book                     1.00008     12.       1 3603543           -5 3603570            1 NA                 0      27 3603570PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.13 Opr_UBlue_to_Gr_Mtn_Book                     1.00009     12.       1 3603543           -5 3603570            1 NA                 0      27 3604683PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+36035700.14 Trans_1_to_MOA_Acct                          1.00000     12.       1 3603570            3 3603570            1 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 1 1 0 0
+36035700.15 Trans_2_to_MOA_Acct                          1.00001     12.       1 3603570            3 3603570            2 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 1 1 0 0
+36035700.16 Opr_UBlue_Res1_for_MOA                       1.00002      0.       1 3600989            1 3603570            3 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+36035700.17 Trans OOP to C.Springs                       1.00047     12.       1 3603570            1 3603570            2 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+#
+#-----------------------------
+# Denver Dillon Operating Rules
+#-----------------------------
+#
+# Roberts Tunnel OOP Rules
+36046840.01 Opr_OOP_RobertsTunnel                    31257.99998     12.       1 3604684            1 3603543.01         0 3604684.01         0      38 3604684PL    Diversion           0       0       0    9999 Type 38 Out of Priority Diversion to Roberts Tunnel
+                                    0 0 0 0 0 0 1 1 1 1 0 0                                 
+3604684PL0.1Opr_Reset_Roberts_Plan                   99999.99999     12.       1 NA                 0 3604684PL          0 NA                 0      42 NA           NA                  0       0       0    9999 Plan Demand Reset
+                                    0 0 0 0 0 31 0 0 0 0 0 0
+#
+# Dillon Reservoir
+36045120.01 Opr Dillon to RobertsTun                 35927.00008      0.       1 3604684            1 3604512            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+36045120.02 Opr Dillon to RobertsTun                 35927.00009      0.       1 3604684            1 3604512            5 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+36045120.03 Opr Dillon 1000-GM                       99999.00000     12.       1 3603543           -5 3604512            4 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+36045120.04 Opr Excess HUP Release                  100000.00000     12.       1 3604512HU          1 3604512            4 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+36045120.05 Opr Dillon Res Min Rel                   31257.99998      0.       1 3604512_M          1 3604512            4 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to Instream Flow
+36045120.06 Opr Dillon Res target                    99999.99999      0.       1 0                  0 3604512            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+# OOP Rules
+36045120.07 OOP_Dillon_Res_to_GM                     31257.99999     12.       1 3604512            5 3603543.01         0 3604512.01         0      38 3604512PL    Diversion           0       0       0    9999 Type 38 Out of Priority Storage                                              
+                                    0 0 0 0 0 0 1 1 1 1 0 0                                 0
+3604512PL0.1 Opr_Reset_Dillon_Plan                   99999.99999     12.       1 NA                 0 3604512PL           0 NA                 0     42 NA           NA                  0       0       0    9999 Plan Demand Reset
+                                    0 0 0 0 0 31 0 0 0 0 0 0
+36045120.08 Trans OOP->1000                              1.00016     12.       1 3604512            4 3604512            5 3604512PL           0      34 NA          NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+36045120.09 Opr_Dillon->Gr_Mtn_Book                      1.00025     12.       1 3603543           -5 3604512            5 NA                 0      27 3604684PL    Diversion           0       0       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+36045120.10 Opr_Dillon->Gr_Mtn_Book2                     1.00026     12.       1 3603543           -5 3604512            5 NA                 0      27 3604512PL    Diversion           0       0       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+36045120.11 Opr_Dillon->Gr_Mtn_Book3                     1.00027     12.       1 3603543           -5 3604512            1 NA                 0      27 3604684PL    Diversion           0       0       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+36045120.12 Opr_Dillon->Gr_Mtn_Book4                     1.00028     12.       1 3603543           -5 3604512            1 NA                 0      27 3604512PL    Diversion           0       0       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+36045120.13 Trans OOP to Denver                          1.00029     12.       1 3604512            1 3604512            5 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+36045120.14 Opr_Dillon->Gr_Mtn_BookCSU                   1.00038     12.       1 3603543           -5 3604512            5 NA                 0      27 3603570PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+                                    CSULimit.01                                    
+36045120.15 Opr_Dillon->Gr_Mtn_Book2CSU                  1.00039     12.       1 3603543           -5 3604512            5 NA                 0      27 3604683PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+                                    CSULimit.01                                    
+36045120.16 Opr_Dillon->Gr_Mtn_Book3CSU                  1.00040     12.       1 3603543           -5 3604512            1 NA                 0      27 3603570PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+                                    CSULimit.01                                    
+36045120.17 Opr_Dillon->Gr_Mtn_Book4CSU                  1.00041     12.       1 3603543           -5 3604512            1 NA                 0      27 3604683PL    Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse
+                                    0 0 0 0 0 0 0 0 0 0 1 0                                 
+                                    CSULimit.01                                    
+#
+# Clinton Gulch and Dillon operations
+36035750.01 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            1 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.02 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            2 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.03 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            3 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.04 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            4 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.05 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            5 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.06 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            6 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.07 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            7 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+36035750.08 Opr C. Gulch to Climax                  100000.00000      0.       1 3600841            1 3603575            8 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+#
+# Operate Summit Co water and Dillon water to demands per Clinton Gulch Agreement
+36035750.09 Opr Dillon to Breck                      47483.00001      0.       1 3601008            1 3604512            2 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.10 Opr Dillon to Breck                      47483.00002      0.       1 3601008            1 3604512            1 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.11 Opr D.Res to T of Dillon                 18005.00001      0.       1 3600829            1 3604512            2 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.12 Opr D.Res to T of Dillon                 18005.00002      0.       1 3600829            1 3604512            1 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.13 Opr Dillon to Breck Ski                 100000.00000      0.       1 3600989            1 3604512            2 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.14 Opr Dillon to Breck Ski                 100000.00001      0.       1 3600989            1 3604512            1 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.15 Opr Dillon to Copper Mtn                100000.00000      0.       1 3601016            1 3604512            2 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.16 Opr Dillon to Copper Mtn                100000.00001      0.       1 3601016            1 3604512            1 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.17 Opr Dillon to Keyst Ski                  47968.00001      0.       1 3600908            1 3604512            2 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.18 Opr Dillon to Keyst Ski                  47968.00002      0.       1 3600908            1 3604512            1 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.19 Opr Dillon to Keyst Muni                 44741.00001      0.       1 36_KeyMun          1 3604512            2 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.20 Opr Dillon to Keyst Muni                 44741.00002      0.       1 36_KeyMun          1 3604512            1 0                 -1       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+36035750.21 Opr Clinton Gulch target                100000.00000      0.       1 0                  0 3603575            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+#------------------------------------------ 
+# Wolford Mountain Reservoir Operating Rules
+#------------------------------------------
+#
+# 15-Mile Reach Fish Flows
+50036680.01 Opr W Mtn Res to USFWS                   99999.93003     12.       1 7202003            1 5003668            3 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+#50036680.02 Trans W Slope->temp 5413                 99999.95000     12.       1 5003668            3 5003668            1 0                  0       6 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer (Bookover)
+#                                    0 0 0 0 0 0 0 0 30 0 0 0
+50036680.03 Opr W Mtn Res to USFWS                   99999.93011     12.       1 7202003            1 5003668            4 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+#
+# Wolford Contract Demands
+50036680.04 Opr Wolford_Fraser Deman                 99999.00000      0.       1 5003668FR          1 5003668            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.05 Opr Wolford_Mid Park Dem                 99999.00000      0.       1 5003668MP          1 5003668            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+#
+# Other General Wolford Operations
+50036680.06 Opr Wolford to target                    99999.99999      0.       1 0                  0 5003668            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+# Colorado Springs Replacement Operations
+50036680.07 Opr_C.S._to_GMRepl_Book                      1.00042     12.       1 5003668            9 5003668            7 3604683PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+50036680.08 Opr_C.S._to_GMRepl_Book2                     1.00043     12.       1 5003668            9 5003668            7 3603570PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+50036680.09 Trans W Slope->Bookover                      1.00046     12.       1 5003668            8 5003668            1 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+50036680.10 Trans Bookover->C.S.                     999999.9998     12.       1 5003668            7 5003668            8 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+50036680.11 Trans Bookover->W Slope                  999999.9999     12.       1 5003668            1 5003668            8 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 0 0 0 0 0 -1 0
+#
+# Denver Replacement Operations
+50036680.12 Opr_Den1_to_GMRepl_Book                      1.00017     12.       1 5003668            5 5003668            2 3604684PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+50036680.13 Opr_Den1_to_GMRepl_Book2                     1.00018     12.       1 5003668            5 5003668            2 3604512PL           0      34 NA          NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+50036680.14 Opr_Den1_to_GMRepl_BookCSU                   1.00030     12.       1 5003668            2 5003668            2 3603570PL          0      34 3604512PL    NA                  0       2       0    9999 Reservoir to Reservoir Transfer with Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+50036680.15 Opr_Den1_to_GMRepl_Book2CSU                  1.00031     12.       1 5003668            2 5003668            2 3604683PL          0      34 3604512PL    NA                  0       2       0    9999 Reservoir to Reservoir Transfer with Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+50036680.16 Opr_Den2_to_GMRepl_Book                      1.00021     12.       1 5003668            6 5003668            2 3604684PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+50036680.17 Opr_Den2_to_GMRepl_Book2                     1.00022     12.       1 5003668            6 5003668            2 3604512PL           0      34 NA          NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+#
+# Green Mountain Operations from Alternate Replacement Pools
+#      CBT Project
+50036680.18 Opr GreenMtn - Granby Ex                 31258.00005      0.       1 5104055           -2 5003668            5 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.19 Opr GreenMtn - Granby Ex                 31258.00007      0.       1 5104055           -2 5003668            9 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.20 Opr GreenMtn - Granby Ex                 31258.00009      0.       1 5104055           -2 5003668            6 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.21 Opr GreenMtn-WillowCr Ex                 31258.00012      0.       1 5103710           -2 5003668            5 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.22 Opr GreenMtn-WillowCr Ex                 31258.00014      0.       1 5103710           -2 5003668            9 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.23 Opr GreenMtn-WillowCr Ex                 31258.00015      0.       1 5103710           -2 5003668            6 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.24 Opr GreenMtn-ShadowMtnEx                 31258.00019      0.       1 5103695           -2 5003668            5 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.25 Opr GreenMtn-ShadowMtnEx                 31258.00021      0.       1 5103695           -2 5003668            9 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.26 Opr GreenMtn-ShadowMtnEx                 31258.00022      0.       1 5103695           -2 5003668            6 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+50036680.27 Opr GM-WillowCr Feeder                   31258.00026      0.       1 51009580.01        1 5003668            5 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+50036680.28 Opr GM-WillowCr Feeder                   31258.00028      0.       1 51009580.01        1 5003668            9 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+50036680.29 Opr GM-WillowCr Feeder                   31258.00029      0.       1 51009580.01        1 5003668            6 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+#
+#      Silt Project
+50036680.30 Opr GMT-Silt Project                     39041.00001      1.       1 3903505_I          1 5003668            5 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+50036680.31 Opr GMT-Silt Project                     39041.00003      1.       1 3903505_I          1 5003668            9 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+50036680.32 Opr GMT-Silt Project                     39041.00004      1.       1 3903505_I          1 5003668            6 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+#      Historic Users Replacement
+#50036680.33 Opr Wolf Replace1 (hist)                 48965.99994      0.       0 0                  1 5003668            5 0                  0      10 NA           NA                  0       0    1985    1996 General Reservoir Replacement
+#50036680.34 Opr Wolf Replace2 (hist)                 48965.99996      0.       0 0                  1 5003668            9 0                  0      10 NA           NA                  0       0    1985    1996 General Reservoir Replacement
+#50036680.35 Opr Wolf Replace3 (hist)                 48965.99997      0.       0 0                  1 5003668            6 0                  0      10 NA           NA                  0       0    1985    1996 General Reservoir Replacement
+#50036680.36 Opr GM=>Govt Highl(hist)                 48965.99994      1.       0 7200646_I          1 5003668            5 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.37 Opr GM=>Govt Highl(hist)                 48965.99996      1.       0 7200646_I          1 5003668            9 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.38 Opr GM=>Govt Highl(hist)                 48965.99997      1.       0 7200646_I          1 5003668            6 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.39 Opr GM=>OMID Irr (hist)                  48965.99994      1.       0 7200813            1 5003668            5 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.40 Opr GM=>OMID Irr (hist)                  48965.99996      1.       0 7200813            1 5003668            9 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.41 Opr GM=>OMID Irr (hist)                  48965.99997      1.       0 7200813            1 5003668            6 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.42 Opr GM=>OMID Pump (hist)                 48965.99994      1.       0 7200813PP          1 5003668            5 0                  0       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.43 Opr GM=>OMID Pump (hist)                 48965.99996      1.       0 7200813PP          1 5003668            9 0                  0       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+#50036680.44 Opr GM=>OMID Pump (hist)                 48965.99997      1.       0 7200813PP          1 5003668            6 0                  0       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200646
+50036680.45 Opr Wolf Replace1 (futr)                 46673.99994      0.       1 0                  1 5003668            5 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+50036680.46 Opr Wolf Replace2 (futr)                 46673.99996      0.       1 0                  1 5003668            9 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+50036680.47 Opr Wolf Replace3 (futr)                 46673.99997      0.       1 0                  1 5003668            6 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+50036680.48 Opr Wolf=>Govt Highl(futr)               46673.99994      1.       1 7200646_I          1 5003668            5 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.49 Opr Wolf=>Govt Highl(futr)               46673.99996      1.       1 7200646_I          1 5003668            9 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.50 Opr Wolf=>Govt Highl(futr)               46673.99997      1.       1 7200646_I          1 5003668            6 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.51 Opr Wolf=>OMID Irr (futr)                46673.99994      1.       1 7200813            1 5003668            5 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.52 Opr Wolf=>OMID Irr (futr)                46673.99996      1.       1 7200813            1 5003668            9 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.53 Opr Wolf=>OMID Irr (futr)                46673.99997      1.       1 7200813            1 5003668            6 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.54 Opr Wolf=>OMID Pump (futr)               46673.99994      1.       1 7200813PP          1 5003668            5 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.55 Opr Wolf=>OMID Pump (futr)               46673.99996      1.       1 7200813PP          1 5003668            9 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+50036680.56 Opr Wolf=>OMID Pump (futr)               46673.99997      1.       1 7200813PP          1 5003668            6 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+#      Contract Demands
+# Turned off GM Contract release to the Coon Creek Pipeline structure since Ute staff indicate that UWCD does not contract for GM water
+50036680.57 Opr GM-Vail(muni)-nonirr                 42420.41367      0.       1 37VAILMUN          1 5003668            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.58 Opr GM-Vail(muni)-nonirr                 42420.41369      0.       1 37VAILMUN          1 5003668            9 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.59 Opr GM-Vail(muni)-nonirr                 42420.41370      0.       1 37VAILMUN          1 5003668            6 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.60 Opr GMCont - ATKINSON                    49308.48661      0.       1 3800516            1 5003668            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.61 Opr GMCont - ATKINSON                    49308.48663      0.       1 3800516            1 5003668            9 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.62 Opr GMCont - ATKINSON                    49308.48664      0.       1 3800516            1 5003668            6 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.63 Opr GMContract - NEEDHAM                 46751.42642      0.       1 3800902            1 5003668            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.64 Opr GMContract - NEEDHAM                 46751.42644      0.       1 3800902            1 5003668            9 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.65 Opr GMContract - NEEDHAM                 46751.42645      0.       1 3800902            1 5003668            6 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.66 Opr GMContract - DERBY                   47481.12656      0.       1 5300555_D          1 5003668            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.67 Opr GMContract - DERBY                   47481.12658      0.       1 5300555_D          1 5003668            9 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.68 Opr GMContract - DERBY                   47481.12659      0.       1 5300555_D          1 5003668            6 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.69 Opr GMCont - COON PIPE                   46995.00001      0.       0 7201339            1 5003668            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.70 Opr GMCont - COON PIPE                   46995.00003      0.       0 7201339            1 5003668            9 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.71 Opr GMCont - COON PIPE                   46995.00004      0.       0 7201339            1 5003668            6 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.72 Opr GM-Agg Cont Users                    48966.00001      0.       1 36GMCON            1 5003668            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.73 Opr GM-Agg Cont Users                    48966.00003      0.       1 36GMCON            1 5003668            9 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+50036680.74 Opr GM-Agg Cont Users                    48966.00004      0.       1 36GMCON            1 5003668            6 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+#
+# Updated 15-Mile Reach Fish Flows, where the HUPLimitPLN is a carrier
+#
+50036680.75 Opr Wolf HUP Surp->USFWS                 99999.93006     12.       1 7202003            1 5003668            5 0                  0      27 NA           Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+                                    HUPLimit.01                                                                        
+50036680.76 Opr Wolf HUPSurp2->USFWS                 99999.93006     12.       1 7202003            1 5003668            9 0                  0      27 NA           Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+                                    HUPLimit.01                                    
+50036680.77 Opr Wolf HUPSurp3->USFWS                 99999.93006     12.       1 7202003            1 5003668            6 0                  0      27 NA           Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+                                    HUPLimit.01                                    
+#	  
+#      Excess HUP Release to River to Empty Pools
+50036680.78 Opr Excess HUP Release                  100000.00000     12.       1 5003668HU          1 5003668            5 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+50036680.79 Opr Excess HUP Release2                 100000.00000     12.       1 5003668HU          1 5003668            9 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+50036680.80 Opr Excess HUP Release3                 100000.00000     12.       1 5003668HU          1 5003668            6 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+50036680.81 Opr GM=>Molina                           46673.99994      1.       1 72_UWCD            1 5003668            5 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+50036680.82 Opr GM=>Molina                           46673.99996      1.       1 72_UWCD            1 5003668            9 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+50036680.83 Opr GM=>Molina                           46673.99997      1.       1 72_UWCD            1 5003668            6 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+50036680.84 Opr GM=>Plateau                          46673.99994      1.       1 72_UWCD            1 5003668            5 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+50036680.85 Opr GM=>Plateau                          46673.99996      1.       1 72_UWCD            1 5003668            9 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+50036680.86 Opr GM=>Plateau                          46673.99997      1.       1 72_UWCD            1 5003668            6 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+50036680.87 Opr GM=>Ute Col Riv                      46673.99994      1.       1 72_UWCD            1 5003668            5 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+50036680.88 Opr GM=>Ute Col Riv                      46673.99996      1.       1 72_UWCD            1 5003668            9 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+50036680.89 Opr GM=>Ute Col Riv                      46673.99997      1.       1 72_UWCD            1 5003668            6 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+#
+#------------------------------------------------------------------------
+# Williams Fork Reservoir, Fraser River, and Moffat Tunnel Operating Rules
+#------------------------------------------------------------------------ 
+#
+# Meadow Creek Reservoir Operations
+51036860.01 Opr MCkRes->VailIrDivSys                 31259.30134      1.       1 5100941            1 5103686            2 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    5101231 
+51036860.02 Opr MCrkRes to 5100728                   31259.30134      0.       1 5100728            1 5103686            1 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+51036860.03 Opr MCrkRes to Moffat                    31259.30134      0.       1 5104655            1 5103686            1 0                  0       3 NA           NA                  0       0       0    9999 Reservoir Release to Carrier
+51036860.04 Opr MCrkRes to target                    99999.99999      0.       1 0                  0 5103686            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#51009410.01 Opr VailIrr to Vail                      21814.00001      0.       1 5100941            1 5101231.01         1 0                  0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+# Fraser River Moffat Carriers
+51006390.01 Opr JimCrk to MoffatTun                  30870.26117      0.       1 5104655            1 5100639.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+51013100.01 Opr Vasquez - MoffatTun                  30870.26117      0.       1 5104655            1 5101310.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+5101309_D0.1Opr StLouis - MoffatTun                  30870.26117      0.       1 5104655            1 5101309_D.01       1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+5101309_D0.2Opr StLouis - MoffatTun                  30870.26117      0.       1 5104655            1 5101309_D.02       1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+51012690.01 Opr RanchCkto MoffatTun                  30870.26117      0.       1 5104655            1 5101269.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+51046030.01 Opr JonesPasstoMoffatTun                 30870.26117      0.       1 5104655            1 5104603.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+51007280.01 Opr EngRCrkto MoffatTun                  31259.30133      0.       1 5104655            1 5100728.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+# Williams Fork Reservoir Operations
+51037090.01 Opr WilliamsFork to Hend                 31359.00002      0.       1 5101070            1 5103709            2 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.02 Opr WFRes - Roberts Tunn                 35927.00006      0.       1 3604684            1 5103709            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.03 Opr WFRes - Dillon Exch                  35927.00007      0.       1 3604512            1 5103709            1 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.04 Opr WFRes - Jim Creek Ex                 30870.26118      0.       0 5100639            1 5103709            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.05 Opr WFRes - Vasquez Ex                   30870.26118      0.       0 5101310            1 5103709            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.06 Opr WFRes - St.Louis Ex                  30870.26118      0.       0 5101309_D          1 5103709            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.07 Opr WFRes - Ranch Cr Ex                  30870.26118      0.       0 5101269            1 5103709            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.08 Opr WFRes - Gumlick Ex                   30870.26118      0.       0 5104603            1 5103709            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.09 Opr WFRes - Jim Creek Ex                 30870.26118      0.       1 51006390.01        1 5103709            1 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.10 Opr WFRes - Vasquez Ex                   30870.26118      0.       1 51013100.01        1 5103709            1 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.11 Opr WFRes - St.Louis Ex                  20676.16802      0.       1 5101309_D0.1       1 5103709            1 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.12 Opr WFRes - St.Louis Ex                  30870.26118      0.       1 5101309_D0.2       1 5103709            1 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.13 Opr WFRes - Ranch Cr Ex                  30870.26118      0.       1 51012690.01        1 5103709            1 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.14 Opr WFRes - Gumlick Ex                   30870.26118      0.       1 51046030.01        1 5103709            1 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.15 Opr Williams Fork target                 99999.99999      0.       1 0                  0 5103709            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+# 15-Mile Reach Fish Flows not required from Williams Fork after 2013
+#
+# Denver Replacement Operations
+51037090.18 Opr_Den1_to_GMRepl_Book                      1.00019     12.       1 5103709            4 5103709            1 3604684PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse Reservoir Release to Direct Flow by Exchange 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+51037090.19 Opr_Den1_to_GMRepl_Book2                     1.00020     12.       1 5103709            4 5103709            1 3604512PL           0      34 NA          NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse Reservoir Release to Direct Flow by Exchange 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+51037090.20 Opr_Den1_to_GMRepl_BookCSU                   1.00032     12.       1 5103709            1 5103709            1 3603570PL          0      34 3604512PL    Diversion           0       2       0    9999 Reservoir to Reservoir Transfer with Reuse
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+51037090.21 Opr_Den1_to_GMRepl_Book2CSU                  1.00033     12.       1 5103709            1 5103709            1 3604683PL          0      34 3604512PL    NA                  0       2       0    9999 Reservoir to Reservoir Transfer with Reuse 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+                                    CSULimit.01                                    
+51037090.22 Opr_Den2_to_GMRepl_Book                      1.00023     12.       1 5103709            5 5103709            1 3604684PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse Reservoir Release to Direct Flow by Exchange 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                  
+51037090.23 Opr_Den2_to_GMRepl_Book2                     1.00024     12.       1 5103709            5 5103709            1 3604512PL           0      34 NA          NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse Reservoir Release to Direct Flow by Exchange 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+#
+# Green Mountain Operations from Alternate Replacement Pools
+#      CBT Project
+51037090.24 Opr GreenMtn - Granby Ex                 31258.00006      0.       1 5104055           -2 5103709            4 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.25 Opr GreenMtn - Granby Ex                 31258.00010      0.       1 5104055           -2 5103709            5 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.26 Opr GreenMtn-WillowCr Ex                 31258.00013      0.       1 5103710           -2 5103709            4 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.27 Opr GreenMtn-WillowCr Ex                 31258.00016      0.       1 5103710           -2 5103709            5 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.28 Opr GreenMtn-ShadowMtnEx                 31258.00020      0.       1 5103695           -2 5103709            4 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.29 Opr GreenMtn-ShadowMtnEx                 31258.00023      0.       1 5103695           -2 5103709            5 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+51037090.30 Opr GM-WillowCr Feeder                   31258.00027      0.       1 51009580.01        1 5103709            4 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+51037090.31 Opr GM-WillowCr Feeder                   31258.00030      0.       1 51009580.01        1 5103709            5 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+#
+#      Silt Project
+51037090.32 Opr GMT-Silt Project                     39041.00002      1.       1 3903505_I          1 5103709            4 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+51037090.33 Opr GMT-Silt Project                     39041.00005      1.       1 3903505_I          1 5103709            5 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+#      Historic Users Replacement
+51037090.34 Opr WFRes Hup1->Shoshone                 99999.89998      0.       0 5300584P           1 5103709            4 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to Instream Flow
+51037090.35 Opr WFRes Hup2->Shoshone                 99999.89999      0.       0 5300584P           1 5103709            5 0                  0       1 NA           NA                  0       0       0    9999 Reservoir Release to Instream Flow
+51037090.36 Opr WFRes Replace1(hist)                 48965.99995      0.       0 0                  1 5103709            4 0                  0      10 NA           NA                  0       0    1985    1996 General Reservoir Replacement
+51037090.37 Opr WFRes Replace2(hist)                 48965.99998      0.       0 0                  1 5103709            5 0                  0      10 NA           NA                  0       0    1985    1996 General Reservoir Replacement
+#51037090.38 Opr WFRes=>Govt Highl(hist)              48965.99995      1.       0 7200646_I          1 5103709            4 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    720646
+#51037090.39 Opr WFRes=>Govt Highl(hist)              48965.99998      1.       0 7200646_I          1 5103709            5 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    720646
+#51037090.40 Opr WFRes=>OMID Irr (hist)               48965.99995      1.       0 7200813            1 5103709            4 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    720646
+#51037090.41 Opr WFRes=>OMID Irr (hist)               48965.99998      1.       0 7200813            1 5103709            5 0                  1       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    720646
+#51037090.42 Opr WFRes=>OMID Pump (hist)              48965.99995      1.       0 7200813PP          1 5103709            4 0                  0       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    720646
+#51037090.43 Opr WFRes=>OMID Pump (hist)              48965.99998      1.       0 7200813PP          1 5103709            5 0                  0       2 NA           NA                  0       0    1985    1996 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    720646
+51037090.44 Opr WFRes Replace1(futr)                 46673.99995      0.       1 0                  1 5103709            4 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+51037090.45 Opr WFRes Replace2(futr)                 46673.99998      0.       1 0                  1 5103709            5 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+51037090.46 Opr WFRes=>Govt Highl(futr)              46673.99995      1.       1 7200646_I          1 5103709            4 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+51037090.47 Opr WFRes=>Govt Highl(futr)              46673.99998      1.       1 7200646_I          1 5103709            5 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+51037090.48 Opr WFRes=>OMID Irr (futr)               46673.99995      1.       1 7200813            1 5103709            4 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+51037090.49 Opr WFRes=>OMID Irr (futr)               46673.99998      1.       1 7200813            1 5103709            5 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+51037090.50 Opr WFRes=>OMID Pump (futr)              46673.99995      1.       1 7200813PP          1 5103709            4 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+51037090.51 Opr WFRes=>OMID Pump (futr)              46673.99998      1.       1 7200813PP          1 5103709            5 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+#
+# Contract Demands
+# Turned off GM Contract release to the Coon Creek Pipeline structure since Ute staff indicate that UWCD does not contract for GM water
+51037090.52 Opr GM-Vail(muni)-nonirr                 42420.41368      0.       1 37VAILMUN          1 5103709            4 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.53 Opr GM-Vail(muni)-nonirr                 42420.41371      0.       1 37VAILMUN          1 5103709            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.54 Opr GMCont - ATKINSON                    49308.48662      0.       1 3800516            1 5103709            4 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.55 Opr GMCont - ATKINSON                    49308.48665      0.       1 3800516            1 5103709            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.56 Opr GMContract - NEEDHAM                 46751.42643      0.       1 3800902            1 5103709            4 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.57 Opr GMContract - NEEDHAM                 46751.42646      0.       1 3800902            1 5103709            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.58 Opr GMContract - DERBY                   47481.12657      0.       1 5300555_D          1 5103709            4 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.59 Opr GMContract - DERBY                   47481.12660      0.       1 5300555_D          1 5103709            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.60 Opr GMCont - COON PIPE                   46995.00002      0.       0 7201339            1 5103709            4 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.61 Opr GMCont - COON PIPE                   46995.00005      0.       0 7201339            1 5103709            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.62 Opr GM-Agg Cont Users                    48966.00002      0.       1 36GMCON            1 5103709            4 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+51037090.63 Opr GM-Agg Cont Users                    48966.00005      0.       1 36GMCON            1 5103709            5 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+#
+#      15-Mile Reach Fish Flows
+51037090.64 Op WFRes HUP Surp->USFWS                 99999.93005     12.       1 7202003            1 5103709            4 0                  0      27 NA           Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+                                    HUPLimit.01                                                                        
+51037090.65 Op WFRes HUPSurp2->USFWS                 99999.93005     12.       1 7202003            1 5103709            5 0                  0      27 NA           Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+                                    HUPLimit.01                                    
+#
+#      Excess HUP Release to River to Empty Pools
+51037090.66 Opr Excess HUP Release                  100000.00000     12.       1 5103709HU          1 5103709            4 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+51037090.67 Opr Excess HUP Release2                 100000.00000     12.       1 5103709HU          1 5103709            5 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+#
+51037090.68 Opr GM=>Molina                           46673.99995      1.       1 72_UWCD            1 5103709            4 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+51037090.69 Opr GM=>Molina                           46673.99998      1.       1 72_UWCD            1 5103709            5 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+51037090.70 Opr GM=>Plateau                          46673.99995      1.       1 72_UWCD            1 5103709            4 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+51037090.71 Opr GM=>Plateau                          46673.99998      1.       1 72_UWCD            1 5103709            5 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+51037090.72 Opr GM=>Ute Col Riv                      46673.99995      1.       1 72_UWCD            1 5103709            4 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+51037090.73 Opr GM=>Ute Col Riv                      46673.99998      1.       1 72_UWCD            1 5103709            5 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+#
+#--------------------------------------------
+# Fryingpan - Arkansas Project Operating Rules
+#--------------------------------------------
+#
+# Hunter Collection
+38015940.01 Opr Hunter to Boust Summ                 39291.00001      0.       1 3804625SU          1 3801594.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+# Bousted Tunnel
+38046250.01 Opr Boustead-Boust Summ                  39291.00000      0.       1 3804625SU          1 3804625.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+38046250.02 Opr Boustead-Boust Summ                  48577.39291      0.       1 3804625SU          1 3804625.02         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+#-------------------------------                    
+# Ruedi Reservoir Operating Rules
+#-------------------------------
+#
+# Fryingpan-Arkansas Project
+#38037130.01 Opr Ruedi exch Hunter                    39291.00002      0.       0 3801594            1 3803713            2 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+#38037130.02 Opr R exch Boust N/S Col                 48577.39292      0.       0 3804625            1 3803713            2 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+38037130.03 Opr Ruedi exch Boustead                  48577.39293      0.       1 38015940.01        1 3803713            2 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+38037130.04 Opr Ruedi exch Boustead                  48577.39292      0.       1 38046250.01        1 3803713            2 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+38037130.05 Opr Ruedi exch Boustead                  48577.39294      0.       1 38046250.02        1 3803713            2 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+#
+# 15-Mile Reach Fish Flows
+38037130.06 Opr Ruedi-15 Mile Fish                   99999.91001      0.       1 7202003_M          1 3803713            5 0                  0       2 NA           NA                  0       0       0    1997 Reservoir to a Direct Flow or Reservoir or Carrier
+38037130.07 Opr Ruedi-15 Mile Fish 2                 99999.91002      0.       1 7202003_M          1 3803713            4 0                  0       2 NA           NA                  0       0       0    1997 Reservoir to a Direct Flow or Reservoir or Carrier
+38037130.08 Opr Ruedi-15 Mile Fish 3                 99999.91003      0.       1 7202003_M          1 3803713            6 0                  0       2 NA           NA                  0       0       0    1997 Reservoir to a Direct Flow or Reservoir or Carrier
+# Release to 10825 Fish Flow
+38037130.09 Opr Ruedi CWCB Fish->USFWS               99999.93002     12.       1 7202003            1 3803713            4 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+38037130.10 Opr Ruedi Res 5K->USFWS                  99999.93004     12.       1 7202003            1 3803713            5 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+38037130.11 Opr Ruedi 4/5 5k->USFWS                  99999.93009     12.       1 7202003            1 3803713            6 0                  0       2 NA           NA                  0       0       0    9999 Reservoir Release to Demand
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+38037130.12 Opr Ruedi 5k->Unallocate                 99999.93010     12.       1 3803713            5 3803713            6 0                  0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+                                    0 0 0 0 0 31 0 0 0 0 0 0
+#
+# Contract Demands
+38037130.13 Opr Ruedi Res Round 1 mu                 39291.00003      0.       1 3803713M1          1 3803713            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+38037130.14 Opr Ruedi Res Round 1 in                 39291.00004      0.       1 3803713I1          1 3803713            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+38037130.15 Opr Ruedi Res Round 2 mu                 39291.00005      0.       1 3803713M2          1 3803713            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+38037130.16 Opr Ruedi Res Round 2 in                 39291.00006      0.       1 3803713I2          1 3803713            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#
+# Other Operations
+38037130.18 Opr Ruedi Res target                     99999.99999      0.       1 0                  0 3803713            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+#--------------------------------
+# Cameo Deliveries Operating Rules
+#--------------------------------
+#
+72006460.01 Opr GVP - Govt Highline                  22729.14519      0.       1 7200646_I          1 7200646.01         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.02 Opr GVP - Govt Highline                  22729.19544      0.       1 7200646_I          1 7200646.07         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.03 Opr GVP - Govt Highline                  22729.21241      0.       1 7200646_I          1 7200646.04         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.04 Opr GVP - Govt Highline                  30895.24988      0.       1 7200646_I          1 7200646.06         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.05 Opr GVP - OMID (IRR)                     22729.18536      0.       1 7200813            1 7200646.02         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.06 Opr GVP - OMID (IRR)                     22729.21116      0.       1 7200813            1 7200646.03         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.07 Opr GVP - OMID (PUMP)                    22729.18536      0.       1 7200813PP          1 7200646.02         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.08 Opr GVP - OMID (PUMP)                    22729.21116      0.       1 7200813PP          1 7200646.03         0 NA                 0      11 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+72006460.09 Opr GVP - USA Power                      30895.21241      0.       1 7200813PW          1 7200646.05         0 NA                 0      11 NA           NA                  0       0       0   1996 Carrier Right to a Ditch or Reservoir
+72006460.10 Opr GVP-Power (winter)                   30895.21241    -13.       1 7200813PW          1 7200646.05         1 NA               100      45 NA           Diversion           0       0    1997   9999 Carrier Right to a Ditch or Reservoir
+                                    0 1 1 1 1 1 0 0 0 0 0 0
+                                    7200646     0     Carrier
+72006460.11 Opr GVP-Power  (summer sr)               30895.21241    -13.       1 7200813PW          1 7200646.08         1 NA               100      45 NA           Diversion           0       0    1997   9999 Carrier Right to a Ditch or Reservoir
+                                    1 0 0 0 0 0 1 1 1 1 1 1
+                                    7200646     0     Carrier
+#72006460.12 Opr GVP-Power  (summer jr)              100000.10000    -13.       0 7200813PW          1 7200646.09         1 NA               100      45 NA           Diversion           0       0    1997   9999 Carrier Right to a Ditch or Reservoir
+#                                    1 0 0 0 0 0 1 1 1 1 1 1
+#                                    7200646     0     Carrier
+#---------------------------------
+# Homestake Project Operating Rules
+#---------------------------------
+#
+# Homestake Project Operations
+37046430.01 Opr Missouri-Homestake                   38753.37520      0.       1 3704516            1 3704643.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+# Homestake Reservoir Operations
+37045160.01 Opr Home Res-Home Tunnel                 38753.37521      0.       1 3704614            1 3704516            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+37045160.02 Opr Home Res to target                   99999.99999      0.       1 0                  0 3704516            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+# Colorado Springs Replacement Operations (in the process of being decreed - 2006)
+37045160.03 Opr_C.S._to_GMRepl_Book3                     1.00044     12.       1 3704516            3 3704516            1 3604683PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse Reservoir Release to Direct Flow by Exchange 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+37045160.04 Opr_C.S._to_GMRepl_Book4                     1.00045     12.       1 3704516            3 3704516            1 3603570PL          0      34 NA           NA                  0       0       0    9999 Reservoir to Reservoir Transfer with Reuse Reservoir Release to Direct Flow by Exchange 
+                                    0 0 0 0 0 0 0 0 0 0 -1 0                                 
+#
+# Green Mountain Operations from Alternate Replacement Pools (in the process of being decreed - 2006)
+#      CBT Project
+37045160.05 Opr GreenMtn - Granby Ex                 31258.00008      0.       1 5104055           -2 3704516            3 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+37045160.06 Opr GreenMtn-WillowCr Ex                 31258.00017      0.       1 5103710           -2 3704516            3 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+37045160.07 Opr GreenMtn-ShadowMtnEx                 31258.00024      0.       1 5103695           -2 3704516            3 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to Storage
+37045160.08 Opr GM-WillowCr Feeder                   31258.00031      0.       1 51009580.01        1 3704516            3 0                  0       7 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+#
+#      Silt Project
+37045160.09 Opr GMT-Silt Project                     39041.00006      1.       1 3903505_I          1 3704516            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    3900663
+#      Historic Users Replacement
+37045160.10 Opr Home Replace (futr)                  46673.99999      0.       1 0                  1 3704516            3 0                  0      10 NA           NA                  0       2       0    9999 Gen'l Replacement Release with Monthly/Annual Release Limit
+                                    HUPLimit.01
+37045160.11 Opr GM=>Govt Highl(futr)                 46673.99999      1.       1 7200646_I          1 3704516            3 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+37045160.12 Opr GM=>OMID Irr (futr)                  46673.99999      1.       1 7200813            1 3704516            3 0                  1      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+3745160.13  Opr GM=>OMID Pump (futr)                 46673.99999      1.       1 7200813PP          1 3704516            3 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200646 0     Carrier
+                                    HUPLimit.01
+# Contract Demands
+# Turned off GM Contract release to the Coon Creek Pipeline structure since Ute staff indicate that UWCD does not contract for GM water
+37045160.14 Opr GM-Vail(muni)-nonirr                 42420.41372      0.       1 37VAILMUN          1 3704516            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+37045160.15 Opr GMCont - ATKINSON                    49308.48666      0.       1 3800516            1 3704516            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+37045160.16 Opr GMContract - NEEDHAM                 46751.42647      0.       1 3800902            1 3704516            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+37045160.17 Opr GMContract - DERBY                   47481.12661      0.       1 5300555_D          1 3704516            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+37045160.18 Opr GMCont - COON PIPE                   46995.00006      0.       0 7201339            1 3704516            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+37045160.19 Opr GM-Agg Cont Users                    48966.00006      0.       1 36GMCON            1 3704516            3 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+37045160.20 Opr Home HUP Surp->USFWS                 99999.93007     12.       1 7202003            1 3704516            3 0                  0      27 NA           Diversion           0       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    1 0 0 0 0 0 0 0 0 0 1 1
+                                    HUPLimit.01                                                                        
+#
+#      Excess HUP Release to River to Empty Pools
+37045160.21 Opr Excess HUP Release                  100000.00000     12.       1 3704516HU          1 3704516            3 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    0 0 0 0 0 1 0 0 0 0 0 0
+#
+37045160.22 Opr GM=>Molina                           46673.99999      1.       1 72_UWCD            1 3704516            3 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201487 0     Carrier
+                                    HUPLimit.01
+37045160.23 Opr GM=>Plateau                          46673.99999      1.       1 72_UWCD            1 3704516            3 0                  0      28 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir by Exchange with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7200920 0     Carrier
+                                    HUPLimit.01
+37045160.24 Opr GM=>Ute Col Riv                      46673.99999      1.       1 72_UWCD            1 3704516            3 0                  0      27 NA           Diversion          -1       2       0    9999 Reservoir or ReUse Plan to a Diversion or Reservoir Direct with or without Destination Reuse with Monthly/Annual Release Limit
+                                    7201329_D 0   Carrier
+                                    HUPLimit.01
+#----------------------------
+# Silt Project Operating Rules
+#----------------------------
+#
+39005630.01 Grass Valley to Full Plan                15458.13715      0.       1 3900563PL          1 3900563.01       100 NA                 0      26 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+    6150.  6150.  6150.  6150.  6150.  6150.  6150.  6150.  6150.  6150.  6150.  6150.   73800.
+39005630.02 Grass Valley to Full Plan                37503.15066      0.       1 3900563PL          1 3900563.02       100 NA                 0      26 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+    1480.  1480.  1480.  1480.  1480.  1480.  1480.  1480.  1480.  1480.  1480.  1480.   17760.
+39005630.03 Split Silt Plan                          37503.15067      0.       1 563PL             43 3900563PL          1 NA                 0      46 NA           Diversion           0       2       0    9999 AcctSplit to Multiple Owners
+                                                                                 3505PL            57
+39005630.04 Dry Elk Plan to Irr User                 37503.15068      1.       1 3900563_I          1 563PL            100 NA                 0      27 NA           Diversion          -1       5       0    9999 AcctPlan to Demand
+                                    3900563   0   Carrier
+                                    39005630.01
+39005630.05 Dry Elk Plan to Grass Valley Res         37503.15068      1.       1 3903505            1 563PL            100 NA                 0      27 NA           Diversion          -1       5       0    9999 AcctPlan to Demand
+                                   3900563   0   Carrier
+                                   39005630.01
+39005630.06 FIRCO Plan to Irr User                   37503.15068      1.       1 3903505_I          1 3505PL           100 NA                 0      27 NA           Diversion          -1       5       0    9999 AcctPlan to Demand
+                                    3900563   0   Carrier
+                                    39005630.01
+39005630.07 FIRCO Plan to User                       37503.15068      1.       1 3903505            1 3505PL           100 NA                 0      27 NA           Diversion          -1       5       0    9999 AcctPlan to Demand
+                                    3900563   0   Carrier
+                                    39005630.01
+39005630.08 Grass Valley Full Plan Spill             37503.15069      0.       1 3900563            0 3900563PL          0 NA                 0      29 NA           NA                  0       0       0    9999 Spill AcctSplit_Plan
+39005630.09 Dry Elk Plan Spill                       37503.15069      0.       1 3900563            0 563PL              0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+39005630.10 Grass Valley Plan Spill                  37503.15069      0.       1 3900563            0 3505PL             0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+# Grass Vally Release to FIRCO Irr 
+# Release to _I just junior to storage right at GV/Harvey
+39005630.11 Grass Valley to FIRCO                    37503.35322      0.       1 3903505_I          1 3903505            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+# Rifle Gap Reservoir to Davie Ditch 
+# Fires just junior to Rifle Gap RER
+39005630.12 Rifle Gap to Davie                       37503.36901      0.       1 3900547            1 3903508            1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+#
+# Rifle Gap Exchange to Grass Valley Canal
+39005630.13 Opr RifleGap Ex                          37503.36902      0.       1 3903508_Ex         1 3903508            1 0                  0       5 NA           NA                  0       0       0    9999 Reservoir Exchange to a Direct Flow
+39005630.14 RifleGap Ex to Dry Elk                   37503.36903      1.       1 3900563_I          1 3903508_Ex         1 NA                 0       2 NA           Diversion           0       0       0    9999 Reservoir release to Demand
+                                    3900563
+39005630.15 RifleGap Ex to FIRCO                     37503.36904      1.       1 3903505_I          1 3903508_Ex         1 NA                 0       2 NA           Diversion           0       0       0    9999 Reservoir release to Demand
+                                    3900563
+39005630.16 RifleGap Ex to GV Res                    37503.36905      1.       1 3903505            1 3903508_Ex         1 NA                 0       2 NA           Diversion           0       0       0    9999 Reservoir release to Demand
+                                    3900563
+39005630.17 RifleGap Ex back to Rifle Gap            37503.36906      0.       1 3903508            1 3903508_Ex         1 NA                 0       2 NA           NA                  0       0       0    9999 AcctPlan to Demand
+39005630.18 Rifle Gap Release to Target              99999.99999      0.       1 0                  0 3903508            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir to a Carrier by Exchange
+# Silt Pump to FIRCO Irr. Fires on DDR - GM HUP releases just junior to this rule
+39005630.19 Silt Pump to FIRCO                       39041.00000      0.       1 3903505_I          1 3900663.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#--------------------------------
+# Glenwood Springs Operating Rules
+#--------------------------------
+#
+53010510.01 Opr Glenwood Muni supp                   20427.19858      0.       1 5300585            1 5301051.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+53010510.02 Opr Glenwood Muni supp                   33023.31607      0.       1 5300585            1 5301051.02         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+53010510.03 Opr Glenwood Muni supp                   19573.13680      0.       1 5300585            1 5301051.03         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+#----------------------------------------------------------
+# Owens Creek Ditch to Divide Creek Highline Operating Rules
+#----------------------------------------------------------
+#
+72047210.01 Opr OwensCkD to DvdCkHln                 22995.20976      3.       1 4500576_D          1 7204721.01         1 NA                 0      45 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+                                7204721 0 Carrier
+                                09089500 0 Return
+                                4500576_D 0 Carrier
+72047210.02 Opr OwensCkD to DvdCkHln                 23177.00000      3.       1 4500576_D          1 7204721.02         1 NA                 0      45 NA           NA                  0       0       0   9999 Carrier Right to a Ditch or Reservoir
+                                7204721 0 Carrier
+                                09089500 0 Return
+                                4500576_D 0 Carrier
+#
+#---------------------------------------------------
+# Ute WCD Operating Rules - 
+#---------------------------------------------------
+72_UWCD0.01 Opr Ute Pl Hdg 1=>UWCD WTP               38846.99999      0.       0 72_UWCD            1 7201487.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Ditch or Reservoir
+72_UWCD0.02 Opr Ute Pl Hdg 1=>UWCD WTP               40013.39607      0.       0 72_UWCD            1 7201487.02         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Ditch or Reservoir
+72_UWCD0.03 Opr Ute PL Hdg 2=>UWCD WTP               38847.00000      0.       0 72_UWCD            1 7200920.01         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Ditch or Reservoir
+72_UWCD0.04 Opr Ute PL Hdg 2=>UWCD WTP               40013.39608      0.       0 72_UWCD            1 7200920.02         0 NA                 0      11 NA           NA                  0       0       0    9999 Carrier Right to a Ditch or Reservoir
+#
+# Changed Madon Eddy, Coon Creek, Carver Ranch and Martin Crawford rules to Type 14 so diversions are constrained to historical diversions
+72_UWCD0.05 Opr Mason Eddy=>UWCD WTP                 12753.00000     12.       1 72_UWCD            1 7200766.01         1 0                  1      14 NA           NA               0.00    0.00       0    9999 Carrier with Constrained Demand
+                                 1 0 0 0 0 0 1 1 1 1 1 1
+72_UWCD0.06 Opr Mason Eddy=>UWCD WTP                 30895.12724     12.       1 72_UWCD            1 7200766.02         1 0                  1      14 NA           NA               0.00    0.00       0    9999
+                                 0 1 1 1 1 1 0 0 0 0 0 0
+72_UWCD0.07 Opr Mason Eddy=>UWCD WTP                 30895.24260     12.       1 72_UWCD            1 7200766.03         1 0                  1      14 NA           NA               0.00    0.00       0    9999
+                                 1 0 0 0 0 0 1 1 1 1 1 1
+72_UWCD0.08 Opr Mason Eddy=>UWCD WTP                 32811.00000     12.       1 72_UWCD            1 7200766.04         1 0                  1      14 NA           NA               0.00    0.00       0    9999
+                                 1 0 0 0 0 0 1 1 1 1 1 1
+72_UWCD0.09 Opr CarverRnPL=>UWCD WTP                 46751.46599      0.       1 72_UWCD            1 7201334.01         1 0                  1      14 NA           NA               0.00    0.00       0    9999
+72_UWCD0.10 Opr CoonCrPL=>UWCD WTP                   46995.00000      0.       1 72_UWCD            1 7201339.01         1 0                  1      14 NA           NA               0.00    0.00       0    9999
+72_UWCD0.11 Opr TailRace=>JerryCkRes                     1.00000      1.       1 7203961            1 7201487.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999
+                                    7200920
+72_UWCD0.12 Opr TailRace=>JerryCkRes                     1.00001      1.       1 7203961            1 7201487.02         0 NA                 0      11 NA           NA               0.00    0.00       0    9999
+                                    7200920
+72_UWCD0.13 Opr Ute PL Hdg=>JerryCkRes               38847.00000      1.       1 7203961            1 7201487.01         0 7200920            0      11 NA           NA               0.00    0.00       0    9999
+                                    7200920
+72_UWCD0.14 Opr Ute PL Hdg=>JerryCkRes               40013.39608      1.       1 7203961            1 7201487.02         0 7200920            0      11 NA           NA               0.00    0.00       0    9999
+                                    7200920
+#
+72_UWCD0.15 Opr MartinCrawford=>UWCD WTP             48942.48333      0.       1 72_UWCD            1 7200764.01         1 0                  1      14 NA           NA               0.00    0.00       0    9999
+72_UWCD0.16 Opr JerryCkRes=>UWCD WTP                 48942.48335      0.       1 72_UWCD            1 7203961            1 0                  0       3
+# Use ColRivPlan to ensure water is taken from other sources first, then Colorado River, and last from Jerry Ck Reservoir
+ColRiv.01   Opr Cameo_Pipeline=>Plan                 41791.00000      0.       1 ColRivPln          1 7201329_D.01     100 NA                 0      24 NA           Diversion        0.00    0.00       0    9999 Direct Flow Exchange
+  1000.  1000.  1000.  1000.  1000.  1000.  1000.  1000.  1000.  1000.  1000.  1000. 12000. 
+ColRiv.02   Opr Cameo_Pipeline=>UWCD WTP             48942.48334      1.       1 72_UWCD            1 ColRivPln        100 NA                 0      27 NA           Diversion          -1       3       0    9999 Accounting Plan to Demand
+                                    7201329_D 0   Carrier
+                                    ColRiv.01
+CRSpill.01  Opr ColRivPlan-Spill                     48942.48335      0.       1 7201329_D          0 ColRivPln          0 NA                 0      29 NA           NA                  0       0       0    9999 Plan Spill
+72_UWCD0.18 Opr JerryCr to target                    99999.99999      0.       1 0                  0 7203961            0 0                  0       9
+# Historic Only, operate Jerry Creek to 920 demand
+72_UWCD0.19 Opr JerryCkRes=>920 demand               46995.00001      0.       0 7200920            1 7203961            1 0                  0       3
+#-------------------------------------------------
+# Collbran Project (Vega Reservoir) Operating Rules
+#-------------------------------------------------
+#
+72007460.01 Opr LeonCrFeeder - Vega                  37486.00000      0.       1 7203844           -2 7200746.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+72007460.02 Opr LeonCrFeeder - Vega                  44194.43247      0.       1 7203844           -2 7200746.02         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+#
+7200820_D0.1Opr Park Creek to Vega                   30895.23492      1.       1 7203844           -2 7200820_D.01       1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+                                    7200746
+7200820_D0.2Opr Park Creek to Vega                   41500.00000      1.       1 7203844           -2 7200820_D.02       1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+                                    7200746
+#
+72005420.01 Opr Bonham-Molina                        37486.00000      0.       1 7200807            1 7200542.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+7203904AG0.1Opr Bonham Res - Molina                  37486.00001      1.       1 7200807            1 7203904AG          1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200542
+7203904AG0.2Opr Bonham to target                     99999.99999      0.       1 0                  0 7203904AG          0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+72005830.01 Opr Cottonwood-Molina                    37486.00000      0.       1 7200807            1 7200583.01         1 NA                 0      11 NA           NA                  0       0       0    9999 Carrier to a Ditch or Reservoir
+7204033AG0.1Opr Cotton' Res-Molina                   37486.00001      1.       1 7200807            1 7204033AG          1 0                  0       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200583
+7204033AG0.2Opr Cottonwood to target                 99999.99999      0.       1 0                  0 7204033AG          0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#
+72008790.01 Opr Southside-GALBRAITH                  37486.00000      0.       1 7200628            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.02 Opr Southside-GROVE CR                   37486.00000      0.       1 7200649            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.03 Opr Southside-GOLDEN AGE                 37486.00000      0.       1 7200643            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.04 Opr Southside-KIGGINS GOYN               37486.00000      0.       1 7200729            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.05 Opr Southside-EAKIN SMITH                37486.00000      0.       1 7200607            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.06 Opr Southside-BERTHOLF LANHAM            37486.00000      0.       1 7200533            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.07 Opr Southside-SILVER GAUGE               37486.00000      0.       1 7200870            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.08 Opr Southside-WILDCAT D                  37486.00000      0.       1 7200938            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.09 Opr Southside-COAKLEY KIGGINS            37486.00000      0.       1 7200574            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.10 Opr Southside-PARK VIEW D                37486.00000      0.       1 7200823            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.11 Opr Southside-MORMON MESA                37486.00000      0.       1 7200799            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.12 Opr Southside-PIONEER OF PLATEAU         37486.00000      0.       1 7200831            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.13 Opr Southside-BULL CREEK D               37486.00000      0.       1 7200558            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.14 Opr Southside-MESA CREEK D               37486.00000      0.       1 7200784            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.15 Opr Southside-WEST SIDE D                37486.00000      0.       1 7200933            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.16 Opr Southside-ARKANSAS D                 37486.00000      0.       1 7200514            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+72008790.17 Opr Southside-KING D                     37486.00000      0.       1 7200731            1 7200879.01         0 NA                 0      11 NA           NA               0.00    0.00       0    9999 Carrier to a Ditch or Reservoir
+#
+72038440.01 Opr Vega-GALBRAITH D Rel                 37486.00004      1.       1 7200628            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.02 Opr Vega-GROVE CR D Rel                  37486.00004      1.       1 7200649            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.03 Opr Vega-GOLDEN AGE Rel                  37486.00004      1.       1 7200643            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.04 Opr Vega-KIGGINS GOYN Rel                37486.00004      1.       1 7200729            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.05 Opr Vega-EAKIN SMITH Rel                 37486.00004      1.       1 7200607            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.06 Opr Vega-BERTHOLF LANHAM Rel             37486.00004      1.       1 7200533            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.07 Opr Vega-SILVER GAUGE Rel                37486.00004      1.       1 7200870            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.08 Opr Vega-WILDCAT D Rel                   37486.00004      1.       1 7200938            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.09 Opr Vega-COAKLEY KIGGINS Rel             37486.00004      1.       1 7200574            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.10 Opr Vega-PARK VIEW D Rel                 37486.00004      1.       1 7200823            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.11 Opr Vega-MORMON MESA Rel                 37486.00004      1.       1 7200799            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.12 Opr Vega-PIONEER OF PLATEAU Rel          37486.00004      1.       1 7200831            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.13 Opr Vega-BULL CREEK D Rel                37486.00004      1.       1 7200558            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.14 Opr Vega-MESA CREEK D Rel                37486.00004      1.       1 7200784            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.15 Opr Vega-WEST SIDE D Rel                 37486.00004      1.       1 7200933            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.16 Opr Vega-ARKANSAS D Rel                  37486.00004      1.       1 7200514            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.17 Opr Vega-KING D Rel                      37486.00004      1.       1 7200731            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.18 Opr Vega-MASON EDDY D (Irr) Rel          37486.00004      1.       1 7200766_I          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+#72038440.19 Opr Vega Bookovr for 583                 37486.00001     12.       1 7203844            3 7203844            1 72005830.01        0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+#                                    1 1 1 1 1 1 1 1 1 1 1 1
+#72038440.20  Opr Vega Bookovr for 542                 37486.00001     12.       1 7203844            3 7203844            1 72005420.01        0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+#                                    1 1 1 1 1 1 1 1 1 1 1 1
+#72038440.21 Opr Vega-GOLDEN AGE Rel                  37486.00003      1.       1 7200643            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.22 Opr Vega-KIGGINS GOYN Rel                37486.00003      1.       1 7200729            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.23 Opr Vega-EAKIN SMITH Rel                 37486.00003      1.       1 7200607            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.24 Opr Vega-BERTHOLF LANHAM Rel             37486.00003      1.       1 7200533            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.25 Opr Vega-SILVER GAUGE Rel                37486.00003      1.       1 7200870            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.26 Opr Vega-WILDCAT D Rel                   37486.00003      1.       1 7200938            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.27 Opr Vega-COAKLEY KIGGINS Rel             37486.00003      1.       1 7200574            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.28 Opr Vega-PARK VIEW D Rel                 37486.00003      1.       1 7200823            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.29 Opr Vega-MORMON MESA Rel                 37486.00003      1.       1 7200799            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.30 Opr Vega-TEMS DITCH Rel                  37486.00003      1.       1 720911             1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.31 Opr Vega-PALMER DITCH Rel                37486.00003      1.       1 7200818            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.32 Opr Vega Bkovr for 7204033AG0            37486.00002     12.       1 7203844            3 7203844            1 7204033AG0.01      0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+#                                    1 1 1 1 1 1 1 1 1 1 1 1
+#72038440.33 Opr Vega Bkovr for 7204033AG0            37486.00002     12.       1 7203844            3 7203844            1 7203904AG0.01     0       6 NA           NA                  0       0       0    9999 Paper Exchange Between Reservoirs
+#                                    1 1 1 1 1 1 1 1 1 1 1 1
+72038440.34 Opr Vega-72_ADC051                       37486.00005      0.       1 72_ADC051          1 7203844            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+72038440.35 Opr Vega-72_ADC052                       37486.00005      1.       1 72_ADC052          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.36 Opr Vega-72_ADC053                       37486.00005      1.       1 72_ADC053          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.37 Opr Vega-72_ADC056                       37486.00005      1.       1 72_ADC056          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.38 Opr Vega-72_ADC057                       37486.00005      1.       1 72_ADC057          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.39 Opr Vega-72_ADC059                       37486.00005      1.       1 72_ADC059          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.40 Opr Vega-72_ADC060                       37486.00005      1.       1 72_ADC060          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.41 Opr Vega-72_ADC061                       37486.00005      1.       1 72_ADC061          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.42 Opr Vega-72_ADC062                       37486.00005      1.       1 72_ADC062          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.43 Opr Vega-72_ADC063                       37486.00005      1.       1 72_ADC063          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+#72038440.44 Opr Vega-72_ADC059-Big                   37486.00005      1.       1 72_ADC059          1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.45 Opr Vega-72_ADC060-Cott                  37486.00005      1.       1 72_ADC060          1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+72038440.46 Opr Vega-NEW ERIE CANAL                  37486.00004      0.       1 7200616            1 7203844            1 0                  0       4 NA           NA                  0       0       0    9999 Reservoir Release to Direct Flow by Exchange
+72038440.47 Opr Vega-BULL BASIN HIGHLINE D           37486.00004      1.       1 7200557            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.48 Opr Vega-RMG (Mel) DITCH                 37486.00004      1.       1 7200852_D          1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.49 Opr Vega-JOHNSON STEWART DITCH           37486.00004      1.       1 7200721            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+72038440.50 Opr Vega-PARKER DITCH                    37486.00004      1.       1 7200821            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+#72038440.52 Opr Vega-RMG (Mel) DITCH                 37486.00003      1.       1 7200852_D          1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.53 Opr Vega-JOHNSON STEWART DITCH           37486.00003      1.       1 7200721            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.54 Opr Vega-PARKER DITCH                    37486.00003      1.       1 7200821            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+#72038440.55 Opr Vega-DAVENPORT DITCH                 37486.00003      1.       1 7200596            1 7203844            3 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+#                                    7200879
+72038440.56 Opr Vega to target                       99999.99999      0.       1 0                  0 7203844            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+72038440.57 Opr Vega-PALMER DITCH Rel                37486.00004      1.       1 7200818            1 7203844            1 0                  1       2 NA           NA                  0       0       0    9999 Reservoir to a Direct Flow or Reservoir or Carrier
+                                    7200879
+#---------------------------------------------------
+# Leon Creek Aggregated Reservoir Operating Rules
+#---------------------------------------------------
+72038390.01 Opr Leon Res-Leon Tunnel                 22995.18426      0.       1 7204715            1 7203839            1 0                  0       2
+72038420.01 Opr Monument Res-Kiggins Sal             37037.00001      0.       1 7200730_D          1 7203842            1 0                  0       2
+72038420.02 Opr Monument Res-Leon Ditch              32811.00001      0.       1 7200744            1 7203842            1 0                  0       2
+72038390.02 Opr Leon Res to target                   99999.99999      0.       1 0                  0 7203839            0 0                  0       9
+72038420.02 Opr Monument Res to target               99999.99999      0.       1 0                  0 7203842            0 0                  0       9
+#
+#------------------------------------------------------------------------
+# Multi Structure Operating Rules
+#   MS operating rules are not included (i.e., off) in Historic operating file 
+#   (driven by historical heagdate diversions)
+#------------------------------------------------------------------------ 
+51009410.01 Vail Irr Multistructure                  21814.00001      0.       1 5100941            1 5101231.01         0 0                  0      11 NA           Diversion           0       0       0    9999 Carrier to a Ditch or Reservoir
+36008010.01 Smith Ditch Multistructure               16223.00000      0.       1 3600801            1 3600832.01         0 0                  0      11 NA           Diversion           0       0       0    9999 Carrier to a Ditch or Reservoir
+53008830.01 Wilson and Doll Ditch Multistructure     20427.19199      0.       1 5300883            1 5200731.01         0 0                  0      11 NA           Diversion           0       0       0    9999
+53008830.02 Wilson and Doll Ditch Multistructure     33023.26662      0.       1 5300883            1 5200731.02         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999
+53008830.03 Wilson and Doll Ditch Multistructure     33023.26662      0.       1 5300883            1 5200731.03         0 0                  0      11 NA           Diversion         0.0     0.0       0    9999
+#
+#---------------------------------------------------
+# Eagle Park Reservoir Operating Rules
+#---------------------------------------------------
+37036990.0l Eagle Park Reservoir to target           99999.99999      0.       1 0                  0 3703699            0 0                  0       9 NA           NA                  0       0       0    9999 Reservoir Release to Target
+#---------------------------------------------------
+# Chevron Operating Rules (future) 
+#---------------------------------------------------
+#
+#Chev_Pln.01 Dragert to Plan                          37503.36530      0.       1 Drag_Pln           1 3900710.01       100 NA                 0      24 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+#   5640.  5640.  5640. 5640. 5640. 5640. 5640. 5640. 5640. 5640. 5640. 5640.  68000.0
+#Chev_Pln.02 Getty to Plan                            37503.36770      0.       1 Getty_Pln          1 7201478.01       100 NA                 0      24 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+#   3360.  3360.  3360. 3360. 3360. 3360. 3360. 3360. 3360. 3360. 3360. 3360.  40320.0
+#Chev_Pln.03 Eaton to Plan                            37503.36990      0.       1 Eaton_Pln          1 3900712.01       100 NA                 0      24 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+#   6000.  6000.  6000. 6000. 6000. 6000. 6000. 6000. 6000. 6000. 6000. 6000.  72000.0
+#Chev_Pln.04 Pacific to Plan                          37780.00000      0.       1 Pacif_Pln          1 7201523.01       100 NA                 0      24 NA           Diversion           0       0       0    9999 Direct flow rights to admin plan
+#   3435.  3435.  3435. 3435. 3435. 3435. 3435. 3435. 3435. 3435. 3435. 3435.  41220.0
+#ChevDem0.01 Opr Dragert to Demand                    37503.36531      0.       1 ChevDem            1 Drag_Pln         100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#ChevDem0.02 Opr Getty to Demand                      37503.36771      0.       1 ChevDem            1 Getty_Pln        100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#ChevDem0.03 Opr Eaton to Demand                      37503.36991      0.       1 ChevDem            1 Eaton_Pln        100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#ChevDem0.04 Opr Pacific to Demand                    37780.00001      0.       1 ChevDem            1 Pacif_Pln        100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#ChevPln0.05 Opr Dragert to Roan                      42794.00001      1.       1 7003602            1 Drag_Pln         100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#                                    3900710    0   Carrier
+#ChevPln0.06 Opr Getty to Roan                        42794.00002      1.       1 7003602            1 Getty_Pln        100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#                                    7201478    0   Carrier
+#ChevPln0.07 Opr Eaton to Roan                        42794.00003      1.       1 7003602            1 Eaton_Pln        100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#                                    3900712    0   Carrier
+#ChevPln0.08 Opr Pacific to Roan                      42794.00004      1.       1 7003602            1 Pacif_Pln        100 NA                 0      27 NA           Diversion          -1       0       0    9999 AcctPlan to Demand
+#                                    7201523    0   Carrier
+#ChevDem0.05 Opr Roan to Demand                       42794.00009      0.       1 ChevDem            1 7003602            1 0                  0       3
+#ChevDem0.06 Opr Parachute to Demand                  43829.42718      0.       1 ChevDem            1 3903943            1 0                  0       3
+#ChevDem0.07 Opr Roan to Parachute                    43829.42719      0.       1 3903943            1 7003602            1 0                  0       3
+#40007510.08 Dragert Plan Spill                       42794.00005      0.       1 NA                 0 Drag_Pln           0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+#40007510.08 Getty   Plan Spill                       42794.00006      0.       1 NA                 0 Getty_Pln          0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+#40007510.08 Eaton   Plan Spill                       42794.00007      0.       1 NA                 0 Eaton_Pln          0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+#40007510.08 Pacific Plan Spill                       42794.00008      0.       1 NA                 0 Pacif_Pln          0 NA                 0      29 NA           NA                  0       0                 Spill AcctSplit_Plan
+#
+#--------------------------------
+# Soil Moisture Use Operating Rule
+#--------------------------------
+#
+Opr_22      Opr Soil Moisture                        90000.00000      0.       1 N/A                0 N/A                0 0                  0      22 NA           NA                  0       0       0    9999 Soil Moisture Reservoir Operations

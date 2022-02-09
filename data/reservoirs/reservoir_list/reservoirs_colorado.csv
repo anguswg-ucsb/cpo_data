@@ -1,0 +1,116 @@
+ID,Name/ Description,Data Type,Time Step,Sequence ID,Units,Start,End,Input Type,Input Name
+3603543,GREEN MTN RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603543-1,GREEN MTN RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603543-2,GREEN MTN RES - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603543-3,GREEN MTN RES - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603543-4,GREEN MTN RES - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603543-5,GREEN MTN RES - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603543-6,GREEN MTN RES - Account 6,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603570,CONT_HOOSIER_BLUE_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603570-1,CONT_HOOSIER_BLUE_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603570-2,CONT_HOOSIER_BLUE_RES - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603570-3,CONT_HOOSIER_BLUE_RES - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575,CLINTON GULCH RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-1,CLINTON GULCH RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-2,CLINTON GULCH RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-3,CLINTON GULCH RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-4,CLINTON GULCH RESERVOIR - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-5,CLINTON GULCH RESERVOIR - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-6,CLINTON GULCH RESERVOIR - Account 6,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-7,CLINTON GULCH RESERVOIR - Account 7,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-8,CLINTON GULCH RESERVOIR - Account 8,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3603575-9,CLINTON GULCH RESERVOIR - Account 9,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3604512,DILLON RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3604512-1,DILLON RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3604512-2,DILLON RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3604512-3,DILLON RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3604512-4,DILLON RESERVOIR - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3604512-5,DILLON RESERVOIR - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+36_ARC001,36_ARC001,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+36_ARC001-1,36_ARC001 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3704516,HOMESTAKE PROJ RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3704516-1,HOMESTAKE PROJ RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3704516-2,HOMESTAKE PROJ RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3704516-3,HOMESTAKE PROJ RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+37_ARC002,37_ARC002,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+37_ARC002-1,37_ARC002 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713,RUEDI_RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713-1,RUEDI_RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713-2,RUEDI_RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713-3,RUEDI_RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713-4,RUEDI_RESERVOIR - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713-5,RUEDI_RESERVOIR - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3803713-6,RUEDI_RESERVOIR - Account 6,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+38_ARC003,38_ARC003,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+38_ARC003-1,38_ARC003 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903505,GRASS VALLEY RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903505-1,GRASS VALLEY RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903508,RIFLE GAP RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903508-1,RIFLE GAP RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903508-2,RIFLE GAP RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903508_Ex,,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903508_Ex-1, - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903943,Parachute Creek Res,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903943-1,Parachute Creek Res - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+3903943-2,Parachute Creek Res - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+39_ARC004,39_ARC004,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+39_ARC004-1,39_ARC004 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+45_ARC005,45_ARC005,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+45_ARC005-1,45_ARC005 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668,WOLFORD_MOUNTAIN_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-1,WOLFORD_MOUNTAIN_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-2,WOLFORD_MOUNTAIN_RES - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-3,WOLFORD_MOUNTAIN_RES - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-4,WOLFORD_MOUNTAIN_RES - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-5,WOLFORD_MOUNTAIN_RES - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-6,WOLFORD_MOUNTAIN_RES - Account 6,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-7,WOLFORD_MOUNTAIN_RES - Account 7,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-8,WOLFORD_MOUNTAIN_RES - Account 8,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5003668-9,WOLFORD_MOUNTAIN_RES - Account 9,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+50_ARC006,50_ARC006,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+50_ARC006-1,50_ARC006 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103686,MEADOW CREEK RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103686-1,MEADOW CREEK RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103686-2,MEADOW CREEK RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103686-3,MEADOW CREEK RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103695,CBT SHADOW MOUNTAIN LAKE,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103695-1,CBT SHADOW MOUNTAIN LAKE - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103695-2,CBT SHADOW MOUNTAIN LAKE - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103709,WILLIAMS FORK RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103709-1,WILLIAMS FORK RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103709-2,WILLIAMS FORK RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103709-3,WILLIAMS FORK RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103709-4,WILLIAMS FORK RESERVOIR - Account 4,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103709-5,WILLIAMS FORK RESERVOIR - Account 5,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103710,CBT WILLOW CREEK RESERVO,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103710-1,CBT WILLOW CREEK RESERVO - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5103710-2,CBT WILLOW CREEK RESERVO - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5104055,CBT GRANBY RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5104055-1,CBT GRANBY RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5104055-2,CBT GRANBY RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+5104055-3,CBT GRANBY RESERVOIR - Account 3,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+51_ARC007,51_ARC007,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+51_ARC007-1,51_ARC007 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+52_ARC008,52_ARC008,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+52_ARC008-1,52_ARC008 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+53_ARC009,53_ARC009,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+53_ARC009-1,53_ARC009 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7003602,Roan Creek Res,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7003602-1,Roan Creek Res - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203839,LEON_LAKEAGG_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203839-1,LEON_LAKEAGG_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203842,MONUMENTAGG_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203842-1,MONUMENTAGG_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203844,VEGA RESERVOIR,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203844-1,VEGA RESERVOIR - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203844-2,VEGA RESERVOIR - Account 2,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203904AG,BONHAMAGGREGATED_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203904AG-1,BONHAMAGGREGATED_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203961,JERRY_CREEK_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7203961-1,JERRY_CREEK_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7204033AG,COTTONWOODAGGREG_RES,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+7204033AG-1,COTTONWOODAGGREG_RES - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+72_ARC010,72_ARC010,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+72_ARC010-1,72_ARC010 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+72_ASC001,72_ASC001,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44
+72_ASC001-1,72_ASC001 - Account 1,Initial_Storage,Month,,ACFT,1949-10,2013-09,StateModB,P:\Projects\CRWAS StateMod\All Models\CRWAS_II_Models\Current\cm2015\cm2015B.b44

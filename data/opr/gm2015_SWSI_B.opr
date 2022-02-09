@@ -1,0 +1,482 @@
+#FileFormatVersion 2
+#
+#	SWSI Baseline Operations Rules File
+#   Updated to include _I/_O for muni structures
+#
+# Note 1: The basis of this file is the gm2009B_GBIPrbow2.opr file developed 
+#    for the Gunnison Basin Roundtable Basin Implementation Plan. All future operations
+#    rules are commented out.
+#
+# Note 2: All of the type 2, type 3, and type 4 rules are set to release to the full demand. 
+#
+# *******************************************************
+#
+#     Card 1   Control
+#     format:  (a12, a24, 12x, 2i4, i8, f8.0, i8, 3(i8,a12), 20i8)
+#
+#     ID       cidvri:          Operational Right ID
+#     Name     nameo:           Operational Right name
+#     AdminDat iodat(1-2,k):    Effective priority date
+#     Admin #  irtem:           Priority Number (smaller is most senoir)
+#     # Str    dum:             Number of intervenging structures
+#     On/Off   ioprsw(k):       Switch 0 = off,1 = on
+#     Dest ID  ciopde:          Destination reservoir or structure ID
+#     Dest Ac  iopdes(2,k):     Destination reservoir or structure account # (enter 1 for a diversion)
+#     Sou1 ID  ciopso(1)        Supply reservoir #1 or structure ID
+#     Sou1 Ac  iopsou(2,k):     Supply reservoir #1 or structure account # (enter 1 for a diversion)
+#     Sou2 ID  ciopso(2):       Supply reservoir #2 ID
+#     Sou1 Ac  iopsou(4,k):     Supply reservoir #2 account
+#     Type     ityopr(k):       Switch
+#                        1 = Reservoir Release to an instream demand
+#                        2 = Reservoir Release to a direct diversion demand
+#                        3 = Reservoir Release to a direct diversion demand by a carrier
+#                        4 = Reservoir Release to a direct diversion demand by exchange
+#                        5-8 Not used
+#                        9 = Reservoir Release for target contents
+#                        10 = Not used
+#                        11 = Direct flow demand thru intervening structures
+#                        12 = Roperate
+#
+# *****************************************************************************
+#     Card 2   Carrier Ditch data (include only if idum > 0
+#     format:  (free)
+#
+#     Inter    itern(1,j)      intervening direct diversion structure id's
+#                              Enter # Str values
+#
+#
+# *****************************************************************************
+#
+# ID        Name                    NA                    Admin#   # Str  On/Off Dest Id     Dest Ac  Sou1 Id     Sou1 Ac  Sou2 Id     Sou2 Ac     Type ReusePlan     Div Type    OprLoss    Limit   ioBeg   ioEnd Comment
+# ---------eb----------------------eb----------exxxxb----------eb------eb------e-b----------eb------e-b----------eb------e-b----------eb------eb------exb----------exb----------exb------eb------eb------eb------exb----- 
+#
+# Taylor Park Reservoir Operations
+#59036660.01 Opr Taylor to Gunn. Tun.                 20393.18781      0.       1 6200617            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+59036660.02 Opr Taylor Park Min                      49348.22950      0.       1 5903666_M          1 5903666            1 0                  0       1 NA           NA                  0       0       0    9999
+59036660.03 Opr Taylor Park Min                      49348.22950      0.       1 5903666_M          1 5903666            3 0                  0       1 NA           NA                  0       0       0    9999
+59036660.04 Opr Taylor Park Target                   99999.99999      0.       1 0                  0 5903666            0 0                  0       9 NA           NA                  0       0       0    9999
+59036660.05 Opr Taylor to South                      49348.22951      1.       1 4100578            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617      
+59036660.06 Opr Taylor to West                       49348.22951      1.       1 4100577            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617                                                                                                   
+59036660.07 Opr Taylor to M&D                        49348.22951      1.       1 4100545            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617   
+59036660.08 Opr Taylor to Loutz                      49348.22951      1.       1 4100537            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617   
+59036660.09 Opr Taylor to Seilig                     49348.22951      1.       1 4100559            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617   
+59036660.10 Opr Taylor to Ironst                     49348.22951      1.       1 4100534_D          1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617   
+59036660.11 Opr Taylor to East                       49348.22951      1.       1 4100520            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617   
+59036660.12 Opr Taylor to Garnet                     49348.22951      1.       1 4100527            1 5903666            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617   
+59036660.13 Opr Taylor Park Bookover                 99999.99999     12.       1 5903666            1 5903666            3 0                  0       6 NA           NA                  0       0       0    9999
+                           1 0 0 0 0 0 0 0 0 0 0 0                                          
+#
+# Overland Project
+#
+40033990.01 Opr Overland to Over. D.                 35997.00001      1.       1 4000944_D          1 4003399            1 0                  1       3 NA           NA                  0       0       0    9999
+                                    4000585
+#40033990.02 Opr Overland Target                      99999.99999      0.       1 0                  0 4003399            1 0                  0       9 NA           NA                  0       0       0    9999
+40009440.01 Opr U Overland to L Over                 21263.15919      0.       1 4000944_D          1 4000585.01          0 0                  0     11 NA           NA                  0       0       0    9999
+40009440.02 Opr U Overland to L Over                 25301.00000      0.       1 4000944_D          1 4000585.02          0 0                  0     11 NA           NA                  0       0       0    9999
+#
+# Paonia Project
+40034160.01 Opr Paonia to Fire Mtn                   43829.43799      0.       1 4001133            1 4003416            1 0                  0       2 NA           NA                  0       0       0    9999
+40034160.02 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001120            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.03 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001221            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.04 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001119            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.05 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001106            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.06 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001105            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.07 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001145            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.08 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001168            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.09 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001112            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.10 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001201            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.11 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001214            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.12 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001166_D          1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.13 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001122            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.14 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001087            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.15 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001114            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.16 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001127            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.17 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001118            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.18 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001132            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.19 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001207            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.20 Opr Paonia Exc R.Mtn                     43829.43799      0.       1 4001218            1 4003416            2 0                  0       4 NA           NA                  0       0       0    9999
+40034160.21 Opr Paonia Target                        99999.99999      0.       1 0                  0 4003416            0 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Aspinall Unit Operations
+PPLimit.01  Power Plant Capacity Limit                   1.00000      0.       1 NA                 1 PPLimitPLN        10 0                  0      47 NA           Diversion           0       1       0    9999 Monthly Release Limited to Power Plant Capacity
+  335112 324302 335112 335112 302682 335112 324302 335112 324302 335112 335112 324302 3945677
+62035320.01 Opr Blue Mesa Bookover                       1.00000     12.       1 6203532            3 6203532            1 59036660.02        0       6 NA           NA                  0       0       0    9999
+                           1 1 1 1 1 1 1 1 1 1 1 1
+62035320.02 Opr Blue Mesa Bookover                       1.00000     12.       1 6203532            3 6203532            1 59036660.03        0       6 NA           NA                  0       0       0    9999
+                           1 1 1 1 1 1 1 1 1 1 1 1
+62035320.03 Opr Blue Mesa Target                     99999.99997      0.       1 0                  0 6203532            0 0                  0       9 NA           NA                  0       0       0    9999
+#62035320.04 Opr Blue Mesa-Gunnison Tu                20393.18780      0.       1 6200617            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+62035320.05 Opr Blue Mesa to Fairview                20393.18782      1.       1 41_Fairvw          1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.06 Opr Blue Mesa to Black C                 42347.00001      0.       1 6201540            1 6203532            1 0                  0       1 NA           NA                  0       0       0    9999
+62035320.07 Opr Blue Mesa to South                   20393.18782      1.       1 4100578            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.08 Opr Blue Mesa to West                    20393.18782      1.       1 4100577            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.09 Opr Blue Mesa to M&D                     20393.18782      1.       1 4100545            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.10 Opr Blue Mesa to Loutz                   20393.18782      1.       1 4100537            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.11 Opr Blue Mesa to Seilig                  20393.18782      1.       1 4100559            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.12 Opr Blue Mesa to Ironst                  20393.18782      1.       1 4100534_D          1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.13 Opr Blue Mesa to East                    20393.18782      1.       1 4100520            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.14 Opr Blue Mesa to Garnet                  20393.18782      1.       1 4100527            1 6203532            3 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200617     
+62035320.15 Opr Blue Mesa to NPS BC                  99999.99998      0.       1 62_NPS             1 6203532            1 0                  0       1 NA           NA                  0       0       0    9999
+62035320.16 Opr Blue Mesa to USFWS                   99999.99999      0.       1 42_USFWS           1 6203532            1 0                  0      27 NA           Diversion           0       2       0    9999
+                                    PPLimit.01
+62035450.01 Opr Morrow Point - Target                99999.99997      0.       1 0                  0 6203545            1 0                  0       9 NA           NA                  0       0       0    9999
+62035780.01 Opr Crystal - Target                     99999.99997      0.       1 0                  0 6203578            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Operate Gunnison Tunnel
+41005780.01 Opr Gun Tunnel to South                  20393.18779      0.       1 4100578            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.02 Opr Gun Tunnel to West                   20393.18779      0.       1 4100577            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.03 Opr Gun Tunnel to M&D                    20393.18779      0.       1 4100545            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.04 Opr Gun Tunnel to Loutz                  20393.18779      0.       1 4100537            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.05 Opr Gun Tunnel to Seilig                 20393.18779      0.       1 4100559            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.06 Opr Gun Tunnel to Ironst                 20393.18779      0.       1 4100534_D          1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.07 Opr Gun Tunnel to East                   20393.18779      0.       1 4100520            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.08 Opr Gun Tunnel to Garnet                 20393.18779      0.       1 4100527            1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+41005780.09 Opr Gun Tunnel to Fairview               20393.18779      0.       1 41_Fairvw          1 6200617.01         0 0                  0      11 NA           NA                  0       0       0    9999
+#
+# Dallas Creek Project 
+# Ridgeway Reservoir Operations
+68036750.01 Opr Ridgway Book-BMesa                       1.00000     12.       1 6803675            6 6803675            1 62035320.05        0       6 NA           NA                  0       0       0    9999
+                           1 1 1 1 1 1 1 1 1 1 1 1
+68036750.02 Opr Ridgway Book-Tun                         1.00000     12.       1 6803675            6 6803675            1 41005780.09        0       6 NA           NA                  0       0       0    9999
+                           1 1 1 1 1 1 1 1 1 1 1 1
+68036750.03 Opr Ridgway to M&D                       20393.18780      0.       1 4100545            1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.04 Opr Ridgway to Loutz                     20393.18780      0.       1 4100537            1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.05 Opr Ridgway to Seilig                    20393.18780      0.       1 4100559            1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.06 Opr Ridgway to Ironston                  20393.18780      0.       1 4100534_D          1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.07 Opr Ridgway to East                      20393.18780      0.       1 4100520            1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.08 Opr Ridgway to Garnet                    20393.18780      0.       1 4100527            1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.09 Opr Ridgway to West                      20393.18780      0.       1 4100577            1 6803675            6 0                  0       2 NA           NA                  0       0       0    9999
+68036750.10 Opr Ridgway to M&D                       20393.18781      0.       1 4100545            1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.11 Opr Ridgway to Loutz                     20393.18781      0.       1 4100537            1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.12 Opr Ridgway to Seilig                    20393.18781      0.       1 4100559            1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.13 Opr Ridgway to Ironston                  20393.18781      0.       1 4100534_D          1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.14 Opr Ridgway to East                      20393.18781      0.       1 4100520            1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.15 Opr Ridgway to Garnet                    20393.18781      0.       1 4100527            1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.16 Opr Ridgway to West                      20393.18781      0.       1 4100577            1 6803675            2 0                  0       2 NA           NA                  0       0       0    9999
+68036750.17 Opr Ridgway Target                       99999.99999      0.       1 0                  0 6803675            0 0                  0       9 NA           NA                  0       0       0    9999
+68036750.18 Opr Ridgway Book-Exchange                    1.00000     12.       1 6803675            2 6803675            6 0                  0       6 NA           NA                  0       0       0    9999
+                           1 0 0 0 0 0 0 0 0 0 0 0
+68036750.19 Opr Ridgway Book-Exchange                    1.00000     12.       1 6803675            1 6803675            6 0                  0       6 NA           NA                  0       0       0    9999
+                           1 0 0 0 0 0 0 0 0 0 0 0
+68036750.20 Opr Ridgway Book-Exchange                    1.00000     12.       1 6803675            3 6803675            6 0                  0       6 NA           NA                  0       0       0    9999
+                           1 0 0 0 0 0 0 0 0 0 0 0
+68036750.21 Opr Ridgway to MinFlow                   99999.99999      0.       1 6803675_M          1 6803675            3 0                  0       1 NA           NA                  0       0       0    9999
+#
+# Smith Fork Project - Crawford Reservoir
+40006050.01 Opr SFFeeder  - Crawford                 38064.35309      0.       1 4003553            1 4000605.01         0 0                  0      11 NA           NA                  0       0       0    9999
+40006050.02 Opr SFFeeder  - Crawford                 47847.47095      0.       1 4003553            1 4000605.02         0 0                  0      11 NA           NA                  0       0       0    9999
+40005080.01 Opr Aspen Ditch to Grandview             21263.18487      0.       1 4000503            1 4000508.01         0 0                  0      11 NA           NA                  0       0       0    9999
+40005080.02 Opr Aspen Ditch to Grandview             25807.23557      0.       1 4000503            1 4000508.02         0 0                  0      11 NA           NA                  0       0       0    9999
+40005080.03 Opr Aspen Ditch to Grandview             31924.18487      0.       1 4000503            1 4000508.03         0 0                  0      11 NA           NA                  0       0       0    9999
+40005090.01 Opr Aspen Canal to Needle Rock           38064.35309      0.       1 4000501            1 4000509.01         0 0                  0      11 NA           NA                  0       0       0    9999
+# Crawford Reservoir
+40035530.01 Opr Crawford to Clipper                  31924.12154      0.       1 4000500            1 4003553            1 0                  0       3 NA           NA                  0       0       0    9999
+40035530.02 Opr Crawford Exc to Daisy                31924.13697      0.       1 4000536            1 4003553            1 0                  0       4 NA           NA                  0       0       0    9999
+40035530.03 Opr Crawford Exc to Virgina              31924.13868      0.       1 4000616            1 4003553            1 0                  0       4 NA           NA                  0       0       0    9999
+40035530.04 Opr Crawford - Grandview via Aspen D     31924.18488      1.       1 4000503            1 4003553            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    4000508
+40035530.05 Opr Crawford Exc Needle Rock             31924.29261      0.       1 4000501            1 4003553            1 0                  0       4 NA           NA                  0       0       0    9999
+40035530.06 Opr Crawford Exc Saddle Mtn.             31924.29276      0.       1 4000502            1 4003553            1 0                  0       4 NA           NA                  0       0       0    9999
+40035530.07 Opr Crawford to Needle Rock              38064.35310      1.       1 4000501            1 4003553            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    4000509 
+#40035530.08 Opr Crawford Target                      99999.99998      0.       1 0                  0 4003553            0 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Fruitland Mesa
+4005490.01  Opr Fruit Imp - FruitIrr                 21263.18764      0.       1 4000549_I          1 4000549.01         0 0                  0      11 NA           NA                  0       0       0    9999
+4005490.02  Opr Fruit Imp - FruitRes                 25807.18764      0.       1 4003395            1 4000549.02         0 0                  0      11 NA           NA                  0       0       0    9999
+4005490.03  Opr Fruit Imp - FruitIrr                 25807.23557      0.       1 4000549_I          1 4000549.03         0 0                  0      11 NA           NA                  0       0       0    9999
+4005490.04  Opr Fruit Imp - FruitIrr                 31924.18764      0.       1 4000549_I          1 4000549.04         0 0                  0      11 NA           NA                  0       0       0    9999
+4005490.05  Opr Fruit Imp - FruitRes                 31924.18764      0.       1 4003395            1 4000549.05         0 0                  0      11 NA           NA                  0       0       0    9999
+4033950.01  Opr Fruit Res - FruitIrr                 31924.18766      0.       1 4000549_I          1 4003395            1 0                  0       2 NA           NA                  0       0       0    9999
+#4033950.02  Opr Fruit Res - Target                   99999.99999      0.       1 0                  0 4003395            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Bostwick Project operations
+# Cimarron Canal and Silverjack Reservoir
+62005600.01 Opr Cimar Imp - Bostwick                 19810.19448      0.       1 6200560_I          1 6200560.01         0 0                  0      11 NA           NA                  0       0       0    9999
+62005600.02 Opr Cimar Imp - Cerro                    19810.19448      0.       1 41_Cerro           1 6200560.01         0 0                  0      11 NA           NA                  0       0       0    9999
+62005600.03 Opr Cimar Imp - Bostwick                 20393.20175      0.       1 6200560_I          1 6200560.02         0 0                  0      11 NA           NA                  0       0       0    9999
+62005600.04 Opr Cimar Imp - Cerro                    20393.20175      0.       1 41_Cerro           1 6200560.02         0 0                  0      11 NA           NA                  0       0       0    9999
+62005600.05 Opr Cimar Imp - Bostwick                 27585.27545      0.       1 6200560_I          1 6200560.03         0 0                  0      11 NA           NA                  0       0       0    9999
+62005600.06 Opr Cimar Imp - Cerro                    27585.27545      0.       1 41_Cerro           1 6200560.03         0 0                  0      11 NA           NA                  0       0       0    9999
+62035480.01 Opr SilverJack- Bostwick                 38532.00001      1.       1 6200560_I          1 6203548            1 0                  0       2 NA           NA                  0       0       0    9999
+                                    6200560     
+#62035480.02 Opr SilverJack - Target                  99999.99999      0.       1 0                  0 6203548            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Project 7
+41Cerro.01  Opr Cerro to Proj 7_I                    27585.27547      0.       1 41_Proj_7_I        1 41_Cerro           1 0                  0       2 NA           NA                  0       0       0    9999
+41Cerro.02  Opr Cerro to Proj 7_O                    27585.27547      0.       1 41_Proj_7_O        1 41_Cerro           1 0                  0       2 NA           NA                  0       0       0    9999
+41Fairv.01  Opr Fairview to Proj 7_I                 27585.27548      0.       1 41_Proj_7_I        1 41_Fairvw          1 0                  0       2 NA           NA                  0       0       0    9999
+41Fairv.02  Opr Fairview to Proj 7_O                 27585.27548      0.       1 41_Proj_7_O        1 41_Fairvw          1 0                  0       2 NA           NA                  0       0       0    9999
+#
+# Fruitgrowers
+40007510.01 Opr Alfalfa D to Alfafa IRR              11674.00000      0        1 4000751_I          1 4000751.01         0 0                  0      11 NA           NA                  0       0       0    9999   
+40007510.02 Opr Alfalfa D to Alfafa IRR              22370.00000      0        1 4000751_I          1 4000751.02         0 0                  0      11 NA           NA                  0       0       0    9999   
+40007510.03 Opr Alfalfa D to Alfafa IRR              29260.23550      0        1 4000751_I          1 4000751.03         0 0                  0      11 NA           NA                  0       0       0    9999   
+40007510.04 Opr Alfalfa D to Alfafa IRR              56978.11674      0        1 4000751_I          1 4000751.04         0 0                  0      11 NA           NA                  0       0       0    9999   
+40007510.05 Opr Alfalfa D to Fruitgrower             20501.17820      1        1 4003365            1 4003365.01         0 4000751            0      11 NA           NA                  0       0       0    9999
+                                    4000751
+40007510.06 Opr Alfalfa D to Fruitgrower             38064.31950      1        1 4003365            1 4003365.02         0 4000751            0      11 NA           NA                  0       0       0    9999
+                                    4000751
+40033650.01 Opr FruitGrow via Transfer               27528.00000      0.       1 4003365            1 4000821.01         0 0                  0      11 NA           NA                  0       0       0    9999
+40033650.02 Opr FruitGrow via Transfer               29261.00000      0.       1 4003365            1 4000821.02         0 0                  0      11 NA           NA                  0       0       0    9999
+40033650.03 Opr Fruit Growers to Alfafa IRR          56978.11675      0        1 40007510.02        1 4003365            1 0                  0       7 NA           NA                  0       0       0    9999   
+40033650.04 Opr Fruit Growers to Stell               29260.15798      0.       1 4000820_D          1 4003365            1 0                  0       2 NA           NA                  0       0       0    9999
+#40033650.05 Opr Fruit Growers - Target               99999.99999      0.       1 0                  0 4003365            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Operations in the Tomichi Creek Area
+#
+# Needle Creek Reservoir Releases in support of Tomichi Creek
+28035933.01 Opr Needle- NEEDLE CREEK DITCH           28311.11110      0.       1 2800658            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+28035933.02 Opr Needle- OWEN NO 2 DITCH              16192.12054      0.       1 2800666            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+28035933.03 Opr Needle- SHIPMAN LATERALS NO 1&2      28311.19604      0.       1 2800684            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+28035933.04 Opr Needle- OWEN NO 3 DITCH              16192.11841      0.       1 2800849            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+# The following structures say "Non-decreed structure - Needle Creek Res Release" - per WC only get water from reservoir. Given the senior release rights to Needle Creek Reservoir
+28035933.05 Opr Needle- TY WATSON DITCH              16192.11838      0.       1 2801151            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+28035933.06 Opr Needle- HOOVER #1                    16192.11839      0.       1 2801152            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+28035933.07 Opr Needle- HOOVER #2                    16192.11840      0.       1 2801153            1 2803593            1 0                  0       2 NA           NA                  0       0       0    9999
+#28035933.08 Opr Needle- Target                       99999.99999      0.       1 0                  0 2803593            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Vouga Reservoir Releases in support of Tomichi Creek
+28035950.01 Opr Vouga- Anna No 1                     28311.12541      0.       1 2800507            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.02 Opr Vouga- Anna No 2                     28311.12541      0.       1 2800508            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.05 Opr Vouga- Hirdman Ditch DivSys          28311.10744      0.       1 2800586_D          1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.06 Opr Vouga- SNYDER DITCHES NOS 1&2        28311.11110      0.       1 2800687            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.07 Opr Vouga- SNYDER ROUSER DITCH           28311.23862      0.       1 2800689            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.08 Opr Vouga- A B COATS DITCH               28311.10333      0.       1 2800719            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.09 Opr Vouga- ERNEST VOUGA DITCH            35168.25000      0.       1 2800781            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.10 Opr Vouga- KENNEDY DITCH NO 1            28311.10302      0.       1 2800806            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.11 Opr Vouga- KENNEDY DITCH NO 2            10301.00001      0.       1 2800807            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+28035950.12 Opr Vouga- WATSON  DITCH NO 1            47847.40634      0.       1 2801055            1 2803595            1 0                  0       2 NA           NA                  0       0       0    9999
+#28035950.13 Opr Vouga-Target                         99999.99999      0.       1 0                  0 2803595            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Hot Springs Reservoir Releases in support of Tomichi Creek
+28035900.01 Opr HotSpgs- BENNETT MORTON DITCH        16192.13660      0.       1 2800513            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.02 Opr HotSpgs- HOT SPRINGS NO 1 DITCH      16192.14215      0.       1 2800589            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.03 Opr HotSpgs- L L BUSH DITCH NO 1         35168.27911      0.       1 2800613            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.04 Opr HotSpgs- L L BUSH DITCH NO 2         35168.27912      0.       1 2800614            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.05 Opr HotSpgs- L L BUSH DITCH NO 3         35168.27913      0.       1 2800615            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.06 Opr HotSpgs- L L BUSH DITCH NO 4         35168.27914      0.       1 2800616            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.07 Opr HotSpgs- L L BUSH DITCH NO 5         35168.27915      0.       1 2800617            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.08 Opr HotSpgs- WICKS ROWSER DITCH          16192.11607      0.       1 2800714            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.09 Opr HotSpgs- MCDONALD BERDEL EX D        19066.00001      0.       1 2800823            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+28035900.10 Opr HotSpgs- L L BUSH DITCH NO 6         51134.40268      0.       1 2801185            1 2803590            1 0                  0       2 NA           NA                  0       0       0    9999
+#28035900.11 Opr HotSpgs-Target                       99999.99999      0.       1 0                  0 2803590            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# McDonough Reservoir (3591) Releases in support of Tomichi Creek
+28035910.01 Opr McDon1- BILLY SANDERSON DITCH        28311.10746      0.       1 2800517            1 2803591            1 0                  0       2 NA           NA                  0       0       0    9999
+28035910.02 Opr McDon1- GOVERNMENT DITCH             28311.14178      0.       1 2800568_D          1 2803591            1 0                  0       2 NA           NA                  0       0       0    9999
+28035910.03 Opr McDon1- MCDONOUGH DITCH              28311.14108      0.       1 2800636            1 2803591            1 0                  0       2 NA           NA                  0       0       0    9999
+28035910.04 Opr McDon1- MILLER DITCH                 28311.11426      0.       1 2800652            1 2803591            1 0                  0       2 NA           NA                  0       0       0    9999
+28035910.05 Opr McDon1- NORTHSIDE DITCH              31685.00001      0.       1 2800661            1 2803591            1 0                  0       2 NA           NA                  0       0       0    9999
+#28035910.06 Opr McDon1- Target                       99999.99999      0.       1 0                  0 2803591            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# McDonough Reservoir No. 2 (3592) Releases in support of Tomichi Creek
+28035920.01 Opr McDon2- BILLY SANDERSON DITCH        28311.10745      0.       1 2800517            1 2803592            1 0                  0       4 NA           NA                  0       0       0    9999
+28035920.02 Opr McDon2- GOVERNMENT DITCH             28311.14179      0.       1 2800568_D          1 2803592            1 0                  0       2 NA           NA                  0       0       0    9999
+28035910.03 Opr McDon2- MCDONOUGH DITCH              28311.14109      0.       1 2800636            1 2803592            1 0                  0       2 NA           NA                  0       0       0    9999
+#28035910.04 Opr McDon2- Target                       99999.99999      0.       1 0                  0 2803592            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Peterson Reservoir Releases in support of Tomichi Creek
+# The following structure (1194) is missing a WR but has irrigated acreage in 2005 and diversions in the last few years. Found location on CDSS site. 
+# Gave operating rule senior release right to Peterson Reservoir (similar as to Needle Creek)
+28036740.01 Opr Peterson- PETERSON DITCH             16192.11079      0.       1 2801194            1 2803674            1 0                  0       2 NA           NA                  0       0       0    9999
+28036740.02 Opr Peterson- KENNEDY DITCH NO 5         16192.11080      0.       1 2800810            1 2803674            1 0                  0       4 NA           NA                  0       0       0    9999
+28036740.03 Opr Peterson- PEARCE DITCH               28311.10302      0.       1 2800672            1 2803674            1 0                  0       2 NA           NA                  0       0       0    9999
+#28036740.04 Opr Peterson- Target                     99999.99999      0.       1 0                  0 2803674            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Lower Dome Reservoir Releases in support of Tomichi Creek (283617)
+# None - Lower Dome Reservoir has a constant EOM
+#
+# Upper Dome Reservoir Releases in support of Tomichi Creek
+#28035940.01 Opr Upper Dome - Target                  99999.99999      0.       1 0                  0 2803594            1 0                  0       9 NA           NA                  0       0       0    9999
+#
+# Boulder Lake Releases in support of Tomichi Creek (283652)
+# None - Boulder Lake Reservoir has a constant EOM
+#
+Opr_22      Opr Soil Moisture                        90000.00000      0.       1 N/A                0 N/A                0 0                  0      22 NA           NA                  0       0       0    9999
+#
+##########################################################################################################################################################################################################################################################
+#
+#    Begin GBIP operations
+#
+#  Gunnison Ohio Canal diversion to Ohio Creek ditches
+#
+#5905700.01  Canal to Ditch                           39397.00000      1.       1 590720             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.02  Canal to Ditch                           39397.00000      1.       1 590578             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.03  Canal to Ditch                           39397.00000      1.       1 590645             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.04  Canal to Ditch                           39397.00000      1.       1 590563             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.05  Canal to Ditch                           39397.00000      1.       1 590587             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.06  Canal to Ditch                           39397.00000      1.       1 590709             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.07  Canal to Ditch                           39397.00000      1.       1 590596             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier 
+#5905700.08  Canal to Ditch                           39397.00000      1.       1 590847             1 590570.09          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590570 45 Carrier
+#
+#  Operations for Cunningham Gulch Reservoir
+#
+#CGRes.01    OhioCreek Carrier to Reservoir           39397.00022     12.       1 CGRes              1 CGRes_C.01         0 CGRes_C            0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#CGRes.02    MillCreek Carrier to Reservoir           39397.00023     12        1 CGRes              1 CGRes_M.01         0 CGRes_M            0      11 NA           NA                  0       0       0    9999 
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#CGRes.03    Opr Res to Demand                        39397.00024      0.       1 590631             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.04    Opr Res to Demand                        39397.00025      0.       1 590630             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.05    Opr Res to Demand                        39397.00026      0.       1 590589             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.06    Opr Res to Demand                        39397.00027      0.       1 590588             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.07    Opr Res to Demand                        39397.00028      0.       1 590692             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.08    Opr Res to Demand                        39397.00029      0.       1 590625             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.09    Opr Res to Demand                        39397.00030      0.       1 590580             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.10    Opr Res to Demand                        39397.00031      0.       1 590566             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.11    Opr Res to Demand                        39397.00032      0.       1 590655             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.12    Opr Res to Demand                        39397.00033      0.       1 590581             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.13    Opr Res to Demand                        39397.00034      0.       1 590720             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.14    Opr Res to Demand                        39397.00035      0.       1 590578             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.15    Opr Res to Demand                        39397.00036      0.       1 590645             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.16    Opr Res to Demand                        39397.00037      0.       1 590563             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.17    Opr Res to Demand                        39397.00038      0.       1 590587             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.18    Opr Res to Demand                        39397.00039      0.       1 590709             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.19    Opr Res to Demand                        39397.00040      0.       1 590596             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.20    Opr Res to Demand                        39397.00041      0.       1 590847             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.21    Opr Res to Demand                        39397.00042      0.       1 590581             1 CGRes              1 0                  1       2 NA           NA                  0       0       0    9999
+#CGRes.22    Opr Res to Demand                        39397.00043      0.       1 590501             1 CGRes              1 0                  1       4 NA           NA                  0       0       0    9999
+#CGRes.23    Opr Res to Demand                        39397.00044      0.       1 59_ADG006          1 CGRes              1 0                  1       4 NA           NA                  0       0       0    9999
+#CGRes.24    Opr Res to Demand                        39397.00045      0.       1 590671             1 CGRes              1 0                  1       4 NA           NA                  0       0       0    9999
+#CGRes.25    Opr Res to Demand                        39397.00046      0.       1 590644             1 CGRes              1 0                  1       4 NA           NA                  0       0       0    9999
+#CGRes.26    Opr Res to Demand                        39397.00047      0.       1 590680             1 CGRes              1 0                  1       4 NA           NA                  0       0       0    9999
+#CGRes.27    Opr Res to Demand                        39397.00048      0.       1 590711             1 CGRes              1 0                  1       4 NA           NA                  0       0       0    9999
+#  Operations for Meridian Reservoir
+#
+#593663_C.01 Washington Gulch Carrier                 39397.00048    -13.       1 593663             1 593663.01          1 593663_C           0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    593663_C 
+#593663_C.02 Washington Gulch Carrier                 39397.00048    -13.       1 593663             1 593663.02          1 593663_C           0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    593663_C 
+#593663_C.03 Washington Gulch Carrier                 39397.00048    -13.       2 593663             1 593663.03          1 593663_C           0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    593663_C 
+#593663_C.04 Washington Gulch Carrier                 39397.00048    -13.       1 593663             1 593663.04          1 593663_C           0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    593663_C 
+#593663.01   Opr Res to Demand                        39397.00049      0.       1 590510             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.02   Opr Res to Demand                        39397.00050      0.       1 59_ADG003          1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.03   Opr Res to Demand                        39397.00051      0.       1 590546             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.04   Opr Res to Demand                        39397.00052      0.       1 590522             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.05   Opr Res to Demand                        39397.00053      0.       1 590597             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.06   Opr Res to Demand                        39397.00054      0.       1 59_ADG004          1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.07   Opr Res to Demand                        39397.00055      0.       1 590549             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.08   Opr Res to Demand                        39397.00056      0.       1 590609             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.09   Opr Res to Demand                        39397.00057      0.       1 590593             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.10   Opr Res to Demand                        39397.00058      0.       1 590658             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.11   Opr Res to Demand                        39397.00059      0.       1 590600             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.12   Opr Res to Demand                        39397.00060      0.       1 590672             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.13   Opr Res to Demand                        39397.00061      0.       1 590509             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.14   Opr Res to Demand                        39397.00062      0.       1 590556             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.15   Opr Res to Demand                        39397.00063      0.       1 590667             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.16   Opr Res to Demand                        39397.00064      0.       1 590624             1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.17   Opr Res to Demand                        39397.00065      0.       1 59_ADG005          1 593663             1 0                  1       2 NA           NA                  0       0       0    9999
+#593663.18   Opr Res to ISF                           39397.00066      0.       1 591506             1 593663             2 0                  1       1 NA           NA                  0       0       0    9999
+#  Operations Long Branch Reservoir
+#
+#LB_Res.01   Long Branch Carrier                      39397.00067    -13.       1 LB_Res             1 LB_Res.01          1 LB_Res_C           0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    LB_Res_C
+#LB_Res.02   Opr Res to Demand                        39397.00068      0.       1 280535             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.03   Opr Res to Demand                        39397.00069      0.       1 280604             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.04   Opr Res to Demand                        39397.00070      0.       1 28_ADG009          1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.05   Opr Res to Demand                        39397.00071      0.       1 280564             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.06   Opr Res to Demand                        39397.00072      0.       1 280580             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.07   Opr Res to Demand                        39397.00073      0.       1 280668             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.08   Opr Res to Demand                        39397.00074      0.       1 280667             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.09   Opr Res to Demand                        39397.00075      0.       1 280550             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.10   Opr Res to Demand                        39397.00076      0.       1 280510             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999
+#LB_Res.11   Opr Res to Demand                        39397.00077      0.       1 280680             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999            
+#LB_Res.12   Opr Res to Demand                        39397.00078      0.       1 280536             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999            
+#LB_Res.13   Opr Res to Demand                        39397.00079      0.       1 280543             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999            
+#LB_Res.14   Opr Res to Demand                        39397.00080      0.       1 280654             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999            
+#LB_Res.15   Opr Res to Demand                        39397.00081      0.       1 280693             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999            
+#LB_Res.16   Opr Res to Demand                        39397.00082      0.       1 280532             1 LB_Res             1 0                  1       2 NA           NA                  0       0       0    9999            
+#LB_Res.17   Opr Res to Demand                        39397.00150      0.       1 280648             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.18   Opr Res to Demand                        39397.00151      0.       1 280647             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.19   Opr Res to Demand                        39397.00152      0.       1 280646             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.20   Opr Res to Demand                        39397.00153      0.       1 280645             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.21   Opr Res to Demand                        39397.00154      0.       1 280681             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.22   Opr Res to Demand                        39397.00155      0.       1 280527             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.23   Opr Res to Demand                        39397.00156      0.       1 280682             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.24   Opr Res to Demand                        39397.00157      0.       1 280528             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.25   Opr Res to Demand                        39397.00158      0.       1 280529             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999
+#LB_Res.26   Opr Res to Demand                        39397.00159      0.       1 280503             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.27   Opr Res to Demand                        39397.00160      0.       1 280608             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.28   Opr Res to Demand                        39397.00161      0.       1 280607             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.29   Opr Res to Demand                        39397.00162      0.       1 280642             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.30   Opr Res to Demand                        39397.00163      0.       1 280649             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.31   Opr Res to Demand                        39397.00164      0.       1 280650             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.32   Opr Res to Demand                        39397.00165      0.       1 280715             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#LB_Res.33   Opr Res to Demand                        39397.00166      0.       1 280716             1 LB_Res             1 0                  1       4 NA           NA                  0       0       0    9999            
+#
+#  Gunnison & Ohio Creek Canaldiversion to Ohio Creek ditches
+#
+#5905960.01  Canal to Ditch                           30667.21000      1.       1 590596             1 590569.03          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590569 20 Carrier 
+#5905960.02  Canal to Ditch                           30667.21000      1.       1 590847             1 590569.03          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590569 20 Carrier
+#5905960.03  Canal to Ditch                           30667.21000      1.       1 590709             1 590569.03          1 0                100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#                                    590569 20 Carrier
+#  Operations for Ferris Creek Reservoir
+#
+# 593602.01   Farris Creek Carrier                     39397.00200    -13.       1 593602             1 593602.01          1 593602_C           0      11 NA           NA                  0       0       0    9999
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    593602_C
+#593602.02   Opr Res to Demand                        39397.00068      0.       1 590550             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.04   Opr Res to Demand                        39397.00070      0.       1 590597             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.05   Opr Res to Demand                        39397.00071      0.       1 59_ADG004          1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.06   Opr Res to Demand                        39397.00072      0.       1 59_ARG001          1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.07   Opr Res to Demand                        39397.00073      0.       1 590549             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.08   Opr Res to Demand                        39397.00074      0.       1 590609             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.09   Opr Res to Demand                        39397.00075      0.       1 590593             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.10   Opr Res to Demand                        39397.00076      0.       1 590658             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999
+#593602.11   Opr Res to Demand                        39397.00077      0.       1 590600             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999           
+#593602.12   Opr Res to Demand                        39397.00078      0.       1 590672             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999            
+#593602.13   Opr Res to Demand                        39397.00079      0.       1 590509             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999            
+#593602.14   Opr Res to Demand                        39397.00080      0.       1 590556             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999            
+#593602.15   Opr Res to Demand                        39397.00081      0.       1 590667             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999            
+#593602.16   Opr Res to Demand                        39397.00082      0.       1 590624             1 593602             1 0                  1       2 NA           NA                  0       0       0    9999    
+#593602.17   Opr Res to Demand                        39397.00082      0.       1 59_ADG005          1 593602             1 0                  1       2 NA           NA                  0       0       0    9999  
+#593602.18   Opr Res to Demand                        39397.00082      0.       1 590699             1 593602             1 0                  1       4 NA           NA                  0       0       0    9999  
+#593602.19   Opr Res to Demand                        39397.00082      0.       1 590700             1 593602             1 0                  1       4 NA           NA                  0       0       0    9999  
+#593602.20   Opr Res to Demand                        39397.00082      0.       1 59_ADG002          1 593602             1 0                  1       4 NA           NA                  0       0       0    9999  
+#Operations for Rainbow Lake Reservoir
+#5936640.01  Elk Home No.2 to Rainbow                 19181.00000    -14.       1 593664             1 590887.01          1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#            1 1 0 0 0 1 1 1 1 1 1 1 
+#                                    590887 20 Carrier 
+#                                    590886 30 Carrier 
+#5936640.01  Elk Home Ditch to Alfred                 17369.00000    -13.       1 590505             1 590886.01          1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#            1 0 0 0 0 0 0 0 1 1 1 0 
+#                                    590886  0 Carrier 
+#5936640.02  Elk Home Ditch to Rainbow                17369.00000    -13.       1 593664             1 590886.01          1 NA               100      45 NA           Diversion         0.0     0.0       0    9999  Empire Res through Empire Ditch Wr1
+#            1 0 0 0 0 0 0 0 1 1 1 0 
+#                                    590886  0 Carrier 
+#5936640.03  Opr Res to Demand                        16376.00001      0.       1 590505             1 593664             1 0                  1       2 NA           NA                  0       0       0    9999
+#

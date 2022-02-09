@@ -1,0 +1,26 @@
+# #
+SetOutputPeriod(OutputStart="10/1970",OutputEnd="12/2012")
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+ReadTimeSeries(TSID="ChevDem.StateMod.Total_Demand.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\cm2015_SWSI\StateMod\cm2015B.b43",Alias="ChevDem_MunDemand",IfNotFound=Warn)
+ReadTimeSeries(TSID="ChevDem.StateMod.Total_Supply.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\cm2015_SWSI\StateMod\cm2015B.b43",Alias="ChevDem_MunSupply",IfNotFound=Warn)
+ReadTimeSeries(TSID="ChevDem.StateMod.Total_Short.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\cm2015_SWSI\StateMod\cm2015B.b43",Alias="ChevDem_MunShortage",IfNotFound=Warn)
+ReadTimeSeries(TSID="FUD001.StateMod.Total_Demand.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\wm2015_SWSI\StateMod\wm2015B.b43",Alias="FUD001_MunDemand",IfNotFound=Warn)
+ReadTimeSeries(TSID="FUD002.StateMod.Total_Demand.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\wm2015_SWSI\StateMod\wm2015B.b43",Alias="FUD002_MunDemand",IfNotFound=Warn)
+ReadTimeSeries(TSID="FUD001.StateMod.Total_Supply.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\wm2015_SWSI\StateMod\wm2015B.b43",Alias="FUD001_MunSupply",IfNotFound=Warn)
+ReadTimeSeries(TSID="FUD002.StateMod.Total_Supply.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\wm2015_SWSI\StateMod\wm2015B.b43",Alias="FUD002_MunSupply",IfNotFound=Warn)
+ReadTimeSeries(TSID="FUD001.StateMod.Total_Short.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\wm2015_SWSI\StateMod\wm2015B.b43",Alias="FUD001_MunShortage",IfNotFound=Warn)
+ReadTimeSeries(TSID="FUD002.StateMod.Total_Short.Month~StateModB~P:\Projects\CDSS StateMod\SWSI 2018\Surface Water Models\wm2015_SWSI\StateMod\wm2015B.b43",Alias="FUD002_MunShortage",IfNotFound=Warn)
+NA
+NA
+NA
+NA
+NA
+NA
+NA
+NA
