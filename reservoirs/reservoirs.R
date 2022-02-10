@@ -44,13 +44,13 @@ opr <- read_csv("data/opr/opr.csv")
 opr_res_id <- opr %>% 
   filter(reservoir_id %in% unique(reservoirs$reservoir_id))
 
-opr_dest_id <- opr %>% 
-  filter(dest_id %in% unique(reservoirs$reservoir_id)) %>% 
-  filter(!dest_id %in% unique(opr_res_id$dest_id)) %>% 
-  mutate(reservoir_id = dest_id)
+# opr_dest_id <- opr %>% 
+#   filter(dest_id %in% unique(reservoirs$reservoir_id)) %>% 
+#   filter(!dest_id %in% unique(opr_res_id$dest_id))
+  # mutate(reservoir_id = dest_id)
 
-opr_all <- bind_rows(opr_res_id, opr_dest_id)
-
+opr_all <- bind_rows(opr_res_id)
+unique(opr_res_id$reservoir_id)
 unique(opr_res_id$reservoir_id) %in% unique(opr_dest_id$reservoir_id)
 unique(opr_dest_id$reservoir_id) %in% unique(opr_res_id$reservoir_id)
 
@@ -63,7 +63,8 @@ rm(opr_dest_id, opr_res_id, opr)
 
 # join data by shared reservoir ID column
 reservoir_opr <- inner_join(opr_all, reservoirs, by = "reservoir_id") 
-
+length(unique(reservoir_opr$name_description))
+length(unique(reservoir_opr$reservoir_id))
 # reservoir_opr  <- inner_join(opr_res_id, reservoirs, by = "reservoir_id")
 
 # save to data/reservoirs/outputs
@@ -183,7 +184,7 @@ reservoir_summary <- reservoir_users %>%
     max_capacity = max(sim_eom)
   ) %>% 
   ungroup() %>% 
-  # filter(dest_id == "7202003") %>% 
+  # filter(dest_id == "7202003") %>%
   group_by(date, dest_id) %>%
   summarize(
     initial_storage      = sum(initial_storage),

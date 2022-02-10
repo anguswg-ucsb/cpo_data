@@ -57,9 +57,9 @@ statemod_district_month <- statemod %>%
 is.na(statemod_district_month) <- sapply(statemod_district_month, is.infinite)
 statemod_district_month[is.na(statemod_district_month)] <- 0
 
-
 # save monthly data
-write.csv(statemod_district_month, "data/statemod/districts/statemod_district_month.csv", row.names = F)
+saveRDS(statemod_district_month, "data/statemod/districts/statemod_district_month.rds")
+# write.csv(statemod_district_month, "data/statemod/districts/statemod_district_month.csv", row.names = F)
 
 # yearly district data (water year)
 statemod_district_year <- statemod_district_month %>% 
@@ -100,7 +100,8 @@ is.na(statemod_district_year) <- sapply(statemod_district_year, is.infinite)
 statemod_district_year[is.na(statemod_district_year)] <- 0
 
 # save yearly data
-write.csv(statemod_district_year, "data/statemod/districts/statemod_district_year.csv", row.names = F)
+saveRDS(statemod_district_year, "data/statemod/districts/statemod_district_year.rds")
+# write.csv(statemod_district_year, "data/statemod/districts/statemod_district_year.csv", row.names = F)
 
 
 

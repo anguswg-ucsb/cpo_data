@@ -46,7 +46,7 @@ for (i in 1:length(out_files$file_name)) {
   
   # read in district statemod data, remove duplicate columns
   stm <- read_csv(
-                  paste0(tstool_path,  out_files$file_name[7]),
+                  paste0(tstool_path,  out_files$file_name[i]),
                   col_types = cols()
                  ) %>% 
     dplyr::select(-ends_with("_1"))

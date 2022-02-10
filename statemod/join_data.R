@@ -107,7 +107,7 @@ statemod_node_res_climate <- inner_join(
                               climate_month,
                               by = c("date", "district")
                               )
-
+length(unique(statemod_node_res_climate$node_id))
 
 # save to /final
 saveRDS(statemod_node_res_climate, "data/final/statemod_node_res_climate.rds")

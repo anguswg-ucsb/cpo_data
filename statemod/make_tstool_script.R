@@ -14,26 +14,6 @@ library(logger)
 # ****************************************
 
 # Add path to the Excel file "210518_CPO_Data_SPDSSDist07.xlsx" 
-path                    <- "C:/Users/angus/OneDrive/Desktop/lynker/CPO/StateMod/"
-
-# all nodes all baselines data from excel sheet
-# node_df <- readxl::read_xlsx(paste0(path, "210518_CPO_Data_SPDSSDist07.xlsx"), sheet = "All Nodes All Baselines") %>% 
-#   setNames(.[1,])                          # assign column names from row 1 
-# 
-# # set names, clean data
-# node_df <- node_df %>%
-#   janitor::clean_names() %>%               # converts columns to snake_case, easy conversion at end, back to the excel headers 
-#   slice(n = -1) %>%                        # keep all rows except the first row w/ the titles 
-#   mutate(
-#     from_iwr = as.numeric(from_iwr),       # numerics for filtering later
-#     from_ddm = as.numeric(from_ddm)        # numerics for filtering later
-#   ) 
-# tmp <- node_df %>% 
-#   mutate(district = case_when(
-#     district <= 9 ~ paste0("0", as.character(district)),
-#     TRUE          ~ as.character(district)
-#   ))
-# write.csv(tmp, "data/tstool/all_nodes_all_baselines.csv", row.names = F)
 
 node_df                 <- readr::read_csv("data/tstool/all_nodes_all_baselines.csv")
 
@@ -44,14 +24,6 @@ tstool_script           <- readr::read_csv("data/tstool/generate_tstool_script.c
 
 tstool_script_template  <-  readr::read_csv("data/tstool/generate_tstool_script_template.csv")
 
-# generate TSTool example excel sheet 
-# tstool_script <- readxl::read_xlsx(paste0(path, "210518_CPO_Data_SPDSSDist07.xlsx"), sheet = 1)
-# 
-# # set names, clean data
-# tstool_script2 <- tstool_script %>%
-#   dplyr::select(6:18) %>%                  # select just cols 6:18, other columns look like fixed values that can sub into final excel sheet
-#   setNames(.[1,]) %>%                      # assign col names from row 1 
-#   slice(18:n())   
 
 # ***************************************
 # ---- Irrig loop (add variable col) ----
@@ -585,21 +557,6 @@ write.csv(
 # ****************************************************
 # ---- build CSV file template for TSTool to read ----
 # ****************************************************
-# add_ts <- readr::read_csv("data/tstool/addts_tstool_script.csv", 
-#                            col_names = T,
-#                            col_types = cols(
-#                                            district            = col_character(),
-#                                            type                = col_character(),
-#                                            variable            = col_character(),
-#                                            extraction_template = col_character(),
-#                                            pathrepl            = col_character(),
-#                                            noderepl            = col_character(),
-#                                            varrepl             = col_character(),
-#                                            typerepl            = col_character(),
-#                                            final               = col_character()
-#                                          )
-#                            )
-
 
 csv_write     <- readr::read_csv("data/tstool/writedelimitedfile_tstool_script.csv")
 new_ts        <- readr::read_csv("data/tstool/newts_tstool_script.csv")

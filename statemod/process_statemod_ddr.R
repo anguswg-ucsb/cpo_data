@@ -89,6 +89,7 @@ statemod_ddr  <- left_join(
 
 
 length(unique(statemod_ddr$node_id))
+length(unique(statemod$node_id))
 length(unique(ddr$node_id))
 length(unique(statemod_ddr$district))
 
@@ -97,7 +98,7 @@ saveRDS(statemod_ddr, "data/statemod/nodes/statemod_ddr.rds")
 # readr::write_csv(statemod_ddr, "data/statemod/nodes/statemod_ddr.csv")
 
 # remove extra dataframes
-rm(statemod, indiv_decrees, ddr, af_per_cfs, cols_to_check)
+rm(statemod, statemod_ddr, nodes, indiv_decrees, ddr, af_per_cfs, cols_to_check)
 
 
 

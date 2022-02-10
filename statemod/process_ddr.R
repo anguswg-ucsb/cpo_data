@@ -1,7 +1,7 @@
 # Angus Watters
 # Direct Diversion Record file processing 
 # 01/24/2022
-
+remove(list = ls())
 library(tidyverse)
 library(readr)
 library(stringr)
@@ -78,6 +78,8 @@ for (i in 1:length(ddr_files)) {
 
 # bind rows
 ddr_df <- bind_rows(ddr_lst)
+
+length(unique(ddr_df$node_id))
 
 # save output
 saveRDS(ddr_df, "data/ddr/outputs/ddr.rds")

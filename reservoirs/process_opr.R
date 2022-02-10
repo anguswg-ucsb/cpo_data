@@ -81,7 +81,8 @@ for (i in 1:length(opr_files)){
 opr_df <- bind_rows(opr_lst) 
 
 # save cleaned OPR file 
-write_csv(opr_df, "data/opr/opr.csv")
+saveRDS(opr_df, "data/opr/opr.rds")
+# write_csv(opr_df, "data/opr/opr.csv")
 
 
 # clear workspace
